@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CheckAccountType</class>
+ <widget class="QDialog" name="CheckAccountType">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>846</width>
+    <height>682</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Resours/Recours.qrc">
+    <normaloff>:/img/LogoW</normaloff>:/img/LogoW</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">url (:/img/BG.jpg)</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>431</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 11pt &quot;Dyuthi&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Which Account you want?</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>90</y>
+     <width>371</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QRadioButton" name="orgRbtn">
+      <property name="text">
+       <string>‫‪Organisation‬‬</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="perRbtn">
+      <property name="text">
+       <string>‫‪Personal‬‬</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="anoRbtn">
+      <property name="text">
+       <string>‫‪Anonymous‬‬</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="Resours/Recours.qrc"/>
+ </resources>
+ <connections/>
+</ui>

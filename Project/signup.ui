@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SignUp</class>
+ <widget class="QDialog" name="SignUp">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>906</width>
+    <height>790</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Resours/Recours.qrc">
+    <normaloff>:/img/LogoB</normaloff>:/img/LogoB</iconset>
+  </property>
+  <widget class="QLabel" name="BG">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>906</width>
+     <height>790</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>280</y>
+     <width>881</width>
+     <height>421</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLabel" name="nameTxt">
+        <property name="text">
+         <string>&lt;font color = white&gt;Name</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="usernTxt_2">
+        <property name="text">
+         <string>&lt;font color = white&gt;Username</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="usernmTxt">
+        <property name="text">
+         <string>&lt;font color = white&gt;Manager username</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="passTxt_2">
+        <property name="text">
+         <string>&lt;font color = white&gt;Password</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="pnumTxt_2">
+        <property name="text">
+         <string>&lt;font color = white&gt;Phone number</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QLineEdit" name="nameTxtBar"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="userTxtBar"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="MuserTxtBar"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="passTxtBar">
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="pnumTxtBar"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>431</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 11pt &quot;Dyuthi&quot;;</string>
+   </property>
+   <property name="text">
+    <string>&lt;font color = white&gt;Which Account you want?</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_4">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>542</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_7">
+    <item>
+     <widget class="QRadioButton" name="orgRbtn">
+      <property name="text">
+       <string>‫‪Organisation‬‬</string>
+      </property>
+      <property name="icon">
+       <iconset resource="Resours/Recours.qrc">
+        <normaloff>:/icon/icons8-administrator-male-96.png</normaloff>:/icon/icons8-administrator-male-96.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="perRbtn">
+      <property name="text">
+       <string>‫‪Personal‬‬</string>
+      </property>
+      <property name="icon">
+       <iconset resource="Resours/Recours.qrc">
+        <normaloff>:/icon/icons8-user-account-96.png</normaloff>:/icon/icons8-user-account-96.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="anoRbtn">
+      <property name="text">
+       <string>‫‪Anonymous‬‬</string>
+      </property>
+      <property name="icon">
+       <iconset resource="Resours/Recours.qrc">
+        <normaloff>:/icon/icons8-robber-96.png</normaloff>:/icon/icons8-robber-96.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>720</y>
+     <width>180</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Enter</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="Resours/Recours.qrc"/>
+ </resources>
+ <connections/>
+</ui>

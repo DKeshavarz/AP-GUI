@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WindowPer</class>
+ <widget class="QDialog" name="WindowPer">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1547</width>
+    <height>1151</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Resours/Recours.qrc">
+    <normaloff>:/img/LogoB</normaloff>:/img/LogoB</iconset>
+  </property>
+  <widget class="QLabel" name="BG">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1547</width>
+     <height>1151</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="settingBtn">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/setting</normaloff>:/icon/setting</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exitBtn">
+   <property name="geometry">
+    <rect>
+     <x>1420</x>
+     <y>0</y>
+     <width>131</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/icons8-power-off-button-96.png</normaloff>:/icon/icons8-power-off-button-96.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="deleteAccBtn">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>1080</y>
+     <width>351</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete your Account</string>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/trash</normaloff>:/icon/trash</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="userSearchBtn">
+   <property name="geometry">
+    <rect>
+     <x>1340</x>
+     <y>1080</y>
+     <width>180</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Search</string>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/icons8-america-96.png</normaloff>:/icon/icons8-america-96.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="hashtagSearchBtn">
+   <property name="geometry">
+    <rect>
+     <x>1340</x>
+     <y>1020</y>
+     <width>180</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Search</string>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/icons8-hashtag-96.png</normaloff>:/icon/icons8-hashtag-96.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="addBtn">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>160</y>
+     <width>180</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add</string>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/icons8-plus-math-96.png</normaloff>:/icon/icons8-plus-math-96.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="logoutBtn">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>1020</y>
+     <width>180</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Logout</string>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/icons8-arrow-pointing-left-96.png</normaloff>:/icon/icons8-arrow-pointing-left-96.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="tweetTxt">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>160</y>
+     <width>1291</width>
+     <height>851</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="saveBtn">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>220</y>
+     <width>180</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/icons8-save-96.png</normaloff>:/icon/icons8-save-96.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="followBtn">
+   <property name="geometry">
+    <rect>
+     <x>1340</x>
+     <y>100</y>
+     <width>180</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Follow</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="Resours/Recours.qrc"/>
+ </resources>
+ <connections/>
+</ui>
