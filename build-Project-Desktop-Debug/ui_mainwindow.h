@@ -59,6 +59,7 @@ public:
         exitBtn = new QPushButton(centralwidget);
         exitBtn->setObjectName(QString::fromUtf8("exitBtn"));
         exitBtn->setGeometry(QRect(0, 0, 151, 41));
+        exitBtn->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/icon/icons8-power-off-button-96.png"), QSize(), QIcon::Normal, QIcon::Off);
         exitBtn->setIcon(icon1);
@@ -71,6 +72,7 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         loginBtn = new QPushButton(layoutWidget);
         loginBtn->setObjectName(QString::fromUtf8("loginBtn"));
+        loginBtn->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/icon/login"), QSize(), QIcon::Normal, QIcon::Off);
         loginBtn->setIcon(icon2);
@@ -80,6 +82,7 @@ public:
 
         signupBtn = new QPushButton(layoutWidget);
         signupBtn->setObjectName(QString::fromUtf8("signupBtn"));
+        signupBtn->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon3;
         icon3.addFile(QString::fromUtf8(":/icon/mUser"), QSize(), QIcon::Normal, QIcon::Off);
         signupBtn->setIcon(icon3);
@@ -89,6 +92,7 @@ public:
 
         helpBtn = new QPushButton(layoutWidget);
         helpBtn->setObjectName(QString::fromUtf8("helpBtn"));
+        helpBtn->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/icon/icons8-speech-bubble-48.png"), QSize(), QIcon::Normal, QIcon::Off);
         helpBtn->setIcon(icon4);
@@ -98,6 +102,7 @@ public:
 
         aboutBtn = new QPushButton(layoutWidget);
         aboutBtn->setObjectName(QString::fromUtf8("aboutBtn"));
+        aboutBtn->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/icon/about"), QSize(), QIcon::Normal, QIcon::Off);
         aboutBtn->setIcon(icon5);

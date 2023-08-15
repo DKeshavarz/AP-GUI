@@ -139,6 +139,7 @@ public:
         verticalLayout_7->setContentsMargins(0, 0, 0, 0);
         orgRbtn = new QRadioButton(layoutWidget_4);
         orgRbtn->setObjectName(QString::fromUtf8("orgRbtn"));
+        orgRbtn->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/icon/icons8-administrator-male-96.png"), QSize(), QIcon::Normal, QIcon::Off);
         orgRbtn->setIcon(icon1);
@@ -148,6 +149,7 @@ public:
 
         perRbtn = new QRadioButton(layoutWidget_4);
         perRbtn->setObjectName(QString::fromUtf8("perRbtn"));
+        perRbtn->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/icon/icons8-user-account-96.png"), QSize(), QIcon::Normal, QIcon::Off);
         perRbtn->setIcon(icon2);
@@ -157,6 +159,7 @@ public:
 
         anoRbtn = new QRadioButton(layoutWidget_4);
         anoRbtn->setObjectName(QString::fromUtf8("anoRbtn"));
+        anoRbtn->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon3;
         icon3.addFile(QString::fromUtf8(":/icon/icons8-robber-96.png"), QSize(), QIcon::Normal, QIcon::Off);
         anoRbtn->setIcon(icon3);
@@ -167,6 +170,7 @@ public:
         pushButton = new QPushButton(SignUp);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(710, 720, 180, 48));
+        pushButton->setCursor(QCursor(Qt::BusyCursor));
 
         retranslateUi(SignUp);
 
