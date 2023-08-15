@@ -58,7 +58,7 @@ void BaseUser::setUserName(string uName)
         if ( !('a' <= uName[i] && uName[i] <= 'z') &&
              !('A' <= uName[i] && uName[i] <= 'Z')) 
         {
-            throw invalid_argument("! Username contain invalic character");
+            throw invalid_argument("! Username contain invalid character");
         }
     }
 

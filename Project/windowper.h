@@ -32,6 +32,8 @@ private slots:
 
     void on_saveBtn_clicked();
 
+    void on_userSearchBtn_clicked();
+
 private:
     Ui::WindowPer *ui;
     MainWindow main;// to access the flags of type of users in mainwindow

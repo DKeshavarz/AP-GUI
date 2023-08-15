@@ -35,8 +35,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_loginBtn_clicked()
 {
     Login op(this,&myApp);
-    op.access();
-
     op.setModal(true);
     op.setWindowTitle("Login");
     op.exec();

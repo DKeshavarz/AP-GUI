@@ -132,6 +132,9 @@
    <layout class="QVBoxLayout" name="verticalLayout_7">
     <item>
      <widget class="QRadioButton" name="orgRbtn">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="text">
        <string>‫‪Organisation‬‬</string>
       </property>
@@ -149,6 +152,9 @@
     </item>
     <item>
      <widget class="QRadioButton" name="perRbtn">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="text">
        <string>‫‪Personal‬‬</string>
       </property>
@@ -166,6 +172,9 @@
     </item>
     <item>
      <widget class="QRadioButton" name="anoRbtn">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="text">
        <string>‫‪Anonymous‬‬</string>
       </property>
@@ -191,6 +200,9 @@
      <width>180</width>
      <height>48</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>BusyCursor</cursorShape>
    </property>
    <property name="text">
     <string>Enter</string>

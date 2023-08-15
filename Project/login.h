@@ -18,8 +18,6 @@ class Login : public QDialog
 
 public:
     explicit Login(QWidget *parent = nullptr, Twitterak* = nullptr);
-    void access();
-
     ~Login();
 
 private slots:

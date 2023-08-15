@@ -3,6 +3,7 @@
 
 #include "editaccount.h"
 #include "mainwindow.h"
+#include "search.h"
 
 #include <QPixmap>
 
@@ -76,4 +77,13 @@ void WindowPer::on_saveBtn_clicked()
 {
     //after write in file
     ui->tweetTxt->setEnabled(false);
+}
+
+void WindowPer::on_userSearchBtn_clicked()
+{
+    Search op;
+    op.setModal(true);
+    op.setWindowTitle("Search");
+    op.exec();
+
 }

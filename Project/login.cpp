@@ -21,12 +21,6 @@ Login::Login(QWidget *parent,Twitterak* ptr) :
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 }
 
-void Login::access()
-{
-    //ui -> usernameTxtBar->setEnabled(false); //wtf ali?
-    ui -> usernameTxtBar->setEnabled(true);
-}
-
 Login::~Login()
 {
     delete ui;
@@ -40,9 +34,10 @@ void Login::on_enterBtn_clicked()
     try
     {
         appPtr->loadMainUser(userName.toStdString(),password.toStdString());
-        WindowPer test(this,appPtr);
-        test.setModal(true);
-        test.exec();
+        WindowPer op(this,appPtr);
+        this -> hide();
+        op.setModal(true);
+        op.exec();
     }
     catch (std::invalid_argument& err)
     {

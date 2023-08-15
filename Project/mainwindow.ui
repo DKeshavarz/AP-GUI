@@ -59,6 +59,9 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string>Exit</string>
     </property>
@@ -85,6 +88,9 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QPushButton" name="loginBtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Login</string>
        </property>
@@ -102,6 +108,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="signupBtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>SignUp</string>
        </property>
@@ -119,6 +128,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="helpBtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Help</string>
        </property>
@@ -136,6 +148,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="aboutBtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>About</string>
        </property>

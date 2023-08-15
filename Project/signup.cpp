@@ -98,13 +98,14 @@ void SignUp::on_pushButton_clicked()
         appPtr->setMainUser(name.toStdString() ,userName.toStdString(),password.toStdString()
                             ,manager.toStdString() ,phone.toStdString() ,selectedType );
 
-        WindowPer test(this,appPtr);
-        test.setModal(true);
-        test.exec();
+        WindowPer op(this,appPtr);
+        this -> hide();
+        op.setModal(true);
+        op.exec();
     }
     catch (std::invalid_argument& err)
     {
-        QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
     }
 
 

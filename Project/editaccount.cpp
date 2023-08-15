@@ -17,18 +17,20 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
     //disable all in window
-    ui -> HeaderColor    -> setEnabled(false);
+    ui -> HeaderColor    -> setEnabled(false);// most read on file
+
     ui -> nameTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
     ui -> usernameTxtBar -> setText(QString::fromStdString(appPtr->getMainUser()->getUserName()) );
     ui -> orguserTxtBar  -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));//wtf
     ui -> passwordTxtBar -> setText(QString::fromStdString(appPtr->getMainUser()->getPassword()) );
-    ui -> numberTxtBar   -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
+    ui -> numberTxtBar   -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));//wtf
     ui -> countryTxtBar  -> setText(QString::fromStdString(appPtr->getMainUser()->getCountry()));
     ui -> linkTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getLink()));
     ui -> dateTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));//wtf
-    ui -> bioTxtedit     -> setEnabled(false);
-    ui -> colorBtnchoose -> setEnabled(false);
-    ui -> photoBtnchoose -> setEnabled(false);
+
+    ui -> bioTxtedit     -> setEnabled(false); // most read on file
+    ui -> colorBtnchoose -> setEnabled(false);// most read on file
+    ui -> photoBtnchoose -> setEnabled(false);// most read on file
 
     //go to enable some
     if (main.flagO)
@@ -61,10 +63,12 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
         ui -> countryTxtBar  -> setEnabled(true);
         ui -> linkTxtBar     -> setEnabled(true);
         ui -> dateTxtBar     -> setEnabled(true);
+        //write on file
         ui -> bioTxtedit     -> setEnabled(true);
         ui -> colorBtnchoose -> setEnabled(true);
         ui -> photoBtnchoose -> setEnabled(true);
 
+        //this is a defualt pic
         QPixmap pix3(":/img/user-128.png");
         ui -> Pic -> setPixmap(pix3.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
     }
@@ -88,6 +92,7 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
 
         ui -> HeaderColor-> setPalette(QPalette("black"));
 
+        //this is a defualt pic
         QPixmap pix2(":/img/781-7812555_anonymous-mask-png-transparent-images-anonymous-icon-red.jpeg");
         ui -> Pic -> setPixmap(pix2.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
     }
@@ -105,6 +110,7 @@ void EditAccount::on_colorBtnchoose_clicked()
     {
         ui -> HeaderColor-> setPalette(QPalette(color));
     }
+    //i cant see the color
     // but when we out of this window the color gone!
 }
 
