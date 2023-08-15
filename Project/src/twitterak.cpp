@@ -11,7 +11,7 @@ Twitterak::Twitterak():mainUser{nullptr},tempUser{nullptr},numberOfUsers{1}
 {
     cout << "in constructor\n" ;
 
-    ifstream input("myFiles/main.txt",ios::in);
+    ifstream input("Main.txt",ios::in);
     if(!input)
         cout << "fuck\n";
 
@@ -96,7 +96,7 @@ void Twitterak::loadMainUser(string userName,string password)
 
 Twitterak::~Twitterak()
 {
-    ofstream output("myFiles/main.txt",ios::out);
+    ofstream output("Main.txt",ios::out);
     if(!output)
         cout << "cant't open myFiles/main.txt \n";
 

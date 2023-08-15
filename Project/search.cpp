@@ -1,6 +1,8 @@
 #include "search.h"
 #include "ui_search.h"
 
+#include "useraccount.h"
+
 #include <QPixmap>
 
 Search::Search(QWidget *parent) :
@@ -17,4 +19,12 @@ Search::Search(QWidget *parent) :
 Search::~Search()
 {
     delete ui;
+}
+
+void Search::on_searchBtn_clicked()
+{
+    this -> close();
+    UserAccount test; // is just for testing
+    test.setModal(true);
+    test.exec();
 }

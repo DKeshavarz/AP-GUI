@@ -17,7 +17,6 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
     //disable all in window
-    ui -> HeaderColor    -> setEnabled(false);// most read on file
 
     ui -> nameTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
     ui -> usernameTxtBar -> setText(QString::fromStdString(appPtr->getMainUser()->getUserName()) );
@@ -28,9 +27,20 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
     ui -> linkTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getLink()));
     ui -> dateTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));//wtf
 
+    ui -> nameTxtBar     -> setEnabled(false);
+    ui -> HeaderColor    -> setEnabled(false);// most read on file
+    ui -> usernameTxtBar -> setEnabled(false);
+    ui -> orguserTxtBar  -> setEnabled(false);
+    ui -> passwordTxtBar -> setEnabled(false);
+    ui -> numberTxtBar   -> setEnabled(false);
+    ui -> countryTxtBar  -> setEnabled(false);
+    ui -> linkTxtBar     -> setEnabled(false);
+    ui -> dateTxtBar     -> setEnabled(false);
     ui -> bioTxtedit     -> setEnabled(false); // most read on file
     ui -> colorBtnchoose -> setEnabled(false);// most read on file
     ui -> photoBtnchoose -> setEnabled(false);// most read on file
+
+
 
     //go to enable some
     if (main.flagO)

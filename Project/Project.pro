@@ -28,6 +28,7 @@ SOURCES += \
     src/personalUser.cpp \
     src/tweet.cpp \
     src/twitterak.cpp \
+    useraccount.cpp \
     windowper.cpp
 
 HEADERS += \
@@ -42,6 +43,7 @@ HEADERS += \
     mainwindow.h \
     search.h \
     signup.h \
+    useraccount.h \
     windowper.h
 
 FORMS += \
@@ -50,6 +52,7 @@ FORMS += \
     mainwindow.ui \
     search.ui \
     signup.ui \
+    useraccount.ui \
     windowper.ui
 
 # Default rules for deployment.

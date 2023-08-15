@@ -16,9 +16,9 @@ BaseUser::BaseUser()
 
 BaseUser::BaseUser(int id)//make this function more readble
 {
-    ifstream input("myFiles/user"+ to_string(id) +".txt",ios::in);
+    ifstream input("user"+ to_string(id) +".txt",ios::in);
     if(!input)
-        cout << "cant't open myFiles/user"+ to_string(id) +".txt\n";
+        cout << "cant't open user"+ to_string(id) +".txt\n";
 
     std::string temp;
 
@@ -154,9 +154,9 @@ void BaseUser::setHeaderColor(string inputColor)
 
 BaseUser::~BaseUser()
 {
-    ofstream output("myFiles/user"+ to_string(id) +".txt",ios::out);
+    ofstream output("user"+ to_string(id) +".txt",ios::out);
     if(!output)
-        cout << "cant't open myFiles/user"+ to_string(id) +".txt\n";
+        cout << "cant't open user"+ to_string(id) +".txt\n";
 
 
     output <<":"   << id                << "\n:" << firsName

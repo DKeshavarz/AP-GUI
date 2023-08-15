@@ -14,28 +14,18 @@ WindowPer::WindowPer(QWidget *parent,Twitterak* ptr) :
 {
     ui->setupUi(this);
 
-
     QPixmap pix(":/img/BG2.jpeg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
     ui -> tweetTxt   -> setEnabled(false);
     ui -> addBtn     -> setEnabled(false);
     ui -> saveBtn    -> setEnabled(false);
-    ui -> followBtn  -> setEnabled(false);
 
     //enable bottuns for user per and org
     if (main.flagO || main.flagP)
     {
         ui -> addBtn   -> setEnabled(true);
         ui -> saveBtn  -> setEnabled(true);
-        ui -> followBtn-> setEnabled(true);
-    }
-    // disable it for ano user
-    else if (main.flagA)
-    {
-        ui -> addBtn   ->setEnabled(false);
-        ui -> saveBtn  ->setEnabled(false);
-        ui -> followBtn->setEnabled(true);
     }
 }
 

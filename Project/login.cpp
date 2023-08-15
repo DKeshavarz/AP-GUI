@@ -36,6 +36,7 @@ void Login::on_enterBtn_clicked()
         appPtr->loadMainUser(userName.toStdString(),password.toStdString());
         WindowPer op(this,appPtr);
         this -> hide();
+        op.setWindowTitle("Main App");
         op.setModal(true);
         op.exec();
     }

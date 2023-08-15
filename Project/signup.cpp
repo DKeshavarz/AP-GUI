@@ -100,6 +100,7 @@ void SignUp::on_pushButton_clicked()
 
         WindowPer op(this,appPtr);
         this -> hide();
+        op.setWindowTitle("Main App");
         op.setModal(true);
         op.exec();
     }
