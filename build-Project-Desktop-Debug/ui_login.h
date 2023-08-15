@@ -77,6 +77,7 @@ public:
         enterBtn = new QPushButton(Login);
         enterBtn->setObjectName(QString::fromUtf8("enterBtn"));
         enterBtn->setGeometry(QRect(541, 350, 151, 48));
+        enterBtn->setCursor(QCursor(Qt::BusyCursor));
 
         retranslateUi(Login);
 

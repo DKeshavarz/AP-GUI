@@ -11,7 +11,11 @@ Twitterak::Twitterak():mainUser{nullptr},tempUser{nullptr},numberOfUsers{1}
 {
     cout << "in constructor\n" ;
 
+<<<<<<< HEAD
     ifstream input("Main.txt",ios::in);
+=======
+    ifstream input("main.txt",ios::in);
+>>>>>>> 0a5a316e3664939dc44411d0ff069ef93a0a95dc
     if(!input)
         cout << "fuck\n";
 
@@ -96,10 +100,15 @@ void Twitterak::loadMainUser(string userName,string password)
 
 Twitterak::~Twitterak()
 {
+<<<<<<< HEAD
     ofstream output("Main.txt",ios::out);
+=======
+    ofstream output("main.txt",ios::out);
+>>>>>>> 0a5a316e3664939dc44411d0ff069ef93a0a95dc
     if(!output)
-        cout << "cant't open myFiles/main.txt \n";
+        cout << "cant't open main.txt \n";
 
+    output << "nidd\n" ;
     for (const auto& i : usersMap)
     {
         output << i.first       << ' ' << (i.second).password << ' '

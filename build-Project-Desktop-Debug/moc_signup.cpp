@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../Project/signup.h"
+#include "../../../../../run/media/dani/oh/1_AP-project/AP-GUI/Project/signup.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
