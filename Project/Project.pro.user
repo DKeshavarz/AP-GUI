@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 4.11.0, 2023-08-15T21:24:00. -->
-=======
-<!-- Written by QtCreator 11.0.1, 2023-08-15T17:17:33. -->
->>>>>>> 0a5a316e3664939dc44411d0ff069ef93a0a95dc
+<!-- Written by QtCreator 11.0.1, 2023-08-16T18:26:07. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -244,19 +240,10 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-<<<<<<< HEAD
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/ali/Desktop/Untitled Folder/AP-GUI/Project/Project.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/ali/Desktop/Untitled Folder/AP-GUI/Project/Project.pro</value>
-    <value type="QString" key="RunConfiguration.Arguments"></value>
-    <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
-    <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-=======
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Project2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/run/media/dani/oh/1_AP-project/AP-GUI/Project/Project.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/run/media/dani/oh/1_AP-project/AP-GUI/Project/Project.pro</value>
->>>>>>> 0a5a316e3664939dc44411d0ff069ef93a0a95dc
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>

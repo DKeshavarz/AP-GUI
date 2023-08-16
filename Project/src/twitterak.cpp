@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <stdexcept>
+#include <stdio.h>
 
 using namespace std;
 
@@ -11,11 +12,8 @@ Twitterak::Twitterak():mainUser{nullptr},tempUser{nullptr},numberOfUsers{1}
 {
     cout << "in constructor\n" ;
 
-<<<<<<< HEAD
-    ifstream input("Main.txt",ios::in);
-=======
+
     ifstream input("main.txt",ios::in);
->>>>>>> 0a5a316e3664939dc44411d0ff069ef93a0a95dc
     if(!input)
         cout << "fuck\n";
 
@@ -97,18 +95,34 @@ void Twitterak::loadMainUser(string userName,string password)
     else
         throw invalid_argument ("file isn't corret ...main.txt") ;
 }
+void Twitterak::clearMainUser()
+{
+    delete mainUser;
+    mainUser = nullptr;
+}
+void Twitterak::deleteUser(string userName)
+{
+    if(!usersMap.count(userName))
+    {
+        throw invalid_argument("User name don't exist");
+    }
+    int id = usersMap[userName].id;
+    usersMap.erase(userName);
+    string path = "user"+ to_string(id) +".txt";
+    if(remove(path.data()) == 0)
+    {
+        cerr<< "delete " << path  << "line 114\n";
+    }
 
+}
 Twitterak::~Twitterak()
 {
-<<<<<<< HEAD
-    ofstream output("Main.txt",ios::out);
-=======
+
     ofstream output("main.txt",ios::out);
->>>>>>> 0a5a316e3664939dc44411d0ff069ef93a0a95dc
     if(!output)
         cout << "cant't open main.txt \n";
 
-    output << "nidd\n" ;
+
     for (const auto& i : usersMap)
     {
         output << i.first       << ' ' << (i.second).password << ' '

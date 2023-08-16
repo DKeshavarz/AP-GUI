@@ -24,7 +24,10 @@ public:
     void setMainUser(std::string,std::string,std::string
                     ,std::string,std::string,char);
 
-    void loadMainUser(std::string ,std::string);
+    void loadMainUser (std::string ,std::string);
+    void clearMainUser();
+
+    void deleteUser(std::string);
 
     BaseUser* getMainUser(){return mainUser;}
 

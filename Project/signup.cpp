@@ -30,6 +30,7 @@ SignUp::SignUp(QWidget *parent,Twitterak* ptr) :
 
 SignUp::~SignUp()
 {
+    appPtr->clearMainUser();
     delete ui;
 }
 
@@ -99,10 +100,10 @@ void SignUp::on_pushButton_clicked()
                             ,manager.toStdString() ,phone.toStdString() ,selectedType );
 
         WindowPer op(this,appPtr);
-        this -> hide();
         op.setWindowTitle("Main App");
         op.setModal(true);
         op.exec();
+        this -> close();
     }
     catch (std::invalid_argument& err)
     {

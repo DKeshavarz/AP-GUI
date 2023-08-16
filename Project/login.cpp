@@ -44,4 +44,8 @@ void Login::on_enterBtn_clicked()
     {
         QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
     }
+    catch (std::out_of_range& err)
+    {
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what())+"line49");
+    }
 }

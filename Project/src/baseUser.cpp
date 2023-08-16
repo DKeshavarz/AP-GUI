@@ -7,7 +7,7 @@
 
 using namespace std ;
 
-const int securityLevel {2} ;
+const int securityLevel {1} ;
 
 BaseUser::BaseUser()
 {
@@ -18,7 +18,7 @@ BaseUser::BaseUser(int id)//make this function more readble
 {
     ifstream input("user"+ to_string(id) +".txt",ios::in);
     if(!input)
-        cout << "cant't open user"+ to_string(id) +".txt\n";
+        cout << "line 21 cant't open user"+ to_string(id) +".txt\n";
 
     std::string temp;
 
@@ -72,7 +72,6 @@ void BaseUser::setUserName(string uName)
 
     userName = uName;
 }
-
 void BaseUser::setPassword(string pass) 
 {
     if (pass == previousPassword)
@@ -99,12 +98,10 @@ void BaseUser::setPassword(string pass)
         throw invalid_argument("! Password is too easy") ;
     
 }
-
 void BaseUser::setLastPass(string input)
 {
     previousPassword = input ;
 }
-
 void BaseUser::setBiogarghy(string bio)
 {
     if (bio.size() < 160)
@@ -140,7 +137,6 @@ void BaseUser::setPhoneNum(string phone) // dose it need validation?
 
     phoneNumber = phone;
 }
-
 void BaseUser::setHeaderColor(string inputColor)
 {
     string reservedColors[8] { "blue ","green ","red ","yellow ","black ","white ","orange ","purple " };
@@ -156,7 +152,7 @@ BaseUser::~BaseUser()
 {
     ofstream output("user"+ to_string(id) +".txt",ios::out);
     if(!output)
-        cout << "cant't open user"+ to_string(id) +".txt\n";
+        cout << "line 155:cant't open user"+ to_string(id) +".txt\n";
 
 
     output <<":"   << id                << "\n:" << firsName

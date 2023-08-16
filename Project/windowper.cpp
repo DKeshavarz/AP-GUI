@@ -77,3 +77,13 @@ void WindowPer::on_userSearchBtn_clicked()
     op.exec();
 
 }
+
+void WindowPer::on_deleteAccBtn_clicked()
+{
+    std::string userName = appPtr->getMainUser()->getUserName();
+
+    appPtr->deleteUser(userName);
+
+    close();
+}
+
