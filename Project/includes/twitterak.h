@@ -27,6 +27,8 @@ public:
     void loadMainUser (std::string ,std::string);
     void clearMainUser();
 
+    void addTweet(std::string);
+
     void deleteUser(std::string);
 
     BaseUser* getMainUser(){return mainUser;}

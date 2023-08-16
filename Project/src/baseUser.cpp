@@ -150,6 +150,8 @@ void BaseUser::setHeaderColor(string inputColor)
 
 BaseUser::~BaseUser()
 {
+    delete currenTweet;
+
     ofstream output("user"+ to_string(id) +".txt",ios::out);
     if(!output)
         cout << "line 155:cant't open user"+ to_string(id) +".txt\n";
@@ -162,4 +164,16 @@ BaseUser::~BaseUser()
            <<"\n:" << country           << "\n:" << headerColor;
 
     output.close();
+}
+
+void BaseUser::addTweet (string tweetText)
+{
+    tweetsSet.insert(tweetsSet.size()+1);
+    cerr << "add tweet " << tweetsSet.size() << "to" << userName << '\n' ;
+    currenTweet = new Tweet(tweetText,id,tweetsSet.size());
+}
+void BaseUser::clearCurrentTweet()
+{
+    delete currenTweet;
+    currenTweet = nullptr ;
 }

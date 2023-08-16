@@ -102,6 +102,7 @@ void Twitterak::clearMainUser()
 }
 void Twitterak::deleteUser(string userName)
 {
+    clearMainUser();
     if(!usersMap.count(userName))
     {
         throw invalid_argument("User name don't exist");
@@ -135,4 +136,9 @@ Twitterak::~Twitterak()
     // carefull about times main == temp is true
     delete mainUser ;
     delete tempUser ;
+}
+void Twitterak::addTweet(string tweetText)
+{
+    //add tweet to user
+    mainUser->addTweet(tweetText);
 }

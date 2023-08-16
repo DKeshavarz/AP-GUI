@@ -18,8 +18,6 @@ WindowPer::WindowPer(QWidget *parent,Twitterak* ptr) :
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
     ui -> tweetTxt   -> setEnabled(false);
-    ui -> addBtn     -> setEnabled(false);
-    ui -> saveBtn    -> setEnabled(false);
 
     //enable bottuns for user per and org
     if (main.flagO || main.flagP)
@@ -60,13 +58,16 @@ void WindowPer::on_logoutBtn_clicked()
 void WindowPer::on_addBtn_clicked()
 {
     ui->tweetTxt->setEnabled(true);
+    ui->tweetTxt->setPlainText("");
 }
 
 
 void WindowPer::on_saveBtn_clicked()
 {
-    //after write in file
     ui->tweetTxt->setEnabled(false);
+    std::string tweetText = ui->tweetTxt->toPlainText().toStdString();
+
+    appPtr->addTweet(tweetText);
 }
 
 void WindowPer::on_userSearchBtn_clicked()

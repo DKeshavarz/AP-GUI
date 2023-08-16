@@ -4,6 +4,8 @@
 #include <unordered_set>
 #include <string>
 
+#include "includes/tweet.h"
+
 class BaseUser 
 {
 public:
@@ -24,6 +26,9 @@ public:
     void setHeaderColor(std::string); 
     void setBirthDate  (std::string);
 
+    void addTweet      (std::string);
+    void clearCurrentTweet();
+
     int         getId         () const{return id         ;}
     std::string getFirstName  () const{return firsName   ;}
     std::string getUserName   () const{return userName   ;}
@@ -36,6 +41,7 @@ public:
    
 private:
     int id ;
+    int currentTweetNum;
 
     std::string firsName;
     std::string userName;
@@ -47,8 +53,11 @@ private:
     std::string country;
     std::string headerColor;
 
+    Tweet* currenTweet ;
+
     std::unordered_set<int>followings ;
     std::unordered_set<int>followers  ;
+    std::unordered_set<int>tweetsSet  ;
 
     //date 
     //profile pic
