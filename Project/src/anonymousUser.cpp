@@ -6,10 +6,7 @@ AnonymousUser::AnonymousUser()
 {
     //empty
 }
-AnonymousUser::AnonymousUser(int id):BaseUser(id)
-{
-    //empty
-}
+
 AnonymousUser::AnonymousUser(string uName,string pass)
 :BaseUser("AnonymousUser",uName,pass,"")
 {

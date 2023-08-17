@@ -86,13 +86,11 @@ void WindowPer::on_addBtn_clicked()
 
 void WindowPer::on_saveBtn_clicked()
 {
+    ui->tweetTxt->setEnabled(false);
     std::string tweetText = ui->tweetTxt->toPlainText().toStdString();
 
     showTweet();
-
     appPtr->addTweet(tweetText);
-
-    ui->tweetTxt->setEnabled(false);
 }
 
 void WindowPer::on_userSearchBtn_clicked()

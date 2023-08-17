@@ -24,6 +24,7 @@ public:
     void setMainUser(std::string,std::string,std::string
                     ,std::string,std::string,char);
 
+
     void loadMainUser (std::string ,std::string);
     void clearMainUser();
 
@@ -38,6 +39,8 @@ private:
     BaseUser* mainUser ;
     BaseUser* tempUser ;
     int numberOfUsers  ; //count how many user do we have on our app
+
+    BaseUser* makeUser(char);
 };
 
 #endif // TWITTERAK_H

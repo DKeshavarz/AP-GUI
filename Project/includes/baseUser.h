@@ -3,6 +3,7 @@
 
 #include <unordered_set>
 #include <string>
+#include <fstream>
 
 #include "includes/tweet.h"
 
@@ -10,9 +11,11 @@ class BaseUser
 {
 public:
     BaseUser ();
-    BaseUser (int);
     BaseUser (std::string, std::string, std::string,std::string);
     virtual ~BaseUser ();
+
+    virtual void readFromFile(int);
+    virtual void readFromFile(std::ifstream&);
 
     void setId         (int);
     void setFirsrName  (std::string);
@@ -48,10 +51,10 @@ public:
     std::string getBiogarghy  () const{return biogarghy  ;}
     std::string getCountry    () const{return country    ;}
     std::string getPhoneNum   () const{return phoneNumber;}
-
     std::string getProfilePic () const{return ProfilePic ;}
-   
 
+    virtual void save   ();
+    virtual std::string getInfo();
 private:
     int id ;
     int currentTweetNum {1};
@@ -74,8 +77,8 @@ private:
     std::unordered_set<int>followers  ;
 
     //std::unordered_set<int>tweetsSet  ;
+    //date
 
-    //date 
 };
 
 #endif

@@ -7,7 +7,6 @@ class PersonalUser : public BaseUser
 {
 public:
     PersonalUser();
-    PersonalUser(int);
     PersonalUser(std::string,std::string,std::string,std::string);
 
     void setBoss(std::string);

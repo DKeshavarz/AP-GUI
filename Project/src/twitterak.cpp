@@ -12,7 +12,6 @@ Twitterak::Twitterak():mainUser{nullptr},tempUser{nullptr},numberOfUsers{1}
 {
     cout << "in constructor\n" ;
 
-
     ifstream input("main.txt",ios::in);
     if(!input)
         cout << "fuck\n";
@@ -31,7 +30,10 @@ Twitterak::Twitterak():mainUser{nullptr},tempUser{nullptr},numberOfUsers{1}
     }
     input.close();
 }
-
+BaseUser* makeUser(char type)
+{
+/////////////////
+}
 void Twitterak::setMainUser(string name   ,string userName,string password
                             ,string manager,string phone   ,char   type)
 {
@@ -82,21 +84,26 @@ void Twitterak::loadMainUser(string userName,string password)
 
     if     (usersMap[userName].type == 'p')//creat personall user
     {
-        mainUser =new PersonalUser(usersMap[userName].id);
+        mainUser =new PersonalUser;
+        mainUser->readFromFile(usersMap[userName].id);
     }
     else if(usersMap[userName].type == 'a')
     {
-        mainUser =new AnonymousUser(usersMap[userName].id);
+        mainUser =new AnonymousUser;
+        mainUser->readFromFile(usersMap[userName].id);
     }
     else if(usersMap[userName].type == 'o')
     {
-        mainUser =new OrganisationUser(usersMap[userName].id);
+        mainUser =new OrganisationUser;
+        mainUser->readFromFile(usersMap[userName].id);
     }
     else
         throw invalid_argument ("file isn't corret ...main.txt") ;
 }
 void Twitterak::clearMainUser()
 {
+    if(mainUser != nullptr)
+        mainUser->save();
     delete mainUser;
     mainUser = nullptr;
 }
@@ -143,7 +150,7 @@ Twitterak::~Twitterak()
     output.close();
 
     // carefull about times main == temp is true
-    delete mainUser ;
+    clearMainUser();
     delete tempUser ;
 }
 void Twitterak::addTweet(string tweetText)

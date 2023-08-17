@@ -7,7 +7,6 @@ class AnonymousUser : public BaseUser
 {
 public:
     AnonymousUser();
-    AnonymousUser(int);
     AnonymousUser(std::string,std::string);
 
 private:

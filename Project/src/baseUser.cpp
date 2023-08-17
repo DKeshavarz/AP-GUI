@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 
 #include "includes/baseUser.h"
 
@@ -14,28 +15,37 @@ BaseUser::BaseUser()
     //empty
 }
 
-BaseUser::BaseUser(int id)//make this function more readble
+void BaseUser::readFromFile(int id)
 {
     ifstream input("user"+ to_string(id) +".txt",ios::in);
     if(!input)
-        cout << "line 21 cant't open user"+ to_string(id) +".txt\n";
+        cout << "BaseUser::readFromFile->cant't open user"+ to_string(id) +".txt\n";
+    else
+        readFromFile(input);
 
+    input.close();
+
+}
+void BaseUser::readFromFile(ifstream& input)
+{
     std::string temp;
 
-        input >> temp;  setId           (id);
-        input >> temp;  setFirsrName    (temp.substr(1));
-        input >> temp;  setUserName     (temp.substr(1));
-        input >> temp;  setPassword     (temp.substr(1));
-        input >> temp;  setLastPass     (temp.substr(1));
-        input >> temp;  setPhoneNum     (temp.substr(1));
-        input >> temp;  setBiogarghy    (temp.substr(1));
-        input >> temp;  setLink         (temp.substr(1));
-        input >> temp;  setCountry      (temp.substr(1));
-        input >> temp;  setHeaderColor  (temp.substr(1));
-        input >> temp;  allTweets = stoi(temp.substr(1));
-        input >> temp;  //get profile pic
+    input >> temp;  id        =stoi (temp.substr(1));
+    cerr << "id is :" << id << endl ;
+    input >> temp;  setFirsrName    (temp.substr(1));
+    input >> temp;  setUserName     (temp.substr(1));
+    input >> temp;  setPassword     (temp.substr(1));
+    input >> temp;  setLastPass     (temp.substr(1));
+    input >> temp;  setPhoneNum     (temp.substr(1));
+    input >> temp;  setBiogarghy    (temp.substr(1));
+    input >> temp;  setLink         (temp.substr(1));
+    input >> temp;  setCountry      (temp.substr(1));
+    input >> temp;  setHeaderColor  (temp.substr(1));
+    input >> temp;  allTweets = stoi(temp.substr(1));
+    input >> temp;  //get profile pic
 
-        setTweet(currentTweetNum);
+    setTweet(currentTweetNum);
+
 }
 BaseUser::BaseUser(string name, string uName, string pass,string phone)
 {
@@ -153,23 +163,9 @@ void BaseUser::setHeaderColor(string inputColor)
 
 BaseUser::~BaseUser()
 {
-    delete currenTweet;
-
-    ofstream output("user"+ to_string(id) +".txt",ios::out);
-    if(!output)
-        cout << "line 155:cant't open user"+ to_string(id) +".txt\n";
-
-
-    output <<":"   << id                << "\n:" << firsName
-           <<"\n:" << userName          << "\n:" << password
-           <<"\n:" << previousPassword  << "\n:" << phoneNumber
-           <<"\n:" << biogarghy         << "\n:" << link
-           <<"\n:" << country           << "\n:" << headerColor
-           <<"\n:" <<allTweets          << "\n:" << ProfilePic;
-
-
-    output.close();
+    clearCurrentTweet();
 }
+
 
 void BaseUser::addTweet (string tweetText)
 {
@@ -205,7 +201,7 @@ void BaseUser::goToNextTweet   ()
         throw out_of_range("There is no next tweet");
 }
 
-void BaseUser::goToLastTweet   ()
+void BaseUser::goToLastTweet()
 {
     if(canShowLastTweet())
     {
@@ -215,10 +211,13 @@ void BaseUser::goToLastTweet   ()
     else
         throw out_of_range("There is no previous tweet");
 }
-Tweet* BaseUser::getTweet      ()
+Tweet* BaseUser::getTweet()
 {
     if(currenTweet == nullptr)
+    {
+        cerr << "BaseUser::getTweet\n";
         throw invalid_argument("There is no current tweet");
+    }
 
     return currenTweet;
 
@@ -232,4 +231,30 @@ void BaseUser::setTweet (int tweetId)
     }
     else
         cerr << "line 227:tweet don't exict\n";
+}
+
+void BaseUser::save()
+{
+    clearCurrentTweet();
+
+    ofstream output("user"+ to_string(id) +".txt",ios::out);
+    if(!output)
+        cerr << "Base::save->cant't open user"+ to_string(id) +".txt\n";
+
+    output << this->getInfo();
+
+    output.close();
+}
+string BaseUser::getInfo()
+{
+    ostringstream output ;
+
+    output <<":"   << id                << "\n:" << firsName
+           <<"\n:" << userName          << "\n:" << password
+           <<"\n:" << previousPassword  << "\n:" << phoneNumber
+           <<"\n:" << biogarghy         << "\n:" << link
+           <<"\n:" << country           << "\n:" << headerColor
+           <<"\n:" << allTweets         << "\n:" << ProfilePic;
+
+    return output.str();
 }
