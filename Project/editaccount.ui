@@ -333,27 +333,27 @@
     <string>Choose</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="HeaderColor">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>0</y>
-     <width>711</width>
-     <height>51</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="Pic">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>53</y>
-     <width>141</width>
-     <height>141</height>
+     <x>330</x>
+     <y>43</y>
+     <width>161</width>
+     <height>151</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="HeaderColor">
+   <property name="geometry">
+    <rect>
+     <x>2</x>
+     <y>-9</y>
+     <width>831</width>
+     <height>51</height>
+    </rect>
    </property>
   </widget>
   <zorder>BG</zorder>
@@ -381,8 +381,8 @@
   <zorder>photoBtnchoose</zorder>
   <zorder>colorBtnchoose</zorder>
   <zorder>hTxt</zorder>
-  <zorder>HeaderColor</zorder>
   <zorder>Pic</zorder>
+  <zorder>HeaderColor</zorder>
  </widget>
  <resources/>
  <connections/>

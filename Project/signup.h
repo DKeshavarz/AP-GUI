@@ -29,6 +29,10 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_seePassBtn_clicked();
+
+    void on_unseePassBtn_clicked();
+
 private:
     Ui::SignUp *ui;
     MainWindow main;// to access the flags of type of users in mainwindow

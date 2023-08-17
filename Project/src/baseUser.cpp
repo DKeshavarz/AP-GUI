@@ -161,7 +161,8 @@ BaseUser::~BaseUser()
            <<"\n:" << userName          << "\n:" << password
            <<"\n:" << previousPassword  << "\n:" << phoneNumber
            <<"\n:" << biogarghy         << "\n:" << link
-           <<"\n:" << country           << "\n:" << headerColor;
+           <<"\n:" << country           << "\n:" << headerColor
+           <<"\n:" << ProfilePic;
 
     output.close();
 }

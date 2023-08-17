@@ -36,6 +36,8 @@ private slots:
 
     void on_deleteAccBtn_clicked();
 
+    void on_editBtn_clicked();
+
 private:
     Ui::WindowPer *ui;
     MainWindow main;// to access the flags of type of users in mainwindow

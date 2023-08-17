@@ -189,7 +189,7 @@
   <widget class="QPlainTextEdit" name="tweetTxt">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>220</x>
      <y>150</y>
      <width>931</width>
      <height>171</height>
@@ -200,7 +200,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>210</y>
+     <y>280</y>
      <width>180</width>
      <height>48</height>
     </rect>
@@ -226,7 +226,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>270</y>
+     <y>340</y>
      <width>180</width>
      <height>48</height>
     </rect>
@@ -241,7 +241,7 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>960</x>
+     <x>970</x>
      <y>340</y>
      <width>180</width>
      <height>48</height>
@@ -267,7 +267,7 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>220</x>
      <y>340</y>
      <width>180</width>
      <height>48</height>
@@ -349,6 +349,32 @@
    </property>
    <property name="text">
     <string>Followers:</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="editBtn">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>210</y>
+     <width>180</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="text">
+    <string>Edit</string>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/icons8-edit-96.png</normaloff>:/icon/icons8-edit-96.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
    </property>
   </widget>
  </widget>
