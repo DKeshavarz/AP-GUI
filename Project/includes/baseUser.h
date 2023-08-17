@@ -29,7 +29,16 @@ public:
     void addTweet      (std::string);
     void clearCurrentTweet();
 
+    void setTweet     (int);
+    void goToNextTweet   ();
+    void goToLastTweet   ();
+    bool canShowNextTweet();
+    bool canShowLastTweet();
+    Tweet* getTweet      ();
+
+
     int         getId         () const{return id         ;}
+    int         getAllTweets  () const{return allTweets  ;}
     std::string getFirstName  () const{return firsName   ;}
     std::string getUserName   () const{return userName   ;}
     std::string getLink       () const{return link       ;}
@@ -38,10 +47,11 @@ public:
     std::string getBiogarghy  () const{return biogarghy  ;}
     std::string getCountry    () const{return country    ;}
     std::string getPhoneNum   () const{return phoneNumber;}
-   
+
 private:
     int id ;
-    int currentTweetNum;
+    int currentTweetNum {1};
+    int allTweets       {1};
 
     std::string firsName;
     std::string userName;
@@ -53,11 +63,12 @@ private:
     std::string country;
     std::string headerColor;
 
-    Tweet* currenTweet ;
+    Tweet* currenTweet {nullptr};
 
     std::unordered_set<int>followings ;
     std::unordered_set<int>followers  ;
-    std::unordered_set<int>tweetsSet  ;
+
+    //std::unordered_set<int>tweetsSet  ;
 
     //date 
     //profile pic

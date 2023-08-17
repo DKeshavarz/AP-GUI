@@ -21,6 +21,8 @@ public:
 
     ~WindowPer();
 
+    void showTweet();
+
 private slots:
     void on_settingBtn_clicked();
 
@@ -35,6 +37,12 @@ private slots:
     void on_userSearchBtn_clicked();
 
     void on_deleteAccBtn_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_pressed();
 
 private:
     Ui::WindowPer *ui;

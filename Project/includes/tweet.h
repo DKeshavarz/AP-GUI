@@ -9,6 +9,7 @@ class Tweet
 public:
     Tweet();
     Tweet(std::string,int,int);
+    Tweet(int,int);
     ~Tweet();
 
     void setTweetStr(std::string);

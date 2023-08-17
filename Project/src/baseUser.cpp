@@ -22,22 +22,24 @@ BaseUser::BaseUser(int id)//make this function more readble
 
     std::string temp;
 
-        input >> temp;  setId         (id);
-        input >> temp;  setFirsrName  (temp.substr(1));
-        input >> temp;  setUserName   (temp.substr(1));
-        input >> temp;  setPassword   (temp.substr(1));
-        input >> temp;  setLastPass   (temp.substr(1));
-        input >> temp;  setPhoneNum   (temp.substr(1));
-        input >> temp;  setBiogarghy  (temp.substr(1));
-        input >> temp;  setLink       (temp.substr(1));
-        input >> temp;  setCountry    (temp.substr(1));
-        input >> temp;  setHeaderColor(temp.substr(1));
+        input >> temp;  setId           (id);
+        input >> temp;  setFirsrName    (temp.substr(1));
+        input >> temp;  setUserName     (temp.substr(1));
+        input >> temp;  setPassword     (temp.substr(1));
+        input >> temp;  setLastPass     (temp.substr(1));
+        input >> temp;  setPhoneNum     (temp.substr(1));
+        input >> temp;  setBiogarghy    (temp.substr(1));
+        input >> temp;  setLink         (temp.substr(1));
+        input >> temp;  setCountry      (temp.substr(1));
+        input >> temp;  setHeaderColor  (temp.substr(1));
+        input >> temp;  allTweets = stoi(temp.substr(1));
+
+        setTweet(currentTweetNum);
 }
 BaseUser::BaseUser(string name, string uName, string pass,string phone)
 {
     setFirsrName(name) , setUserName(uName) , setPassword(pass) , setPhoneNum(phone);
 }
-
 void BaseUser::setId (int input)
 {
     id = input ;
@@ -161,19 +163,72 @@ BaseUser::~BaseUser()
            <<"\n:" << userName          << "\n:" << password
            <<"\n:" << previousPassword  << "\n:" << phoneNumber
            <<"\n:" << biogarghy         << "\n:" << link
-           <<"\n:" << country           << "\n:" << headerColor;
+           <<"\n:" << country           << "\n:" << headerColor
+           <<"\n:" <<allTweets;
+
 
     output.close();
 }
 
 void BaseUser::addTweet (string tweetText)
 {
-    tweetsSet.insert(tweetsSet.size()+1);
-    cerr << "add tweet " << tweetsSet.size() << "to" << userName << '\n' ;
-    currenTweet = new Tweet(tweetText,id,tweetsSet.size());
+
+    //tweetsSet.insert(tweetsSet.size()+1);
+    cerr << "add tweet " << allTweets << " to " << userName << '\n' ;
+    currenTweet = new Tweet(tweetText,id,allTweets);
+    ++allTweets;
+    clearCurrentTweet();
 }
 void BaseUser::clearCurrentTweet()
 {
     delete currenTweet;
     currenTweet = nullptr ;
+}
+bool BaseUser::canShowNextTweet()
+{
+    return currentTweetNum < allTweets - 1;
+}
+
+bool BaseUser::canShowLastTweet()
+{
+    return currentTweetNum > 1 ;
+}
+void BaseUser::goToNextTweet   ()
+{
+    if(canShowNextTweet())
+    {
+        ++currentTweetNum;
+        setTweet(currentTweetNum);
+    }
+    else
+        throw out_of_range("There is no next tweet");
+}
+
+void BaseUser::goToLastTweet   ()
+{
+    if(canShowLastTweet())
+    {
+        --currentTweetNum;
+        setTweet(currentTweetNum);
+    }
+    else
+        throw out_of_range("There is no previous tweet");
+}
+Tweet* BaseUser::getTweet      ()
+{
+    if(currenTweet == nullptr)
+        throw invalid_argument("There is no current tweet");
+
+    return currenTweet;
+
+}
+void BaseUser::setTweet (int tweetId)
+{
+    if(tweetId < allTweets)
+    {
+        clearCurrentTweet();
+        currenTweet = new Tweet (id,tweetId );
+    }
+    else
+        cerr << "line 227:tweet don't exict\n";
 }

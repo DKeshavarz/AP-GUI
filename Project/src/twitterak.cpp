@@ -102,6 +102,7 @@ void Twitterak::clearMainUser()
 }
 void Twitterak::deleteUser(string userName)
 {
+    int allTweets = mainUser->getAllTweets();
     clearMainUser();
     if(!usersMap.count(userName))
     {
@@ -113,6 +114,14 @@ void Twitterak::deleteUser(string userName)
     if(remove(path.data()) == 0)
     {
         cerr<< "delete " << path  << "line 114\n";
+    }
+    for(int i {1}; i < allTweets ; ++i)
+    {
+        path = "user"+ to_string(id) + "tweet" + to_string(i) +".txt";
+        if(remove(path.data()) == 0)
+        {
+            cerr<< "delete " << path  << "line 123\n";
+        }
     }
 
 }
