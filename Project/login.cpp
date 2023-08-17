@@ -4,6 +4,7 @@
 #include "windowper.h"
 
 #include <QPixmap>
+#include <QDir>
 
 //logic
 #include <QString>
@@ -48,4 +49,15 @@ void Login::on_enterBtn_clicked()
     {
         QMessageBox::warning(this,"error",QString::fromStdString(err.what())+"line49");
     }
+}
+
+
+void Login::on_seePassBtn_clicked()
+{
+    ui->passwordTxtBar->setEchoMode(QLineEdit::Normal);
+}
+
+void Login::on_unseePassBtn_clicked()
+{
+    ui->passwordTxtBar->setEchoMode(QLineEdit::Password);
 }

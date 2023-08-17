@@ -30,80 +30,6 @@
     <string/>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>280</y>
-     <width>881</width>
-     <height>421</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <widget class="QLabel" name="nameTxt">
-        <property name="text">
-         <string>&lt;font color = white&gt;Name</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="usernTxt_2">
-        <property name="text">
-         <string>&lt;font color = white&gt;Username</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="usernmTxt">
-        <property name="text">
-         <string>&lt;font color = white&gt;Manager username</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="passTxt_2">
-        <property name="text">
-         <string>&lt;font color = white&gt;Password</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="pnumTxt_2">
-        <property name="text">
-         <string>&lt;font color = white&gt;Phone number</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <item>
-       <widget class="QLineEdit" name="nameTxtBar"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="userTxtBar"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="MuserTxtBar"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="passTxtBar">
-        <property name="echoMode">
-         <enum>QLineEdit::Password</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="pnumTxtBar"/>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -206,6 +132,152 @@
    </property>
    <property name="text">
     <string>Enter</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="seePassBtn">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>560</y>
+     <width>31</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/icons8-eye-96.png</normaloff>:/icon/icons8-eye-96.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>31</width>
+     <height>31</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="unseePassBtn">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>560</y>
+     <width>31</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/icons8-invisible-96.png</normaloff>:/icon/icons8-invisible-96.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>31</width>
+     <height>31</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>281</y>
+     <width>284</width>
+     <height>431</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QLabel" name="nameTxt">
+      <property name="text">
+       <string>&lt;font color = white&gt;Name</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="usernTxt_2">
+      <property name="text">
+       <string>&lt;font color = white&gt;Username</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="usernmTxt">
+      <property name="text">
+       <string>&lt;font color = white&gt;Manager username</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="passTxt_2">
+      <property name="text">
+       <string>&lt;font color = white&gt;Password</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="pnumTxt_2">
+      <property name="text">
+       <string>&lt;font color = white&gt;Phone number</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLineEdit" name="nameTxtBar">
+   <property name="geometry">
+    <rect>
+     <x>302</x>
+     <y>310</y>
+     <width>500</width>
+     <height>42</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="userTxtBar">
+   <property name="geometry">
+    <rect>
+     <x>302</x>
+     <y>390</y>
+     <width>500</width>
+     <height>42</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="MuserTxtBar">
+   <property name="geometry">
+    <rect>
+     <x>302</x>
+     <y>480</y>
+     <width>500</width>
+     <height>42</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="passTxtBar">
+   <property name="geometry">
+    <rect>
+     <x>302</x>
+     <y>560</y>
+     <width>421</width>
+     <height>42</height>
+    </rect>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="pnumTxtBar">
+   <property name="geometry">
+    <rect>
+     <x>302</x>
+     <y>650</y>
+     <width>500</width>
+     <height>42</height>
+    </rect>
    </property>
   </widget>
  </widget>

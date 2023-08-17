@@ -112,3 +112,13 @@ void SignUp::on_pushButton_clicked()
 
 
 }
+
+void SignUp::on_seePassBtn_clicked()
+{
+    ui->passTxtBar->setEchoMode(QLineEdit::Normal);
+}
+
+void SignUp::on_unseePassBtn_clicked()
+{
+    ui->passTxtBar->setEchoMode(QLineEdit::Password);
+}

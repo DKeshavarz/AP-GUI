@@ -24,6 +24,10 @@ private slots:
 
     void on_enterBtn_clicked();
 
+    void on_seePassBtn_clicked();
+
+    void on_unseePassBtn_clicked();
+
 private:
     Ui::Login *ui;
 

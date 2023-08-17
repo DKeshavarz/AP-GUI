@@ -86,10 +86,13 @@ void WindowPer::on_addBtn_clicked()
 
 void WindowPer::on_saveBtn_clicked()
 {
-    ui->tweetTxt->setEnabled(false);
     std::string tweetText = ui->tweetTxt->toPlainText().toStdString();
+
     showTweet();
+
     appPtr->addTweet(tweetText);
+
+    ui->tweetTxt->setEnabled(false);
 }
 
 void WindowPer::on_userSearchBtn_clicked()
@@ -109,6 +112,7 @@ void WindowPer::on_deleteAccBtn_clicked()
 
     close();
 }
+
 
 
 void WindowPer::on_pushButton_clicked()//next tweet
@@ -144,5 +148,11 @@ void WindowPer::on_pushButton_2_clicked()//previous tweet
 void WindowPer::on_pushButton_pressed()// go to last tweet
 {
 
+}
+
+
+void WindowPer::on_editBtn_clicked()//
+{
+    ui->tweetTxt->setEnabled(true);//
 }
 

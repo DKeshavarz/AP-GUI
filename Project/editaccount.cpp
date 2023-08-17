@@ -6,6 +6,8 @@
 #include <QPixmap>
 #include <QFileDialog>
 
+static QColor mainColor; //global for save color
+
 EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
     QDialog(parent),
     ui(new Ui::EditAccount),
@@ -56,8 +58,9 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
         ui -> bioTxtedit     -> setEnabled(true);
         ui -> colorBtnchoose -> setEnabled(true);
         ui -> photoBtnchoose -> setEnabled(true);
-
         ui -> dateTxtBar     -> setEnabled(false);
+
+        ui -> HeaderColor-> setPalette(QPalette(mainColor));
 
         QPixmap pix4(":/img/DotORG_logo.svg.png");
         ui -> Pic -> setPixmap(pix4.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
@@ -73,11 +76,13 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
         ui -> countryTxtBar  -> setEnabled(true);
         ui -> linkTxtBar     -> setEnabled(true);
         ui -> dateTxtBar     -> setEnabled(true);
+        ui -> colorBtnchoose -> setEnabled(true);
         //write on file
         ui -> bioTxtedit     -> setEnabled(true);
-        ui -> colorBtnchoose -> setEnabled(true);
         ui -> photoBtnchoose -> setEnabled(true);
 
+
+        ui -> HeaderColor-> setPalette(QPalette(mainColor));
         //this is a defualt pic
         QPixmap pix3(":/img/user-128.png");
         ui -> Pic -> setPixmap(pix3.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
@@ -103,6 +108,7 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
         ui -> HeaderColor-> setPalette(QPalette("black"));
 
         //this is a defualt pic
+
         QPixmap pix2(":/img/781-7812555_anonymous-mask-png-transparent-images-anonymous-icon-red.jpeg");
         ui -> Pic -> setPixmap(pix2.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
     }
@@ -115,22 +121,21 @@ EditAccount::~EditAccount()
 
 void EditAccount::on_colorBtnchoose_clicked()
 {
-    QColor color = QColorDialog :: getColor(Qt :: black , this , "Choose a color!");
+    QColor color = QColorDialog :: getColor(Qt :: red , this , "Choose a color!");
     if (color.isValid())
     {
         ui -> HeaderColor-> setPalette(QPalette(color));
+        mainColor = color;//
     }
-    //i cant see the color
-    // but when we out of this window the color gone!
 }
 
 void EditAccount::on_photoBtnchoose_clicked()
 {
     QString filter = "Picturs (*.jpeg) ;; Picturs (*.png) ;; Picturs (*.jpg)";
     QString fileName = QFileDialog :: getOpenFileName(this , "Choose a picture" , "/home" , filter);
-
     QPixmap pix5(fileName);
     ui -> Pic -> setPixmap(pix5.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
 
-    // but when we out of this window the pictur gone!
+    //std :: string fileNameString = fileName.toUtf8().constData();//
+    //appPtr -> getMainUser() ->setProfilePic(fileNameString); //undefined ref
 }

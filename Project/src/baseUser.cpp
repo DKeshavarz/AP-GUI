@@ -33,6 +33,7 @@ BaseUser::BaseUser(int id)//make this function more readble
         input >> temp;  setCountry      (temp.substr(1));
         input >> temp;  setHeaderColor  (temp.substr(1));
         input >> temp;  allTweets = stoi(temp.substr(1));
+        input >> temp;  //get profile pic
 
         setTweet(currentTweetNum);
 }
@@ -164,7 +165,7 @@ BaseUser::~BaseUser()
            <<"\n:" << previousPassword  << "\n:" << phoneNumber
            <<"\n:" << biogarghy         << "\n:" << link
            <<"\n:" << country           << "\n:" << headerColor
-           <<"\n:" <<allTweets;
+           <<"\n:" <<allTweets          << "\n:" << ProfilePic;
 
 
     output.close();

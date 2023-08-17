@@ -25,6 +25,7 @@ public:
     void setPhoneNum   (std::string); 
     void setHeaderColor(std::string); 
     void setBirthDate  (std::string);
+    void setProfilePic (std::string);//
 
     void addTweet      (std::string);
     void clearCurrentTweet();
@@ -48,6 +49,9 @@ public:
     std::string getCountry    () const{return country    ;}
     std::string getPhoneNum   () const{return phoneNumber;}
 
+    std::string getProfilePic () const{return ProfilePic ;}
+   
+
 private:
     int id ;
     int currentTweetNum {1};
@@ -62,6 +66,7 @@ private:
     std::string link;
     std::string country;
     std::string headerColor;
+    std::string ProfilePic; //
 
     Tweet* currenTweet {nullptr};
 
@@ -71,7 +76,6 @@ private:
     //std::unordered_set<int>tweetsSet  ;
 
     //date 
-    //profile pic
 };
 
 #endif
