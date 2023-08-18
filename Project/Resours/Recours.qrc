@@ -1,15 +1,13 @@
 <RCC>
     <qresource prefix="/img">
         <file>BG.jpg</file>
-        <file>Logo</file>
-        <file>LogoW</file>
-        <file>LogoB</file>
         <file>photo_۲۰۲۳-۰۸-۰۷_۰۰-۲۱-۰۲_auto_x2.jpg</file>
         <file>BG1.jpeg</file>
         <file>BG2.jpeg</file>
         <file>781-7812555_anonymous-mask-png-transparent-images-anonymous-icon-red.jpeg</file>
         <file>DotORG_logo.svg.png</file>
         <file>user-128.png</file>
+        <file>LogoW_auto_x2_colored_toned_light_ai.jpg</file>
     </qresource>
     <qresource prefix="/icon">
         <file>about</file>
