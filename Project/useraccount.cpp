@@ -15,17 +15,24 @@ UserAccount::UserAccount(QWidget *parent,Twitterak* ptr) :
     ui(new Ui::UserAccount),
     appPtr(ptr)
 {
-    std::cerr <<"UserAccount::UserAccount->start\n";
+    std::cerr <<"UserAccount::UserAccount->start nigga\n";
 
     ui->setupUi(this);
     QPixmap pix(":/img/BG2.jpeg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
     ui->tweetTxt->setEnabled(false);
     showTweet();
+    setLikes();
     checkBtnFollow();
+    if (ptr->getTempUser()->getAllTweets() == 1)
+    {
+        ui->likeBtn   ->setEnabled(false);
+        ui->mentionBtn->setEnabled(false);
+    }
 }
 UserAccount::~UserAccount()
 {
+    std::cerr <<"UserAccount::~UserAccount->start\n";
     delete ui;
 }
 void UserAccount::checkBtnFollow()
@@ -63,7 +70,6 @@ void UserAccount::showTweet()
     }
     catch (std::invalid_argument& err)
     {
-        QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
         ui->tweetTxt->setPlainText("There is no tweet yet :)");
     }
 }
@@ -101,3 +107,14 @@ void UserAccount::on_followBtn_clicked()
     checkBtnFollow();
 }
 
+
+void UserAccount::on_likeBtn_clicked()
+{
+    appPtr->like();
+    setLikes();
+}
+void UserAccount::setLikes()
+{
+    int likesNum = appPtr->getTempUser()->getTweet()->getLikeNum();
+    ui->likeTxt->setText("Likes" + QString::number(likesNum));
+}

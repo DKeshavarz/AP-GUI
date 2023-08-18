@@ -36,7 +36,8 @@ void Search::on_searchBtn_clicked()
         appPtr->loadTempUser(userName);
         this -> close();
         std::cerr << "Search::on_searchBtn_clicked->creat test\n";
-        UserAccount test(this,appPtr); // is just for testing
+
+        UserAccount test(this,appPtr);
         test.setModal(true);
         test.exec();
 

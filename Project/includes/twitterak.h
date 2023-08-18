@@ -35,6 +35,7 @@ public:
 
     void follow  ();
     bool isFollow();
+    void like    ();
 
     BaseUser* getMainUser(){return mainUser;}
     BaseUser* getTempUser(){return tempUser;}

@@ -101,7 +101,6 @@ void WindowPer::on_saveBtn_clicked()//have a problem
 
 void WindowPer::on_userSearchBtn_clicked()
 {
-    if(appPtr == nullptr)std::cerr << "WindowPer::on_userSearchBtn_clicked-> ptr is empty\n";
     Search op(this,appPtr);
     op.setModal(true);
     op.setWindowTitle("Search");

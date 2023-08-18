@@ -22,6 +22,7 @@ public:
 
     void showTweet     ();
     void checkBtnFollow();
+    void setLikes      ();
 
 private slots:
     void on_settingBtn_clicked();
@@ -35,6 +36,8 @@ private slots:
     void on_preBtn_clicked();
 
     void on_followBtn_clicked();
+
+    void on_likeBtn_clicked();
 
 private:
     Ui::UserAccount *ui;

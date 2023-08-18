@@ -185,3 +185,10 @@ bool Twitterak::isFollow()
 {
     return mainUser->isFollow(tempUser->getId());
 }
+void Twitterak::like()
+{
+    if      (mainUser == nullptr) throw invalid_argument("main user dosen't exist") ;
+    else if (tempUser == nullptr) throw invalid_argument("temp user dosen't exist") ;
+
+    tempUser->likeBy(mainUser->getId());
+}

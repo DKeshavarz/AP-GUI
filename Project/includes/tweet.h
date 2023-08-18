@@ -14,7 +14,9 @@ public:
 
     void setTweetStr(std::string);
     void save ();
+    void addLike(int);\
 
+    int getLikeNum ();
     std::string getTweetStr()             const {return tweetStr;}
     std::unordered_set<int> getLikeSet () const {return  likeSet;}
     std::unordered_set<int> getMentions() const {return  likeSet;}

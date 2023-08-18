@@ -43,6 +43,7 @@ public:
     void addFollowings   (int);
     void addFollowers    (int);
     bool isFollow        (int);
+    void likeBy          (int);
 
     int         getId         () const{return id         ;}
     int         getAllTweets  () const{return allTweets  ;}

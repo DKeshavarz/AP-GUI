@@ -319,3 +319,7 @@ bool BaseUser::isFollow(int id)
 {
     return followings.count(id);
 }
+void BaseUser::likeBy (int id)
+{
+    currenTweet->addLike(id);
+}
