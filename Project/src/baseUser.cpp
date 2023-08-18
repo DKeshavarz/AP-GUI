@@ -31,18 +31,17 @@ void BaseUser::readFromFile(ifstream& input)
     std::string temp;
 
     input >> temp;  id        =stoi (temp.substr(1));
-    cerr << " BaseUser::readFromFile->id is :" << id << endl ;
     input >> temp;  setFirsrName    (temp.substr(1));
     input >> temp;  setUserName     (temp.substr(1));
     input >> temp;  setPassword     (temp.substr(1));
     input >> temp;  setLastPass     (temp.substr(1));
     input >> temp;  setPhoneNum     (temp.substr(1));
-    input >> temp;  setBiogarghy    (temp.substr(1));
+    input >> temp;  setBiography    (temp.substr(1));
     input >> temp;  setLink         (temp.substr(1));
     input >> temp;  setCountry      (temp.substr(1));
     input >> temp;  setHeaderColor  (temp.substr(1));
     input >> temp;  allTweets = stoi(temp.substr(1));
-    input >> temp;  //get profile pic
+    input >> temp;  setProfilePic   (temp.substr(1));
 
     setTweet(currentTweetNum);
 
@@ -115,12 +114,12 @@ void BaseUser::setLastPass(string input)
 {
     previousPassword = input ;
 }
-void BaseUser::setBiogarghy(string bio)
+void BaseUser::setBiography(string bio)
 {
     if (bio.size() < 160)
-        biogarghy = bio;
+        biography = bio;
     else
-        throw invalid_argument("! Len of biograghy is too long...");
+        throw invalid_argument("! Len of biography is too long...");
 }
 void BaseUser::setCountry(string country)
 {
@@ -156,9 +155,13 @@ void BaseUser::setHeaderColor(string inputColor)
     for (int i = 0 ; i < 8 ; i++)
         if (reservedColors[i] == inputColor)
              throw invalid_argument ("! Your color does not exist");
-              
     headerColor = inputColor;
     
+}
+
+void BaseUser::setProfilePic(string inputFileAddress)
+{
+    ProfilePic = inputFileAddress;
 }
 
 BaseUser::~BaseUser()
@@ -215,7 +218,7 @@ Tweet* BaseUser::getTweet()
 {
     if(currenTweet == nullptr)
     {
-        cerr << "BaseUser::getTweet\n";
+        //cerr << "BaseUser::getTweet\n";
         throw invalid_argument("There is no current tweet");
     }
 
@@ -230,7 +233,9 @@ void BaseUser::setTweet (int tweetId)
         currenTweet = new Tweet (id,tweetId );
     }
     else
-        cerr << "BaseUser::setTweet->tweet don't exist\n";
+    {
+    }
+        //cerr << "BaseUser::setTweet->tweet don't exist\n";
 }
 
 void BaseUser::save()
@@ -252,7 +257,7 @@ string BaseUser::getInfo()
     output <<":"   << id                << "\n:" << firsName
            <<"\n:" << userName          << "\n:" << password
            <<"\n:" << previousPassword  << "\n:" << phoneNumber
-           <<"\n:" << biogarghy         << "\n:" << link
+           <<"\n:" << biography         << "\n:" << link
            <<"\n:" << country           << "\n:" << headerColor
            <<"\n:" << allTweets         << "\n:" << ProfilePic;
 

@@ -7,12 +7,14 @@
 
 //logic
 #include <QMessageBox>
+#include <iostream>
 
 UserAccount::UserAccount(QWidget *parent,Twitterak* ptr) :
     QDialog(parent),
     ui(new Ui::UserAccount),
     appPtr(ptr)
 {
+    if(appPtr == nullptr)std::cerr << "UserAccount::UserAccount-> ptr is empty\n";
     ui->setupUi(this);
 
     QPixmap pix(":/img/BG2.jpeg");
@@ -38,9 +40,9 @@ void UserAccount::on_exitBtn_clicked()
 
 void UserAccount::on_userSearchBtn_clicked()
 {
+    if(appPtr == nullptr)std::cerr << "UserAccount::on_userSearchBtn_clicked-> ptr is empty\n";
+    Search op(this,appPtr);
     this -> close(); // ->hide()
-
-    Search op;
     op.setWindowTitle("Search");
     op.setModal(true);
     op.exec();

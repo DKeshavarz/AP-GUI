@@ -6,8 +6,6 @@
 #include <QPixmap>
 #include <QFileDialog>
 
-static QColor mainColor; //global for save color
-
 EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
     QDialog(parent),
     ui(new Ui::EditAccount),
@@ -60,10 +58,24 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
         ui -> photoBtnchoose -> setEnabled(true);
         ui -> dateTxtBar     -> setEnabled(false);
 
-        ui -> HeaderColor-> setPalette(QPalette(mainColor));
 
-        QPixmap pix4(":/img/DotORG_logo.svg.png");
-        ui -> Pic -> setPixmap(pix4.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+        QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getHeaderColor().c_str());
+        //HOW TO CONVERT Qstring to QColor?
+        //ui -> HeaderColor-> setPalette(QPalette());
+
+        if (appPtr -> getMainUser() ->getProfilePic() != "")
+        {
+            QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getProfilePic().c_str());
+
+            QPixmap pix(toQstring);
+            ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+        }
+        else
+        {
+            QPixmap pix(":/img/DotORG_logo.svg.png");
+            ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+        }
+
     }
 
     if (main.flagP)
@@ -82,10 +94,25 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
         ui -> photoBtnchoose -> setEnabled(true);
 
 
-        ui -> HeaderColor-> setPalette(QPalette(mainColor));
-        //this is a defualt pic
-        QPixmap pix3(":/img/user-128.png");
-        ui -> Pic -> setPixmap(pix3.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+
+        QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getHeaderColor().c_str());
+        //HOW TO CONVERT Qstring to QColor?
+        //ui -> HeaderColor-> setPalette(QPalette());
+
+        if (appPtr -> getMainUser() ->getProfilePic() != "")
+        {
+            QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getProfilePic().c_str());
+
+            QPixmap pix(toQstring);
+            ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+        }
+
+        else
+        {
+            QPixmap pix(":/img/user-128.png");
+            ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+        }
+
     }
 
     if (main.flagA)
@@ -107,10 +134,8 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
 
         ui -> HeaderColor-> setPalette(QPalette("black"));
 
-        //this is a defualt pic
-
-        QPixmap pix2(":/img/781-7812555_anonymous-mask-png-transparent-images-anonymous-icon-red.jpeg");
-        ui -> Pic -> setPixmap(pix2.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+        QPixmap pix(":/img/781-7812555_anonymous-mask-png-transparent-images-anonymous-icon-red.jpeg");
+        ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
     }
 }
 
@@ -125,17 +150,21 @@ void EditAccount::on_colorBtnchoose_clicked()
     if (color.isValid())
     {
         ui -> HeaderColor-> setPalette(QPalette(color));
-        mainColor = color;//
+
+        QString toQstring = color.name(QColor :: HexArgb);
+        std :: string toString = toQstring.toUtf8().constData();
+        appPtr -> getMainUser() ->setHeaderColor(toString);
     }
 }
 
 void EditAccount::on_photoBtnchoose_clicked()
 {
-    QString filter = "Picturs (*.jpeg) ;; Picturs (*.png) ;; Picturs (*.jpg)";
+    QString filter = "All files (*.*) ;; Picturs (*.jpeg) ;; Picturs (*.png) ;; Picturs (*.jpg)";
+
     QString fileName = QFileDialog :: getOpenFileName(this , "Choose a picture" , "/home" , filter);
     QPixmap pix5(fileName);
     ui -> Pic -> setPixmap(pix5.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
 
-    //std :: string fileNameString = fileName.toUtf8().constData();//
-    //appPtr -> getMainUser() ->setProfilePic(fileNameString); //undefined ref
+    std :: string fileNameString = fileName.toUtf8().constData();//
+    appPtr -> getMainUser() ->setProfilePic(fileNameString); //
 }

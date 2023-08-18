@@ -18,6 +18,7 @@ public:
     virtual std::string getInfo()override;
 private:
     std::string boss ;
+    std::string biography;
 
 };
 

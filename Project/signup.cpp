@@ -86,7 +86,17 @@ void SignUp::on_anoRbtn_clicked()
     selectedType = 'a';
 }
 
-void SignUp::on_pushButton_clicked()
+void SignUp::on_seePassBtn_clicked()
+{
+    ui->passTxtBar->setEchoMode(QLineEdit::Normal);
+}
+
+void SignUp::on_unseePassBtn_clicked()
+{
+    ui->passTxtBar->setEchoMode(QLineEdit::Password);
+}
+
+void SignUp::on_enterBtn_clicked()
 {
     QString name     = ui ->nameTxtBar->text();
     QString userName = ui ->userTxtBar->text();
@@ -99,26 +109,16 @@ void SignUp::on_pushButton_clicked()
         appPtr->setMainUser(name.toStdString() ,userName.toStdString(),password.toStdString()
                             ,manager.toStdString() ,phone.toStdString() ,selectedType );
 
+        this -> hide();
+
         WindowPer op(this,appPtr);
         op.setWindowTitle("Main App");
         op.setModal(true);
         op.exec();
-        this -> close();
     }
     catch (std::invalid_argument& err)
     {
         QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
     }
 
-
-}
-
-void SignUp::on_seePassBtn_clicked()
-{
-    ui->passTxtBar->setEchoMode(QLineEdit::Normal);
-}
-
-void SignUp::on_unseePassBtn_clicked()
-{
-    ui->passTxtBar->setEchoMode(QLineEdit::Password);
 }

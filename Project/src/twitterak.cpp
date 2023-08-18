@@ -8,65 +8,74 @@
 
 using namespace std;
 
-Twitterak::Twitterak():mainUser{nullptr},tempUser{nullptr},numberOfUsers{1}
+Twitterak::Twitterak():mainUser{nullptr},tempUser{nullptr},numberOfUsers{0}
 {
-    cout << "in constructor\n" ;
-
     ifstream input("main.txt",ios::in);
     if(!input)
-        cout << "fuck\n";
+        cerr << "Twitterak::Twitterak()->can't read\n";
 
     string userName,password ;
     int id ;
     char type ;
     while(input >> userName >> password >> id >> type)
     {
-        numberOfUsers++ ;
-        cout << userName <<'\n';
         usersMap[userName];
         usersMap[userName].password = password;
         usersMap[userName].id       = id ;
         usersMap[userName].type     = type;
+
+        numberOfUsers = id>numberOfUsers?id:numberOfUsers;
     }
+    numberOfUsers++;
     input.close();
 }
-BaseUser* makeUser(char type)
+BaseUser* Twitterak::makeUser(string userName)
 {
-/////////////////
+    BaseUser* tempPtr {nullptr};
+
+    if(!usersMap.count(userName))
+        throw invalid_argument("user dosen't exist");
+    else if(usersMap[userName].type == 'p')
+        tempPtr =new PersonalUser    ;
+    else if(usersMap[userName].type == 'a')
+        tempPtr =new AnonymousUser   ;
+    else if(usersMap[userName].type == 'o')
+        tempPtr =new OrganisationUser;
+    else
+        throw invalid_argument ("file isn't corret ...main.txt");
+
+    tempPtr->readFromFile(usersMap[userName].id);
+    return tempPtr;
 }
 void Twitterak::setMainUser(string name   ,string userName,string password
-                            ,string manager,string phone   ,char   type)
+                           ,string manager,string phone   ,char   type    )
 {
-    delete mainUser;
-    BaseUser* mainUserPtr {nullptr};
+    clearMainUser();
 
     if(usersMap.count(userName))//check user name
         throw invalid_argument("Dublicated user name");
 
     if     (type == 'p')//creat personall user
     {
-        mainUserPtr =new PersonalUser(name,userName,password,phone);
+        mainUser =new PersonalUser(name,userName,password,phone);
     }
     else if(type == 'a')
     {
-        mainUserPtr =new AnonymousUser(userName,password);
+        mainUser =new AnonymousUser(userName,password);
     }
     else if(type == 'o')
     {
-        //cout << "pas:" << manager << '\n' ;
-        if(!usersMap.count(manager))//check boss user name
+        if(!usersMap.count(manager))
             throw invalid_argument("Manager user name dosen't exist niger");
 
-        mainUserPtr =new OrganisationUser(name,userName,password,phone,manager);
+        mainUser =new OrganisationUser(name,userName,password,phone,manager);
     }
     else
     {
         throw invalid_argument("You haven't select a type");
     }
 
-    mainUser = mainUserPtr ;
     mainUser->setId( numberOfUsers );
-
     usersMap[userName];
     usersMap[userName].password = password;
     usersMap[userName].id       = numberOfUsers ;
@@ -74,36 +83,25 @@ void Twitterak::setMainUser(string name   ,string userName,string password
 
     numberOfUsers++ ;
 }
-
 void Twitterak::loadMainUser(string userName,string password)
 {
+    clearMainUser();
+
     if(!usersMap.count(userName))
         throw invalid_argument("User name didn't found");
     else if(usersMap[userName].password != password)
         throw invalid_argument("incorect password");
 
-    if     (usersMap[userName].type == 'p')//creat personall user
-    {
-        mainUser =new PersonalUser;
-        mainUser->readFromFile(usersMap[userName].id);
-    }
-    else if(usersMap[userName].type == 'a')
-    {
-        mainUser =new AnonymousUser;
-        mainUser->readFromFile(usersMap[userName].id);
-    }
-    else if(usersMap[userName].type == 'o')
-    {
-        mainUser =new OrganisationUser;
-        mainUser->readFromFile(usersMap[userName].id);
-    }
-    else
-        throw invalid_argument ("file isn't corret ...main.txt") ;
+    mainUser = makeUser(userName) ;
 }
 void Twitterak::clearMainUser()
 {
+    //clog << "Twitterak::clearMainUser->start\n";
     if(mainUser != nullptr)
+    {
+        //clog << "Twitterak::clearMainUser->" << mainUser->getUserName() << " saved and pointer deleted\n";
         mainUser->save();
+    }
     delete mainUser;
     mainUser = nullptr;
 }
@@ -113,6 +111,7 @@ void Twitterak::deleteUser(string userName)
     clearMainUser();
     if(!usersMap.count(userName))
     {
+        cerr << "Twitterak::deleteUser->can delete user name\n";
         throw invalid_argument("User name don't exist");
     }
     int id = usersMap[userName].id;
@@ -134,10 +133,9 @@ void Twitterak::deleteUser(string userName)
 }
 Twitterak::~Twitterak()
 {
-
     ofstream output("main.txt",ios::out);
     if(!output)
-        cout << "cant't open main.txt \n";
+        cerr << "cant't open main.txt \n";
 
 
     for (const auto& i : usersMap)
@@ -145,16 +143,34 @@ Twitterak::~Twitterak()
         output << i.first       << ' ' << (i.second).password << ' '
                << (i.second).id << ' ' << (i.second).type     << '\n';
     }
-
-
     output.close();
 
-    // carefull about times main == temp is true
+    clearTempUser();
     clearMainUser();
-    delete tempUser ;
 }
 void Twitterak::addTweet(string tweetText)
 {
-    //add tweet to user
     mainUser->addTweet(tweetText);
+}
+void Twitterak::loadTempUser (string userName)
+{
+    if(!usersMap.count(userName))
+    {
+        cerr << "Twitterak::loadTempUser->user name dont exist\n" ;
+        throw invalid_argument("user name don't exist");
+    }
+    clearTempUser();
+    tempUser = makeUser(userName);
+
+}
+void Twitterak::clearTempUser()
+{
+    //cerr << "Twitterak::clearTempUser->start\n";
+    if(mainUser != tempUser && tempUser != nullptr)
+    {
+        //cerr << "Twitterak::clearTempUser->just delete temp\n";
+        delete tempUser;
+    }
+
+    tempUser = nullptr;
 }

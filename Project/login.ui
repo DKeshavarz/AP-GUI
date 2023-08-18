@@ -151,6 +151,13 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>usernameTxtBar</tabstop>
+  <tabstop>passwordTxtBar</tabstop>
+  <tabstop>enterBtn</tabstop>
+  <tabstop>unseePassBtn</tabstop>
+  <tabstop>seePassBtn</tabstop>
+ </tabstops>
  <resources>
   <include location="Resours/Recours.qrc"/>
  </resources>

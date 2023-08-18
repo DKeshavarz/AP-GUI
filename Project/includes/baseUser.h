@@ -23,12 +23,12 @@ public:
     void setLink       (std::string);
     void setPassword   (std::string);
     void setLastPass   (std::string);
-    void setBiogarghy  (std::string);
+    void setBiography  (std::string);
     void setCountry    (std::string);
-    void setPhoneNum   (std::string); 
-    void setHeaderColor(std::string); 
+    void setPhoneNum   (std::string);  
     void setBirthDate  (std::string);
     void setProfilePic (std::string);//
+    void setHeaderColor(std::string);
 
     void addTweet      (std::string);
     void clearCurrentTweet();
@@ -48,10 +48,11 @@ public:
     std::string getLink       () const{return link       ;}
     std::string getPassword   () const{return password   ;}
     std::string getLastPass   () const{return previousPassword;}
-    std::string getBiogarghy  () const{return biogarghy  ;}
+    std::string getBiogarghy  () const{return biography  ;}
     std::string getCountry    () const{return country    ;}
     std::string getPhoneNum   () const{return phoneNumber;}
     std::string getProfilePic () const{return ProfilePic ;}
+    std::string getHeaderColor() const{return headerColor;}
 
     virtual void save   ();
     virtual std::string getInfo();
@@ -65,11 +66,11 @@ private:
     std::string password;
     std::string previousPassword;
     std::string phoneNumber;
-    std::string biogarghy;
+    std::string biography;
     std::string link;
     std::string country;
-    std::string headerColor;
     std::string ProfilePic; //
+    std::string headerColor;
 
     Tweet* currenTweet {nullptr};
 

@@ -26,21 +26,25 @@ public:
 
 
     void loadMainUser (std::string ,std::string);
+    void addTweet     (std::string);
+    void deleteUser   (std::string);
     void clearMainUser();
 
-    void addTweet(std::string);
+    void loadTempUser (std::string);
+    void clearTempUser();
 
-    void deleteUser(std::string);
 
-    BaseUser* getMainUser(){return mainUser;}
+    BaseUser* getMainUser()      {return mainUser;}
+    BaseUser* gettempUser(){return tempUser;}
 
 private:
     std::unordered_map<std::string ,userInfo >usersMap ;
     BaseUser* mainUser ;
     BaseUser* tempUser ;
-    int numberOfUsers  ; //count how many user do we have on our app
 
-    BaseUser* makeUser(char);
+    int numberOfUsers  ;
+
+    BaseUser* makeUser(std::string);
 };
 
 #endif // TWITTERAK_H

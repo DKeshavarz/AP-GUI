@@ -60,6 +60,10 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>searchTxtBar</tabstop>
+  <tabstop>searchBtn</tabstop>
+ </tabstops>
  <resources>
   <include location="Resours/Recours.qrc"/>
  </resources>
