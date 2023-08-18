@@ -27,7 +27,7 @@ public:
     void setCountry    (std::string);
     void setPhoneNum   (std::string);  
     void setBirthDate  (std::string);
-    void setProfilePic (std::string);//
+    void setProfilePic (std::string);
     void setHeaderColor(std::string);
 
     void addTweet      (std::string);
@@ -40,6 +40,9 @@ public:
     bool canShowLastTweet();
     Tweet* getTweet      ();
 
+    void addFollowings   (int);
+    void addFollowers    (int);
+    bool isFollow        (int);
 
     int         getId         () const{return id         ;}
     int         getAllTweets  () const{return allTweets  ;}
@@ -69,7 +72,7 @@ private:
     std::string biography;
     std::string link;
     std::string country;
-    std::string ProfilePic; //
+    std::string ProfilePic;
     std::string headerColor;
 
     Tweet* currenTweet {nullptr};
@@ -77,7 +80,6 @@ private:
     std::unordered_set<int>followings ;
     std::unordered_set<int>followers  ;
 
-    //std::unordered_set<int>tweetsSet  ;
     //date
 
 };

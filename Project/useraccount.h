@@ -19,7 +19,9 @@ class UserAccount : public QDialog
 public:
     explicit UserAccount(QWidget *parent = nullptr,Twitterak* = nullptr);
     ~UserAccount();
-    void showTweet();
+
+    void showTweet     ();
+    void checkBtnFollow();
 
 private slots:
     void on_settingBtn_clicked();
@@ -31,6 +33,8 @@ private slots:
     void on_nextBtn_clicked();
 
     void on_preBtn_clicked();
+
+    void on_followBtn_clicked();
 
 private:
     Ui::UserAccount *ui;

@@ -247,8 +247,25 @@ void BaseUser::save()
         cerr << "Base::save->cant't open user"+ to_string(id) +".txt\n";
 
     output << this->getInfo();
-
     output.close();
+
+    ofstream followingsFile("user"+ to_string(id) +"followings.txt",ios::out);
+    if(!output)
+        cerr << "Base::save->cant't open user"+ to_string(id) +"followings.txt\n";
+
+    for(const auto& i : followings)
+        followingsFile << i << ' ';
+
+    followingsFile.close();
+
+    ofstream followersFile("user"+ to_string(id) +"followers.txt",ios::out);
+    if(!output)
+        cerr << "Base::save->cant't open user"+ to_string(id) +"followers.txt\n";
+
+    for(const auto& i : followers)
+        followersFile << i << ' ';
+
+    followersFile.close();
 }
 string BaseUser::getInfo()
 {
@@ -262,4 +279,22 @@ string BaseUser::getInfo()
            <<"\n:" << allTweets         << "\n:" << ProfilePic;
 
     return output.str();
+}
+void BaseUser::addFollowings(int id)
+{
+    if(followings.count(id))
+        followings.erase(id);
+    else
+        followings.insert(id);
+}
+void BaseUser::addFollowers (int id)
+{
+    if(followers.count(id))
+        followers.erase(id);
+    else
+        followers.insert(id);
+}
+bool BaseUser::isFollow(int id)
+{
+    return followings.count(id);
 }

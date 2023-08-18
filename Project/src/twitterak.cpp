@@ -165,12 +165,23 @@ void Twitterak::loadTempUser (string userName)
 }
 void Twitterak::clearTempUser()
 {
-    //cerr << "Twitterak::clearTempUser->start\n";
     if(mainUser != tempUser && tempUser != nullptr)
     {
-        //cerr << "Twitterak::clearTempUser->just delete temp\n";
+        tempUser->save();
         delete tempUser;
     }
 
     tempUser = nullptr;
+}
+void Twitterak::follow()
+{
+    if      (mainUser == nullptr) throw invalid_argument("main user dosen't exist") ;
+    else if (tempUser == nullptr) throw invalid_argument("temp user dosen't exist") ;
+
+    tempUser->addFollowers (mainUser->getId());
+    mainUser->addFollowings(tempUser->getId());
+}
+bool Twitterak::isFollow()
+{
+    return mainUser->isFollow(tempUser->getId());
 }

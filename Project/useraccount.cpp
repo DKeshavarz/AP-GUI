@@ -8,23 +8,31 @@
 //logic
 #include <QMessageBox>
 #include <iostream>
+#include <QString>
 
 UserAccount::UserAccount(QWidget *parent,Twitterak* ptr) :
     QDialog(parent),
     ui(new Ui::UserAccount),
     appPtr(ptr)
 {
+    std::cerr <<"UserAccount::UserAccount->start\n";
+
     ui->setupUi(this);
     QPixmap pix(":/img/BG2.jpeg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
     ui->tweetTxt->setEnabled(false);
     showTweet();
+    checkBtnFollow();
 }
 UserAccount::~UserAccount()
 {
     delete ui;
 }
-
+void UserAccount::checkBtnFollow()
+{
+    QString btnFollowText = appPtr->isFollow()? "unfollow" : "follow" ;
+    ui->followBtn->setText(btnFollowText);
+}
 void UserAccount::on_settingBtn_clicked()
 {
     op = new EditAccount(this,appPtr);
@@ -84,5 +92,12 @@ void UserAccount::on_preBtn_clicked()
     {
         QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
     }
+}
+
+
+void UserAccount::on_followBtn_clicked()
+{
+    appPtr->follow();
+    checkBtnFollow();
 }
 
