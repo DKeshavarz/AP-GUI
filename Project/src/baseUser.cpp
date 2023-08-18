@@ -25,6 +25,28 @@ void BaseUser::readFromFile(int id)
 
     input.close();
 
+    clearCurrentTweet();
+
+    int inputId {0};
+
+    ifstream followingsFile("user"+ to_string(id) +"followings.txt",ios::in);
+    if(!followingsFile)
+        cerr << "BaseUser::readFromFile->cant't open user"+ to_string(id) +"followings.txt\n";
+
+    while(followingsFile>>inputId)
+        followings.insert(inputId);
+
+    followingsFile.close();
+
+    ifstream followersFile("user"+ to_string(id) +"followers.txt",ios::in);
+    if(!followersFile)
+        cerr << "BaseUser::readFromFile->cant't open user"+ to_string(id) +"followers.txt\n";
+
+    while(followersFile>>inputId)
+        followers.insert(inputId);
+
+    followersFile.close();
+
 }
 void BaseUser::readFromFile(ifstream& input)
 {
@@ -44,7 +66,6 @@ void BaseUser::readFromFile(ifstream& input)
     input >> temp;  setProfilePic   (temp.substr(1));
 
     setTweet(currentTweetNum);
-
 }
 BaseUser::BaseUser(string name, string uName, string pass,string phone)
 {
@@ -250,7 +271,7 @@ void BaseUser::save()
     output.close();
 
     ofstream followingsFile("user"+ to_string(id) +"followings.txt",ios::out);
-    if(!output)
+    if(!followingsFile)
         cerr << "Base::save->cant't open user"+ to_string(id) +"followings.txt\n";
 
     for(const auto& i : followings)
@@ -259,7 +280,7 @@ void BaseUser::save()
     followingsFile.close();
 
     ofstream followersFile("user"+ to_string(id) +"followers.txt",ios::out);
-    if(!output)
+    if(!followersFile)
         cerr << "Base::save->cant't open user"+ to_string(id) +"followers.txt\n";
 
     for(const auto& i : followers)

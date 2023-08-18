@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     QPixmap pix(":/img/BG.jpg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
-    QPixmap pix1(":/img/photo_۲۰۲۳-۰۸-۰۷_۰۰-۲۱-۰۲_auto_x2.jpg");
+    QPixmap pix1(":/img/LogoW_auto_x2_colored_toned_light_ai.jpg");
     ui -> Logo -> setPixmap(pix1.scaled(ui -> Logo -> width() , ui -> Logo -> height() , Qt :: KeepAspectRatio));
 
 }
