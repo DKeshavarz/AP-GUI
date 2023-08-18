@@ -31,12 +31,10 @@ void Search::on_searchBtn_clicked()
 {
     try
     {
-        if(appPtr == nullptr) std::cerr << "Search::on_searchBtn_clicked->holy fuck\n";
-        std::cerr << "Search::on_searchBtn_clicked start\n";
         std::string userName {ui->searchTxtBar->text().toStdString()};
         appPtr->loadTempUser(userName);
         this -> close();
-        std::cerr << "Search::on_searchBtn_clicked\n";
+
         UserAccount test(this,appPtr); // is just for testing
         test.setModal(true);
         test.exec();

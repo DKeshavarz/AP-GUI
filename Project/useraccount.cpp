@@ -14,13 +14,12 @@ UserAccount::UserAccount(QWidget *parent,Twitterak* ptr) :
     ui(new Ui::UserAccount),
     appPtr(ptr)
 {
-    if(appPtr == nullptr)std::cerr << "UserAccount::UserAccount-> ptr is empty\n";
     ui->setupUi(this);
-
     QPixmap pix(":/img/BG2.jpeg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
+    ui->tweetTxt->setEnabled(false);
+    showTweet();
 }
-
 UserAccount::~UserAccount()
 {
     delete ui;
@@ -28,19 +27,16 @@ UserAccount::~UserAccount()
 
 void UserAccount::on_settingBtn_clicked()
 {
-    op = new EditAccount(this);
+    op = new EditAccount(this,appPtr);
     op->setWindowTitle("User information");
     op->show();
 }
-
 void UserAccount::on_exitBtn_clicked()
 {
     QApplication :: quit();
 }
-
 void UserAccount::on_userSearchBtn_clicked()
 {
-    if(appPtr == nullptr)std::cerr << "UserAccount::on_userSearchBtn_clicked-> ptr is empty\n";
     Search op(this,appPtr);
     this -> close(); // ->hide()
     op.setWindowTitle("Search");
@@ -49,12 +45,12 @@ void UserAccount::on_userSearchBtn_clicked()
 }
 void UserAccount::showTweet()
 {
-    ui->nextBtn->setEnabled(appPtr->getMainUser()->canShowNextTweet());
-    ui->preBtn ->setEnabled(appPtr->getMainUser()->canShowLastTweet());
+    ui->nextBtn->setEnabled(appPtr->getTempUser()->canShowNextTweet());
+    ui->preBtn ->setEnabled(appPtr->getTempUser()->canShowLastTweet());
 
     try
     {
-        std::string tweetStr = appPtr->getMainUser()->getTweet()->getTweetStr();
+        std::string tweetStr = appPtr->getTempUser()->getTweet()->getTweetStr();
         ui->tweetTxt->setPlainText(QString::fromStdString(tweetStr));
     }
     catch (std::invalid_argument& err)
@@ -67,7 +63,7 @@ void UserAccount::on_nextBtn_clicked()
 {
     try
     {
-        appPtr->getMainUser()->goToNextTweet();
+        appPtr->getTempUser()->goToNextTweet();
         showTweet();
     }
     catch(std::out_of_range& err)
@@ -81,7 +77,7 @@ void UserAccount::on_preBtn_clicked()
 {
     try
     {
-        appPtr->getMainUser()->goToNextTweet();
+        appPtr->getTempUser()->goToLastTweet();
         showTweet();
     }
     catch(std::out_of_range& err)

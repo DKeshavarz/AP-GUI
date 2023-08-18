@@ -34,8 +34,8 @@ public:
     void clearTempUser();
 
 
-    BaseUser* getMainUser()      {return mainUser;}
-    BaseUser* gettempUser(){return tempUser;}
+    BaseUser* getMainUser(){return mainUser;}
+    BaseUser* getTempUser(){return tempUser;}
 
 private:
     std::unordered_map<std::string ,userInfo >usersMap ;
