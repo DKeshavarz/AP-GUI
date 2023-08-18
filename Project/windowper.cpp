@@ -55,7 +55,7 @@ void WindowPer::showTweet()
     }
     catch (std::invalid_argument& err)
     {
-        QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
+        //QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
         ui->tweetTxt->setPlainText("There is no tweet yet :)");
     }
 }

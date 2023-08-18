@@ -115,6 +115,15 @@ void UserAccount::on_likeBtn_clicked()
 }
 void UserAccount::setLikes()
 {
-    int likesNum = appPtr->getTempUser()->getTweet()->getLikeNum();
-    ui->likeTxt->setText("Likes" + QString::number(likesNum));
+    try
+    {
+        int likesNum = appPtr->getTempUser()->getTweet()->getLikeNum();
+        ui->likeTxt->setText("Likes" + QString::number(likesNum));
+    }
+    catch (...)
+    {
+        std::cerr << "UserAccount::setLikes\n" ;
+    }
+
+
 }
