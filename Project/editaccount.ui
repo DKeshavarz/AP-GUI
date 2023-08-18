@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>834</width>
-    <height>1200</height>
+    <width>1494</width>
+    <height>618</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,32 +117,6 @@
     <string>Birth date</string>
    </property>
   </widget>
-  <widget class="QLabel" name="biTxt">
-   <property name="geometry">
-    <rect>
-     <x>22</x>
-     <y>610</y>
-     <width>148</width>
-     <height>34</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Biography</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="ppTxt">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>1068</y>
-     <width>183</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Profile photo</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="munTxt">
    <property name="geometry">
     <rect>
@@ -236,103 +210,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="bioTxtedit">
-   <property name="geometry">
-    <rect>
-     <x>176</x>
-     <y>610</y>
-     <width>641</width>
-     <height>381</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="photoBtnchoose">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>1068</y>
-     <width>181</width>
-     <height>48</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="text">
-    <string>Choose</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="enterBtn">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>1148</y>
-     <width>180</width>
-     <height>48</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>BusyCursor</cursorShape>
-   </property>
-   <property name="text">
-    <string>Enter</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="cancelBtn">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>1148</y>
-     <width>180</width>
-     <height>48</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="text">
-    <string>Cancel</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="hTxt">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>1008</y>
-     <width>187</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Header color</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="colorBtnchoose">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>1008</y>
-     <width>181</width>
-     <height>48</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>50</weight>
-     <italic>false</italic>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="mouseTracking">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Choose</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="Pic">
    <property name="geometry">
     <rect>
@@ -356,33 +233,129 @@
     </rect>
    </property>
   </widget>
-  <zorder>BG</zorder>
-  <zorder>nTxt</zorder>
-  <zorder>unTxt</zorder>
-  <zorder>pTxt</zorder>
-  <zorder>pnTxt</zorder>
-  <zorder>cTxt</zorder>
-  <zorder>lTxt</zorder>
-  <zorder>bTxt</zorder>
-  <zorder>biTxt</zorder>
-  <zorder>munTxt</zorder>
-  <zorder>nameTxtBar</zorder>
-  <zorder>usernameTxtBar</zorder>
-  <zorder>orguserTxtBar</zorder>
-  <zorder>passwordTxtBar</zorder>
-  <zorder>numberTxtBar</zorder>
-  <zorder>countryTxtBar</zorder>
-  <zorder>linkTxtBar</zorder>
-  <zorder>dateTxtBar</zorder>
-  <zorder>bioTxtedit</zorder>
-  <zorder>enterBtn</zorder>
-  <zorder>cancelBtn</zorder>
-  <zorder>ppTxt</zorder>
-  <zorder>photoBtnchoose</zorder>
-  <zorder>colorBtnchoose</zorder>
-  <zorder>hTxt</zorder>
-  <zorder>Pic</zorder>
-  <zorder>HeaderColor</zorder>
+  <widget class="QLabel" name="hTxt">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>440</y>
+     <width>187</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Header color</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ppTxt">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>500</y>
+     <width>183</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Profile photo</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="photoBtnchoose">
+   <property name="geometry">
+    <rect>
+     <x>1060</x>
+     <y>500</y>
+     <width>181</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="text">
+    <string>Choose</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="biTxt">
+   <property name="geometry">
+    <rect>
+     <x>706</x>
+     <y>50</y>
+     <width>148</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Biography</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="enterBtn">
+   <property name="geometry">
+    <rect>
+     <x>1310</x>
+     <y>440</y>
+     <width>180</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>BusyCursor</cursorShape>
+   </property>
+   <property name="text">
+    <string>Enter</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="colorBtnchoose">
+   <property name="geometry">
+    <rect>
+     <x>1060</x>
+     <y>440</y>
+     <width>181</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Choose</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelBtn">
+   <property name="geometry">
+    <rect>
+     <x>1310</x>
+     <y>500</y>
+     <width>180</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="bioTxtedit">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>50</y>
+     <width>641</width>
+     <height>381</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
