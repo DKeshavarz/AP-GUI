@@ -5,6 +5,9 @@
 
 #include <QDialog>
 
+//logic
+#include "includes/twitterak.h"
+
 namespace Ui {
 class UserAccount;
 }
@@ -14,8 +17,9 @@ class UserAccount : public QDialog
     Q_OBJECT
 
 public:
-    explicit UserAccount(QWidget *parent = nullptr);
+    explicit UserAccount(QWidget *parent = nullptr,Twitterak* = nullptr);
     ~UserAccount();
+    void showTweet();
 
 private slots:
     void on_settingBtn_clicked();
@@ -24,10 +28,16 @@ private slots:
 
     void on_userSearchBtn_clicked();
 
+    void on_nextBtn_clicked();
+
+    void on_preBtn_clicked();
+
 private:
     Ui::UserAccount *ui;
 
     EditAccount *op;
+
+    Twitterak* appPtr;
 };
 
 #endif // USERACCOUNT_H

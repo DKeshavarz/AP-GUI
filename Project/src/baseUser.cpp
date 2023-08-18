@@ -31,7 +31,7 @@ void BaseUser::readFromFile(ifstream& input)
     std::string temp;
 
     input >> temp;  id        =stoi (temp.substr(1));
-    cerr << "id is :" << id << endl ;
+    cerr << " BaseUser::readFromFile->id is :" << id << endl ;
     input >> temp;  setFirsrName    (temp.substr(1));
     input >> temp;  setUserName     (temp.substr(1));
     input >> temp;  setPassword     (temp.substr(1));
@@ -171,10 +171,10 @@ void BaseUser::addTweet (string tweetText)
 {
 
     //tweetsSet.insert(tweetsSet.size()+1);
-    cerr << "add tweet " << allTweets << " to " << userName << '\n' ;
+    cerr << "BaseUser::addTweet->add tweet " << allTweets << " to " << userName << '\n' ;
     currenTweet = new Tweet(tweetText,id,allTweets);
     ++allTweets;
-    clearCurrentTweet();
+    save();
 }
 void BaseUser::clearCurrentTweet()
 {
@@ -230,7 +230,7 @@ void BaseUser::setTweet (int tweetId)
         currenTweet = new Tweet (id,tweetId );
     }
     else
-        cerr << "line 227:tweet don't exict\n";
+        cerr << "BaseUser::setTweet->tweet don't exist\n";
 }
 
 void BaseUser::save()

@@ -88,18 +88,17 @@ void WindowPer::on_saveBtn_clicked()
 {
     ui->tweetTxt->setEnabled(false);
     std::string tweetText = ui->tweetTxt->toPlainText().toStdString();
-
-    showTweet();
     appPtr->addTweet(tweetText);
+    showTweet();   
 }
 
 void WindowPer::on_userSearchBtn_clicked()
 {
+    //ckeck if exist
     Search op;
     op.setModal(true);
     op.setWindowTitle("Search");
     op.exec();
-
 }
 
 void WindowPer::on_deleteAccBtn_clicked()

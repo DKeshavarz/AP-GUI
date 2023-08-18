@@ -13,6 +13,7 @@ public:
     ~Tweet();
 
     void setTweetStr(std::string);
+    void save ();
 
     std::string getTweetStr()             const {return tweetStr;}
     std::unordered_set<int> getLikeSet () const {return  likeSet;}

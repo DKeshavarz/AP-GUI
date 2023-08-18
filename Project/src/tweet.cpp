@@ -47,6 +47,10 @@ void Tweet::setTweetStr(string input)
 }
 Tweet::~Tweet()
 {
+    save();
+}
+void Tweet::save ()
+{
     string path = "user" + to_string(userId) + "tweet" + to_string(tweetId) + ".txt";
     ofstream file (path,ios::out);
 
