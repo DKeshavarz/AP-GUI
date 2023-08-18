@@ -37,12 +37,12 @@ void BaseUser::readFromFile(ifstream& input)
     input >> temp;  setPassword     (temp.substr(1));
     input >> temp;  setLastPass     (temp.substr(1));
     input >> temp;  setPhoneNum     (temp.substr(1));
-    input >> temp;  setBiogarghy    (temp.substr(1));
+    input >> temp;  setBiography    (temp.substr(1));
     input >> temp;  setLink         (temp.substr(1));
     input >> temp;  setCountry      (temp.substr(1));
     input >> temp;  setHeaderColor  (temp.substr(1));
     input >> temp;  allTweets = stoi(temp.substr(1));
-    input >> temp;  //get profile pic
+    input >> temp;  setProfilePic   (temp.substr(1));
 
     setTweet(currentTweetNum);
 
@@ -115,12 +115,12 @@ void BaseUser::setLastPass(string input)
 {
     previousPassword = input ;
 }
-void BaseUser::setBiogarghy(string bio)
+void BaseUser::setBiography(string bio)
 {
     if (bio.size() < 160)
-        biogarghy = bio;
+        biography = bio;
     else
-        throw invalid_argument("! Len of biograghy is too long...");
+        throw invalid_argument("! Len of biography is too long...");
 }
 void BaseUser::setCountry(string country)
 {
@@ -156,9 +156,13 @@ void BaseUser::setHeaderColor(string inputColor)
     for (int i = 0 ; i < 8 ; i++)
         if (reservedColors[i] == inputColor)
              throw invalid_argument ("! Your color does not exist");
-              
     headerColor = inputColor;
     
+}
+
+void BaseUser::setProfilePic(string inputFileAddress)
+{
+    ProfilePic = inputFileAddress;
 }
 
 BaseUser::~BaseUser()
@@ -252,7 +256,7 @@ string BaseUser::getInfo()
     output <<":"   << id                << "\n:" << firsName
            <<"\n:" << userName          << "\n:" << password
            <<"\n:" << previousPassword  << "\n:" << phoneNumber
-           <<"\n:" << biogarghy         << "\n:" << link
+           <<"\n:" << biography         << "\n:" << link
            <<"\n:" << country           << "\n:" << headerColor
            <<"\n:" << allTweets         << "\n:" << ProfilePic;
 

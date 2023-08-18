@@ -38,15 +38,11 @@ private slots:
 
     void on_deleteAccBtn_clicked();
 
-
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_pressed();
-
     void on_editBtn_clicked();
 
+    void on_nextBtn_clicked();
+
+    void on_preBtn_clicked();
 
 private:
     Ui::WindowPer *ui;

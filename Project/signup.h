@@ -27,11 +27,11 @@ private slots:
 
     void on_anoRbtn_clicked();
 
-    void on_pushButton_clicked();
-
     void on_seePassBtn_clicked();
 
     void on_unseePassBtn_clicked();
+
+    void on_enterBtn_clicked();
 
 private:
     Ui::SignUp *ui;

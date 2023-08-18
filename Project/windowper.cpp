@@ -21,12 +21,17 @@ WindowPer::WindowPer(QWidget *parent,Twitterak* ptr) :
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
     ui -> tweetTxt   -> setEnabled(false);
-
+    ui -> addBtn     -> setEnabled(false);
+    ui -> saveBtn    -> setEnabled(false);
+    ui -> editBtn    -> setEnabled(false);
+    ui -> cancelBtn  -> setEnabled(false);
     //enable bottuns for user per and org
     if (main.flagO || main.flagP)
     {
         ui -> addBtn   -> setEnabled(true);
         ui -> saveBtn  -> setEnabled(true);
+        ui -> editBtn  -> setEnabled(true);
+        ui -> cancelBtn-> setEnabled(true);
     }
 
     showTweet();
@@ -38,8 +43,8 @@ WindowPer::~WindowPer()
 }
 void WindowPer::showTweet()
 {
-    ui->pushButton  ->setEnabled(appPtr->getMainUser()->canShowNextTweet());
-    ui->pushButton_2->setEnabled(appPtr->getMainUser()->canShowLastTweet());
+    ui->nextBtn  ->setEnabled(appPtr->getMainUser()->canShowNextTweet());
+    ui->preBtn   ->setEnabled(appPtr->getMainUser()->canShowLastTweet());
 
     try
     {
@@ -77,14 +82,14 @@ void WindowPer::on_logoutBtn_clicked()
 
 void WindowPer::on_addBtn_clicked()
 {
-    ui->pushButton->setEnabled(false);
-    ui->pushButton_2->setEnabled(false);
+    ui->nextBtn->setEnabled(false);
+    ui->preBtn ->setEnabled(false);
     ui->tweetTxt->setEnabled(true);
     ui->tweetTxt->setPlainText("");
 }
 
 
-void WindowPer::on_saveBtn_clicked()
+void WindowPer::on_saveBtn_clicked()//have a problem
 {
     ui->tweetTxt->setEnabled(false);
     std::string tweetText = ui->tweetTxt->toPlainText().toStdString();
@@ -111,9 +116,13 @@ void WindowPer::on_deleteAccBtn_clicked()
     close();
 }
 
+void WindowPer::on_editBtn_clicked()// problem too maybe?
+{
+    ui->tweetTxt->setEnabled(true);//
+}
 
 
-void WindowPer::on_pushButton_clicked()//next tweet
+void WindowPer::on_nextBtn_clicked()
 {
     try
     {
@@ -122,13 +131,12 @@ void WindowPer::on_pushButton_clicked()//next tweet
     }
     catch(std::out_of_range& err)
     {
-        QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
     }
 
 }
 
-
-void WindowPer::on_pushButton_2_clicked()//previous tweet
+void WindowPer::on_preBtn_clicked()
 {
     try
     {
@@ -137,20 +145,6 @@ void WindowPer::on_pushButton_2_clicked()//previous tweet
     }
     catch(std::out_of_range& err)
     {
-        QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
     }
-
 }
-
-
-void WindowPer::on_pushButton_pressed()// go to last tweet
-{
-
-}
-
-
-void WindowPer::on_editBtn_clicked()//
-{
-    ui->tweetTxt->setEnabled(true);//
-}
-

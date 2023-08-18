@@ -238,7 +238,7 @@
     <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="nextBtn">
    <property name="geometry">
     <rect>
      <x>970</x>
@@ -264,7 +264,7 @@
     </size>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="preBtn">
    <property name="geometry">
     <rect>
      <x>220</x>
