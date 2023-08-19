@@ -60,17 +60,14 @@ void WindowPer::showTweet()
 
     try
     {
-        std::cerr << "WindowPer::showTweet->start try\n";
         std::string tweetStr = appPtr->getMainUser()->getTweet()->getTweetStr();
         ui->tweetTxt->setPlainText(QString::fromStdString(tweetStr));
     }
     catch (std::invalid_argument& err)
     {
-        std::cerr << "WindowPer::showTweet->start catch\n";
         //QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
         ui->tweetTxt->setPlainText("There is no tweet yet :)");
     }
-    std::cerr << "WindowPer::showTweet->start end\n";
 }
 void WindowPer::on_settingBtn_clicked()
 {

@@ -5,6 +5,7 @@
 #include <QColor>
 #include <QPixmap>
 #include <QFileDialog>
+#include <iostream>
 
 EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
     QDialog(parent),
@@ -15,12 +16,16 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
     QPixmap pix(":/img/BG.jpg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
+
     BaseUser* pageOwner {nullptr};
     if(myPage)
+    {
         pageOwner = appPtr->getMainUser();
+    }
     else
+    {
         pageOwner = appPtr->getTempUser();
-
+    }
 
     ui -> nameTxtBar     -> setText(QString::fromStdString(pageOwner->getFirstName()));
     ui -> usernameTxtBar -> setText(QString::fromStdString(pageOwner->getUserName()) );
@@ -31,7 +36,6 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
     ui -> bioTxtedit     -> setPlainText(QString::fromStdString(pageOwner->getBiogarghy()));
 
     //ui -> dateTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
-
     if (!myPage ||appPtr->bringType() == 'a')
     {
         ui -> nameTxtBar     -> setEnabled(false);
@@ -46,6 +50,9 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
 
         if(!myPage)
         {
+            ui->usernameTxtBar->setEnabled(false);
+            ui->passwordTxtBar->setEnabled(false);
+            ui->passwordTxtBar->setEchoMode(QLineEdit::Password);
             ui->enterBtn ->setEnabled(false);
             ui->cancelBtn->setEnabled(false);
             ui->colorBtnchoose->setEnabled(false);
@@ -56,6 +63,7 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
 
         QPixmap pix(":/img/781-7812555_anonymous-mask-png-transparent-images-anonymous-icon-red.jpeg");
         ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+
     }
     if(appPtr->bringType() == 'o' || appPtr->bringType() == 'p')
     {
@@ -84,6 +92,7 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
             QPixmap pix(":/img/user-128.png");
             ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
         }
+        std::cerr << "EditAccount::EditAccount-> secend if end  \n";
     }
 }
 

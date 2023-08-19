@@ -42,7 +42,7 @@ void UserAccount::checkBtnFollow()
 }
 void UserAccount::on_settingBtn_clicked()
 {
-    op = new EditAccount(this,appPtr);
+    op = new EditAccount(this,appPtr,false);
     op->setWindowTitle("User information");
     op->show();
 }

@@ -47,6 +47,8 @@ void Date::setDay  (int input)
 
 std::string Date::getDateStr()const
 {
+    if(year < 0)
+        return "";
     ostringstream output ;
     output << year << '/' << month << '/' << day;
     return output.str();

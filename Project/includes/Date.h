@@ -18,9 +18,9 @@ public:
     std::string getDateStr()const;
 private:
 
-    int year;
-    int month;
-    int day;
+    int year {-1};
+    int month{-1};
+    int day  {-1};
 };
 
 
