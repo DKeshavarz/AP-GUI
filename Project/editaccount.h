@@ -24,6 +24,10 @@ private slots:
 
     void on_photoBtnchoose_clicked();
 
+    void on_cancelBtn_clicked();
+
+    void on_enterBtn_clicked();
+
 private:
     Ui::EditAccount *ui;
     MainWindow main; // to access the flags of type of users in mainwindow
