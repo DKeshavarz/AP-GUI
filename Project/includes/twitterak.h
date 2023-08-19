@@ -33,6 +33,12 @@ public:
     void loadTempUser (std::string);
     void clearTempUser();
 
+    void follow  ();
+    bool isFollow();
+    void like    ();
+
+    char bringType(std::string);
+    char bringType();
 
     BaseUser* getMainUser(){return mainUser;}
     BaseUser* getTempUser(){return tempUser;}

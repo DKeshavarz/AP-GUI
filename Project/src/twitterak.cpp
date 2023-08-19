@@ -86,13 +86,14 @@ void Twitterak::setMainUser(string name   ,string userName,string password
 void Twitterak::loadMainUser(string userName,string password)
 {
     clearMainUser();
-
+    std::cerr << "Twitterak::loadMainUser->after clear try\n";
     if(!usersMap.count(userName))
         throw invalid_argument("User name didn't found");
     else if(usersMap[userName].password != password)
         throw invalid_argument("incorect password");
 
     mainUser = makeUser(userName) ;
+    std::cerr << "Twitterak::loadMainUser->after clear end\n";
 }
 void Twitterak::clearMainUser()
 {
@@ -165,12 +166,43 @@ void Twitterak::loadTempUser (string userName)
 }
 void Twitterak::clearTempUser()
 {
-    //cerr << "Twitterak::clearTempUser->start\n";
     if(mainUser != tempUser && tempUser != nullptr)
     {
-        //cerr << "Twitterak::clearTempUser->just delete temp\n";
+        tempUser->save();
         delete tempUser;
     }
 
     tempUser = nullptr;
+}
+void Twitterak::follow()
+{
+    if      (mainUser == nullptr) throw invalid_argument("main user dosen't exist") ;
+    else if (tempUser == nullptr) throw invalid_argument("temp user dosen't exist") ;
+
+    tempUser->addFollowers (mainUser->getId());
+    mainUser->addFollowings(tempUser->getId());
+}
+bool Twitterak::isFollow()
+{
+    return mainUser->isFollow(tempUser->getId());
+}
+void Twitterak::like()
+{
+    if      (mainUser == nullptr) throw invalid_argument("main user dosen't exist") ;
+    else if (tempUser == nullptr) throw invalid_argument("temp user dosen't exist") ;
+
+    tempUser->likeBy(mainUser->getId());
+}
+char Twitterak::bringType(string userName)
+{
+    if(!usersMap.count(userName))
+        throw invalid_argument ("user name dosen't exist");
+
+    return usersMap[userName].type;
+}
+char Twitterak::bringType()
+{
+    if(mainUser == nullptr)
+        throw invalid_argument("main user dosen't exist");
+    return bringType(mainUser->getUserName());
 }

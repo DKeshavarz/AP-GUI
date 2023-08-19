@@ -12,116 +12,24 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
     appPtr(ptr)
 {
     ui->setupUi(this);
-
     QPixmap pix(":/img/BG.jpg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
-    //disable all in window
+    //char type ;
+
 
     ui -> nameTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
     ui -> usernameTxtBar -> setText(QString::fromStdString(appPtr->getMainUser()->getUserName()) );
-    ui -> orguserTxtBar  -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));//wtf
     ui -> passwordTxtBar -> setText(QString::fromStdString(appPtr->getMainUser()->getPassword()) );
-    ui -> numberTxtBar   -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));//wtf
-    ui -> countryTxtBar  -> setText(QString::fromStdString(appPtr->getMainUser()->getCountry()));
-    ui -> linkTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getLink()));
-    ui -> dateTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));//wtf
+    ui -> numberTxtBar   -> setText(QString::fromStdString(appPtr->getMainUser()->getPhoneNum()) );
+    ui -> countryTxtBar  -> setText(QString::fromStdString(appPtr->getMainUser()->getCountry())  );
+    ui -> linkTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getLink())     );
+    ui -> bioTxtedit     -> setPlainText(QString::fromStdString(appPtr->getMainUser()->getBiogarghy()));
 
-    ui -> nameTxtBar     -> setEnabled(false);
-    ui -> HeaderColor    -> setEnabled(false);// most read on file
-    ui -> usernameTxtBar -> setEnabled(false);
-    ui -> orguserTxtBar  -> setEnabled(false);
-    ui -> passwordTxtBar -> setEnabled(false);
-    ui -> numberTxtBar   -> setEnabled(false);
-    ui -> countryTxtBar  -> setEnabled(false);
-    ui -> linkTxtBar     -> setEnabled(false);
-    ui -> dateTxtBar     -> setEnabled(false);
-    ui -> bioTxtedit     -> setEnabled(false); // most read on file
-    ui -> colorBtnchoose -> setEnabled(false);// most read on file
-    ui -> photoBtnchoose -> setEnabled(false);// most read on file
+    //ui -> dateTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
 
-
-
-    //go to enable some
-    if (main.flagO)
+    if (appPtr->bringType() == 'a')
     {
-        //bio 1100 word
-        ui -> nameTxtBar     -> setEnabled(true);
-        ui -> usernameTxtBar -> setEnabled(true);
-        ui -> orguserTxtBar  -> setEnabled(true);
-        ui -> passwordTxtBar -> setEnabled(true);
-        ui -> numberTxtBar   -> setEnabled(true);
-        ui -> countryTxtBar  -> setEnabled(true);
-        ui -> linkTxtBar     -> setEnabled(true);
-        ui -> bioTxtedit     -> setEnabled(true);
-        ui -> colorBtnchoose -> setEnabled(true);
-        ui -> photoBtnchoose -> setEnabled(true);
-        ui -> dateTxtBar     -> setEnabled(false);
-
-
-        QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getHeaderColor().c_str());
-        //HOW TO CONVERT Qstring to QColor?
-        //ui -> HeaderColor-> setPalette(QPalette());
-
-        if (appPtr -> getMainUser() ->getProfilePic() != "")
-        {
-            QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getProfilePic().c_str());
-
-            QPixmap pix(toQstring);
-            ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
-        }
-        else
-        {
-            QPixmap pix(":/img/DotORG_logo.svg.png");
-            ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
-        }
-
-    }
-
-    if (main.flagP)
-    {
-        ui -> nameTxtBar     -> setEnabled(true);
-        ui -> usernameTxtBar -> setEnabled(true);
-        ui -> orguserTxtBar  -> setEnabled(true);
-        ui -> passwordTxtBar -> setEnabled(true);
-        ui -> numberTxtBar   -> setEnabled(true);
-        ui -> countryTxtBar  -> setEnabled(true);
-        ui -> linkTxtBar     -> setEnabled(true);
-        ui -> dateTxtBar     -> setEnabled(true);
-        ui -> colorBtnchoose -> setEnabled(true);
-        //write on file
-        ui -> bioTxtedit     -> setEnabled(true);
-        ui -> photoBtnchoose -> setEnabled(true);
-
-
-
-        QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getHeaderColor().c_str());
-        //HOW TO CONVERT Qstring to QColor?
-        //ui -> HeaderColor-> setPalette(QPalette());
-
-        if (appPtr -> getMainUser() ->getProfilePic() != "")
-        {
-            QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getProfilePic().c_str());
-
-            QPixmap pix(toQstring);
-            ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
-        }
-
-        else
-        {
-            QPixmap pix(":/img/user-128.png");
-            ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
-        }
-
-    }
-
-    if (main.flagA)
-    {
-        ui -> nameTxtBar     -> setText("Anonymous User");
-
-        ui -> usernameTxtBar -> setEnabled(true);
-        ui -> passwordTxtBar -> setEnabled(true);
-
         ui -> nameTxtBar     -> setEnabled(false);
         ui -> orguserTxtBar  -> setEnabled(false);
         ui -> numberTxtBar   -> setEnabled(false);
@@ -136,6 +44,34 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
 
         QPixmap pix(":/img/781-7812555_anonymous-mask-png-transparent-images-anonymous-icon-red.jpeg");
         ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+    }
+    else
+    {
+        if(appPtr->bringType() == 'o')
+        {
+            ui -> orguserTxtBar  -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
+        }
+        else
+        {
+            ui -> orguserTxtBar  ->setEnabled(false);
+        }
+
+        //QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getHeaderColor().c_str());
+        //HOW TO CONVERT Qstring to QColor?
+        //ui -> HeaderColor-> setPalette(QPalette());
+
+        if (appPtr -> getMainUser() ->getProfilePic() != "")
+        {
+            QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getProfilePic().c_str());
+
+            QPixmap pix(toQstring);
+            ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+        }
+        else
+        {
+            QPixmap pix(":/img/user-128.png");
+            ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+        }
     }
 }
 
@@ -168,3 +104,23 @@ void EditAccount::on_photoBtnchoose_clicked()
     std :: string fileNameString = fileName.toUtf8().constData();//
     appPtr -> getMainUser() ->setProfilePic(fileNameString); //
 }
+
+void EditAccount::on_cancelBtn_clicked()
+{
+    close();
+}
+
+
+void EditAccount::on_enterBtn_clicked()
+{
+    std::string input;
+    input  = ui -> nameTxtBar     ->text().toStdString();
+    input  = ui -> usernameTxtBar ->text().toStdString();
+    input  = ui -> passwordTxtBar ->text().toStdString();
+    input  = ui -> numberTxtBar   ->text().toStdString();
+    input  = ui -> countryTxtBar  ->text().toStdString();
+    input  = ui -> linkTxtBar     ->text().toStdString();
+    input  = ui -> bioTxtedit     ->toPlainText().toStdString();
+
+}
+

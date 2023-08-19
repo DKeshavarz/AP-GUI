@@ -8,23 +8,38 @@
 //logic
 #include <QMessageBox>
 #include <iostream>
+#include <QString>
 
 UserAccount::UserAccount(QWidget *parent,Twitterak* ptr) :
     QDialog(parent),
     ui(new Ui::UserAccount),
     appPtr(ptr)
 {
+    std::cerr <<"UserAccount::UserAccount->start nigga\n";
+
     ui->setupUi(this);
     QPixmap pix(":/img/BG2.jpeg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
     ui->tweetTxt->setEnabled(false);
     showTweet();
+    setLikes();
+    checkBtnFollow();
+    if (ptr->getTempUser()->getAllTweets() == 1)
+    {
+        ui->likeBtn   ->setEnabled(false);
+        ui->mentionBtn->setEnabled(false);
+    }
 }
 UserAccount::~UserAccount()
 {
+    std::cerr <<"UserAccount::~UserAccount->start\n";
     delete ui;
 }
-
+void UserAccount::checkBtnFollow()
+{
+    QString btnFollowText = appPtr->isFollow()? "unfollow" : "follow" ;
+    ui->followBtn->setText(btnFollowText);
+}
 void UserAccount::on_settingBtn_clicked()
 {
     op = new EditAccount(this,appPtr);
@@ -52,10 +67,10 @@ void UserAccount::showTweet()
     {
         std::string tweetStr = appPtr->getTempUser()->getTweet()->getTweetStr();
         ui->tweetTxt->setPlainText(QString::fromStdString(tweetStr));
+        setLikes();//kkkkkkkkkkkkkkkkkk
     }
     catch (std::invalid_argument& err)
     {
-        QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
         ui->tweetTxt->setPlainText("There is no tweet yet :)");
     }
 }
@@ -86,3 +101,30 @@ void UserAccount::on_preBtn_clicked()
     }
 }
 
+
+void UserAccount::on_followBtn_clicked()
+{
+    appPtr->follow();
+    checkBtnFollow();
+}
+
+
+void UserAccount::on_likeBtn_clicked()
+{
+    appPtr->like();
+    setLikes();
+}
+void UserAccount::setLikes()
+{
+    try
+    {
+        int likesNum = appPtr->getTempUser()->getTweet()->getLikeNum();
+        ui->likeTxt->setText("Likes" + QString::number(likesNum));
+    }
+    catch (...)
+    {
+        std::cerr << "UserAccount::setLikes\n" ;
+    }
+
+
+}

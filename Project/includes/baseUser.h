@@ -42,6 +42,10 @@ public:
     bool canShowLastTweet();
     Tweet* getTweet      ();
 
+    void addFollowings   (int);
+    void addFollowers    (int);
+    bool isFollow        (int);
+    void likeBy          (int);
 
     int         getId         () const{return id         ;}
     int         getAllTweets  () const{return allTweets  ;}
@@ -81,7 +85,6 @@ private:
     std::unordered_set<int>followings ;
     std::unordered_set<int>followers  ;
 
-    //std::unordered_set<int>tweetsSet  ;
     //date
 
 };

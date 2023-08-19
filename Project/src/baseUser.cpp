@@ -25,6 +25,28 @@ void BaseUser::readFromFile(int id)
 
     input.close();
 
+    clearCurrentTweet();
+
+    int inputId {0};
+
+    ifstream followingsFile("user"+ to_string(id) +"followings.txt",ios::in);
+    if(!followingsFile)
+        cerr << "BaseUser::readFromFile->cant't open user"+ to_string(id) +"followings.txt\n";
+
+    while(followingsFile>>inputId)
+        followings.insert(inputId);
+
+    followingsFile.close();
+
+    ifstream followersFile("user"+ to_string(id) +"followers.txt",ios::in);
+    if(!followersFile)
+        cerr << "BaseUser::readFromFile->cant't open user"+ to_string(id) +"followers.txt\n";
+
+    while(followersFile>>inputId)
+        followers.insert(inputId);
+
+    followersFile.close();
+
 }
 void BaseUser::readFromFile(ifstream& input)
 {
@@ -44,7 +66,15 @@ void BaseUser::readFromFile(ifstream& input)
     input >> temp;  setProfilePic   (temp.substr(1));
     input >> temp;  setBirthDate    (temp.substr(1));
 
-    setTweet(currentTweetNum);
+    try
+    {
+        setTweet(currentTweetNum);
+    }
+    catch (...)
+    {
+        cerr << "user : '" << userName << "' has no Tweet\n" ;
+    }
+
 
 }
 BaseUser::BaseUser(string name, string uName, string pass,string phone)
@@ -225,12 +255,10 @@ Tweet* BaseUser::getTweet()
 {
     if(currenTweet == nullptr)
     {
-        //cerr << "BaseUser::getTweet\n";
-        throw invalid_argument("There is no current tweet");
+        setTweet(currentTweetNum);
     }
 
     return currenTweet;
-
 }
 void BaseUser::setTweet (int tweetId)
 {
@@ -241,8 +269,11 @@ void BaseUser::setTweet (int tweetId)
     }
     else
     {
+        cerr << "BaseUser::setTweet->tweet don't exist\n";
+        throw invalid_argument("BaseUser::setTweet->tweet dosen't exist");
     }
-        //cerr << "BaseUser::setTweet->tweet don't exist\n";
+
+
 }
 
 void BaseUser::save()
@@ -254,8 +285,25 @@ void BaseUser::save()
         cerr << "Base::save->cant't open user"+ to_string(id) +".txt\n";
 
     output << this->getInfo();
-
     output.close();
+
+    ofstream followingsFile("user"+ to_string(id) +"followings.txt",ios::out);
+    if(!followingsFile)
+        cerr << "Base::save->cant't open user"+ to_string(id) +"followings.txt\n";
+
+    for(const auto& i : followings)
+        followingsFile << i << ' ';
+
+    followingsFile.close();
+
+    ofstream followersFile("user"+ to_string(id) +"followers.txt",ios::out);
+    if(!followersFile)
+        cerr << "Base::save->cant't open user"+ to_string(id) +"followers.txt\n";
+
+    for(const auto& i : followers)
+        followersFile << i << ' ';
+
+    followersFile.close();
 }
 string BaseUser::getInfo()
 {
@@ -270,4 +318,26 @@ string BaseUser::getInfo()
            <<"\n:" << birthDate;
 
     return output.str();
+}
+void BaseUser::addFollowings(int id)
+{
+    if(followings.count(id))
+        followings.erase(id);
+    else
+        followings.insert(id);
+}
+void BaseUser::addFollowers (int id)
+{
+    if(followers.count(id))
+        followers.erase(id);
+    else
+        followers.insert(id);
+}
+bool BaseUser::isFollow(int id)
+{
+    return followings.count(id);
+}
+void BaseUser::likeBy (int id)
+{
+    currenTweet->addLike(id);
 }
