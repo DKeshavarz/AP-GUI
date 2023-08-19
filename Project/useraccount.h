@@ -41,6 +41,8 @@ private slots:
 
     void on_quteTweetBtn_clicked();
 
+    void on_mentionBtn_clicked();
+
 private:
     Ui::UserAccount *ui;
 

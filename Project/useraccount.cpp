@@ -2,6 +2,7 @@
 #include "ui_useraccount.h"
 
 #include "search.h"
+#include "mention.h"
 
 #include <QPixmap>
 
@@ -134,4 +135,11 @@ void UserAccount::setLikes()
 void UserAccount::on_quteTweetBtn_clicked()
 {
     ui -> quteTweetTxt -> setEnabled(true);
+}
+
+void UserAccount::on_mentionBtn_clicked()
+{
+    Mention op;
+    op.setModal(true);
+    op.exec();
 }

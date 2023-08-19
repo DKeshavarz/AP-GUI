@@ -20,6 +20,7 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    mention.cpp \
     search.cpp \
     signup.cpp \
     src/Date.cpp \
@@ -43,6 +44,7 @@ HEADERS += \
     includes/twitterak.h \
     login.h \
     mainwindow.h \
+    mention.h \
     search.h \
     signup.h \
     useraccount.h \
@@ -52,6 +54,7 @@ FORMS += \
     editaccount.ui \
     login.ui \
     mainwindow.ui \
+    mention.ui \
     search.ui \
     signup.ui \
     useraccount.ui \

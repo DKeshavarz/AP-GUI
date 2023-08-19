@@ -53,10 +53,33 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>90</y>
+     <y>40</y>
      <width>721</width>
      <height>51</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="searchHashTagBtn">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>120</y>
+     <width>180</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Search</string>
+   </property>
+   <property name="icon">
+    <iconset resource="Resours/Recours.qrc">
+     <normaloff>:/icon/icons8-hashtag-96.png</normaloff>:/icon/icons8-hashtag-96.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
    </property>
   </widget>
  </widget>
