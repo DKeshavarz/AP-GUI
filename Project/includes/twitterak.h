@@ -2,6 +2,8 @@
 #define TWITTERAK_H
 
 #include <unordered_map>
+#include <forward_list>
+#include <vector>
 
 #include "includes/personalUser.h"
 #include "includes/organisationUser.h"
@@ -13,6 +15,14 @@ public:
     std::string password;
     int  id ;
     char type ;
+};
+class TweetInfo
+{
+public:
+    TweetInfo(int u,int i)
+    {userId = u ; tweetId = i;}
+    int userId ;
+    int tweetId;
 };
 
 class Twitterak
@@ -40,11 +50,19 @@ public:
     char bringType(std::string);
     char bringType();
 
+    std::vector<std::string> searchForHasgtags(std::string);
+    void addHashtags     (std::string);
+    bool canBeInHashtag  (char);
+    void saveHastagMap   ();
+    void getInfoHastagMap();
+
     BaseUser* getMainUser(){return mainUser;}
     BaseUser* getTempUser(){return tempUser;}
 
 private:
     std::unordered_map<std::string ,userInfo >usersMap ;
+    std::unordered_map<std::string ,std::forward_list<TweetInfo> >hashtagsMap ;
+
     BaseUser* mainUser ;
     BaseUser* tempUser ;
 

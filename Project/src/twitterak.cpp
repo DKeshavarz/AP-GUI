@@ -10,6 +10,7 @@ using namespace std;
 
 Twitterak::Twitterak():mainUser{nullptr},tempUser{nullptr},numberOfUsers{0}
 {
+    getInfoHastagMap();
     ifstream input("main.txt",ios::in);
     if(!input)
         cerr << "Twitterak::Twitterak()->can't read\n";
@@ -134,6 +135,7 @@ void Twitterak::deleteUser(string userName)
 }
 Twitterak::~Twitterak()
 {
+    saveHastagMap();
     ofstream output("main.txt",ios::out);
     if(!output)
         cerr << "cant't open main.txt \n";
@@ -151,6 +153,7 @@ Twitterak::~Twitterak()
 }
 void Twitterak::addTweet(string tweetText)
 {
+    addHashtags(tweetText);
     mainUser->addTweet(tweetText);
 }
 void Twitterak::loadTempUser (string userName)
@@ -205,4 +208,90 @@ char Twitterak::bringType()
     if(mainUser == nullptr)
         throw invalid_argument("main user dosen't exist");
     return bringType(mainUser->getUserName());
+}
+vector<string> Twitterak::searchForHasgtags(string tweetText)
+{
+    vector<std::string>allHashtags;
+
+    for(size_t i {0} ; i < tweetText.size() ; ++i)
+    {
+        if( tweetText[i] == '#')
+        {
+            string temp {};
+            for(size_t j {i+1} ; j < tweetText.size() && canBeInHashtag(tweetText[j]) ; ++j)
+            {
+                temp += tweetText[j];
+            }
+            if(temp != "")
+            {
+                cerr << "Twitterak::searchForHasgtags->temp: " << temp << '\n';
+                allHashtags.push_back(temp);
+            }
+        }
+    }
+    return allHashtags;
+}
+void Twitterak::addHashtags(string tweetText)
+{
+    if(mainUser == nullptr)
+    {
+        cerr << "Twitterak::addHashtags->main user is empty \n";
+        throw invalid_argument("main user dosn't exist");
+    }
+
+    TweetInfo info(mainUser->getId(),mainUser->getAllTweets());
+    vector<std::string>allHashtags = searchForHasgtags(tweetText);
+    for(const auto& hastag :allHashtags)
+    {
+        hashtagsMap[hastag];
+        hashtagsMap[hastag].push_front(info);
+    }
+}
+bool Twitterak::canBeInHashtag(char input)
+{
+    if     ('a' < input && input < 'z' )
+        return true ;
+    else if('A' < input && input < 'Z' )
+        return true ;
+    else if( input == '_')
+        return true ;
+
+    return false;
+}
+void Twitterak::saveHastagMap ()
+{
+    ofstream output("hasgtag.txt",ios::out);
+    if(!output)
+        cerr << "cant't write hasgtag.txt \n";
+
+
+    for (const auto& mapSlot : hashtagsMap)
+    {
+        output << mapSlot.first << ' ' ;
+        for(const auto& i : mapSlot.second)
+        {
+            output << i.userId   << ' ' << i.tweetId  << ' ';
+        }
+        output << 0 << ' ' << 0 << '\n';
+    }
+    output.close();
+}
+void Twitterak::getInfoHastagMap()
+{
+    ifstream input("hasgtag.txt",ios::in);
+    if(!input)
+        cerr << "cant't read hasgtag.txt \n";
+
+    string hashtag;
+    while(input >> hashtag)
+    {
+        int userId , tweetId;
+        hashtagsMap[hashtag];
+        while(input >> userId >> tweetId && userId != 0)
+        {
+            TweetInfo tempInfoHolder(userId,tweetId);
+            hashtagsMap[hashtag].push_front(tempInfoHolder) ;
+        }
+    }
+    input.close();
 }
