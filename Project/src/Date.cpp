@@ -50,7 +50,11 @@ std::string Date::getDateStr()const
     if(year < 0)
         return "";
     ostringstream output ;
-    output << year << '/' << month << '/' << day;
+    output << year  << '/' ;
+    if(month < 10 ) output << '0';
+    output << month << '/';
+    if(day   < 10 ) output << '0';
+    output << day;
     return output.str();
 }
 Date::Date(string input)
