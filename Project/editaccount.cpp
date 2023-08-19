@@ -6,6 +6,7 @@
 #include <QPixmap>
 #include <QFileDialog>
 #include <iostream>
+#include <QMessageBox>
 
 EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
     QDialog(parent),
@@ -33,6 +34,7 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
     ui -> numberTxtBar   -> setText(QString::fromStdString(pageOwner->getPhoneNum()) );
     ui -> countryTxtBar  -> setText(QString::fromStdString(pageOwner->getCountry())  );
     ui -> linkTxtBar     -> setText(QString::fromStdString(pageOwner->getLink())     );
+    ui -> dateTxtBar     -> setText(QString::fromStdString(pageOwner->getBirthDate()));
     ui -> bioTxtedit     -> setPlainText(QString::fromStdString(pageOwner->getBiogarghy()));
 
     //ui -> dateTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
@@ -134,14 +136,23 @@ void EditAccount::on_cancelBtn_clicked()
 
 void EditAccount::on_enterBtn_clicked()
 {
-    std::string input;
-    input  = ui -> nameTxtBar     ->text().toStdString();
-    input  = ui -> usernameTxtBar ->text().toStdString();
-    input  = ui -> passwordTxtBar ->text().toStdString();
-    input  = ui -> numberTxtBar   ->text().toStdString();
-    input  = ui -> countryTxtBar  ->text().toStdString();
-    input  = ui -> linkTxtBar     ->text().toStdString();
-    input  = ui -> bioTxtedit     ->toPlainText().toStdString();
+    try
+    {
+        std::string input;
+        input  = ui -> nameTxtBar     ->text().toStdString();   appPtr->getMainUser()->setFirsrName(input);
+        input  = ui -> usernameTxtBar ->text().toStdString();   appPtr->getMainUser()->setUserName (input);
+        input  = ui -> passwordTxtBar ->text().toStdString();   appPtr->getMainUser()->setPassword (input);
+        input  = ui -> numberTxtBar   ->text().toStdString();   appPtr->getMainUser()->setPhoneNum (input);
+        input  = ui -> countryTxtBar  ->text().toStdString();   appPtr->getMainUser()->setCountry  (input);
+        input  = ui -> linkTxtBar     ->text().toStdString();   appPtr->getMainUser()->setLink     (input);
+        input  = ui -> dateTxtBar     ->text().toStdString();   appPtr->getMainUser()->setBirthDate(input);
 
+        input  = ui -> bioTxtedit     ->toPlainText().toStdString();
+        appPtr->getMainUser()->setBiography(input);
+    }
+    catch (std::invalid_argument& err)
+    {
+       QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
+    }
 }
 
