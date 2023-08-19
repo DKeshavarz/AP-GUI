@@ -37,6 +37,9 @@ public:
     bool isFollow();
     void like    ();
 
+    char bringType(std::string);
+    char bringType();
+
     BaseUser* getMainUser(){return mainUser;}
     BaseUser* getTempUser(){return tempUser;}
 

@@ -64,8 +64,15 @@ void BaseUser::readFromFile(ifstream& input)
     input >> temp;  setHeaderColor  (temp.substr(1));
     input >> temp;  allTweets = stoi(temp.substr(1));
     input >> temp;  setProfilePic   (temp.substr(1));
+    try
+    {
+        setTweet(currentTweetNum);
+    }
+    catch (...)
+    {
+        cerr << "user : '" << userName << "' has no Tweet\n" ;
+    }
 
-    setTweet(currentTweetNum);
 }
 BaseUser::BaseUser(string name, string uName, string pass,string phone)
 {
@@ -239,11 +246,10 @@ Tweet* BaseUser::getTweet()
 {
     if(currenTweet == nullptr)
     {
-        throw invalid_argument("There is no current tweet");
+        setTweet(currentTweetNum);
     }
 
     return currenTweet;
-
 }
 void BaseUser::setTweet (int tweetId)
 {
@@ -255,7 +261,10 @@ void BaseUser::setTweet (int tweetId)
     else
     {
         cerr << "BaseUser::setTweet->tweet don't exist\n";
+        throw invalid_argument("BaseUser::setTweet->tweet dosen't exist");
     }
+
+
 }
 
 void BaseUser::save()

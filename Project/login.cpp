@@ -10,6 +10,7 @@
 #include <QString>
 #include <QMessageBox>
 #include <stdexcept>
+#include <iostream>
 
 Login::Login(QWidget *parent,Twitterak* ptr) :
     QDialog(parent),
@@ -34,7 +35,9 @@ void Login::on_enterBtn_clicked()
 
     try
     {
+        std::cerr << "Login::on_enterBtn_clicked->start try\n";
         appPtr->loadMainUser(userName.toStdString(),password.toStdString());
+        std::cerr << "Login::on_enterBtn_clicked->after try\n";
         WindowPer op(this,appPtr);
         this -> hide();
         op.setWindowTitle("Main App");

@@ -22,17 +22,28 @@ WindowPer::WindowPer(QWidget *parent,Twitterak* ptr) :
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
     ui -> tweetTxt   -> setEnabled(false);
-    ui -> addBtn     -> setEnabled(false);
-    ui -> saveBtn    -> setEnabled(false);
+    //ui -> addBtn     -> setEnabled(false);
+    //ui -> saveBtn    -> setEnabled(false);
     ui -> editBtn    -> setEnabled(false);
-    ui -> cancelBtn  -> setEnabled(false);
+    //ui -> cancelBtn  -> setEnabled(false);
+
     //enable bottuns for user per and org
-    if (main.flagO || main.flagP)
+    char userType;
+    try
     {
-        ui -> addBtn   -> setEnabled(true);
-        ui -> saveBtn  -> setEnabled(true);
-        ui -> editBtn  -> setEnabled(true);
-        ui -> cancelBtn-> setEnabled(true);
+        userType = appPtr->bringType();
+    }
+    catch (std::invalid_argument& err)
+    {
+        QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
+    }
+
+    if (userType == 'a')
+    {
+        ui -> addBtn   -> setEnabled(false);
+        ui -> saveBtn  -> setEnabled(false);
+        ui -> editBtn  -> setEnabled(false);
+        ui -> cancelBtn-> setEnabled(false);
     }
 
     showTweet();
@@ -49,14 +60,17 @@ void WindowPer::showTweet()
 
     try
     {
+        std::cerr << "WindowPer::showTweet->start try\n";
         std::string tweetStr = appPtr->getMainUser()->getTweet()->getTweetStr();
         ui->tweetTxt->setPlainText(QString::fromStdString(tweetStr));
     }
     catch (std::invalid_argument& err)
     {
+        std::cerr << "WindowPer::showTweet->start catch\n";
         //QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
         ui->tweetTxt->setPlainText("There is no tweet yet :)");
     }
+    std::cerr << "WindowPer::showTweet->start end\n";
 }
 void WindowPer::on_settingBtn_clicked()
 {
