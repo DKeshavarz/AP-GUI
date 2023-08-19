@@ -6,6 +6,7 @@
 #include <fstream>
 
 #include "includes/tweet.h"
+#include "includes/Date.h"
 
 class BaseUser 
 {
@@ -27,9 +28,9 @@ public:
     void setLastPass   (std::string);
     void setBiography  (std::string);
     void setCountry    (std::string);
-    void setPhoneNum   (std::string);  
-    void setBirthDate  (std::string);//
-    void setProfilePic (std::string);//
+    void setPhoneNum   (std::string);
+    void setBirthDate  (std::string);
+    void setProfilePic (std::string);
     void setHeaderColor(std::string);
 
     void addTweet      (std::string);
@@ -59,7 +60,7 @@ public:
     std::string getPhoneNum   () const{return phoneNumber;}
     std::string getProfilePic () const{return profilePic ;}
     std::string getHeaderColor() const{return headerColor;}
-    std::string getBirthDate  () const{return birthDate  ;}//
+    std::string getBirthDate  () const{return birthDate.getDateStr()  ;}
 
     virtual void save   ();
     virtual std::string getInfo();
@@ -76,9 +77,9 @@ private:
     std::string biography;
     std::string link;
     std::string country;
-    std::string profilePic; //
+    std::string profilePic;
     std::string headerColor;
-    std::string birthDate;//
+    Date        birthDate;
 
     Tweet* currenTweet {nullptr};
 

@@ -16,7 +16,7 @@ class EditAccount : public QDialog
     Q_OBJECT
 
 public:
-    explicit EditAccount(QWidget *parent = nullptr,Twitterak* = nullptr);
+    explicit EditAccount(QWidget *parent = nullptr,Twitterak* = nullptr,bool = false);
     ~EditAccount();
 
 private slots:

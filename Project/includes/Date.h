@@ -2,22 +2,25 @@
 #define DATE_H
 
 #include <string>
-#include "includes/baseUser.h"
 
 class Date
 {
 public:
     Date();
+    Date(int,int,int);
+    Date(std::string);
 
-    void setUserAge();
+    void setDate (std::string);
+    void setYear (int);
+    void setMonth(int);
+    void setDay  (int);
 
-    std::string getTime   ();
-    std::string getUserAge(){return userAge;};
-
+    std::string getDateStr()const;
 private:
-    std::string userAge{""};
 
-    BaseUser *accessToBirth{nullptr};
+    int year;
+    int month;
+    int day;
 };
 
 

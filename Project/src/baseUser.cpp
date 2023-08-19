@@ -183,7 +183,10 @@ void BaseUser::setPhoneNum(string phone) // dose it need validation?
 
 void BaseUser::setBirthDate(string inputDate)
 {
-    birthDate = inputDate;
+    if(inputDate.size()>0)
+        birthDate.setDate(inputDate);
+    else
+        cerr << "bitrhday dosen't exist\n";
 }
 
 void BaseUser::setHeaderColor(string inputColor)
@@ -315,7 +318,7 @@ string BaseUser::getInfo()
            <<"\n:" << biography         << "\n:" << link
            <<"\n:" << country           << "\n:" << headerColor
            <<"\n:" << allTweets         << "\n:" << profilePic
-           <<"\n:" << birthDate;
+           <<"\n:" << birthDate.getDateStr();
 
     return output.str();
 }

@@ -6,7 +6,7 @@
 #include <QPixmap>
 #include <QFileDialog>
 
-EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
+EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
     QDialog(parent),
     ui(new Ui::EditAccount),
     appPtr(ptr)
@@ -15,20 +15,24 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
     QPixmap pix(":/img/BG.jpg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
-    //char type ;
+    BaseUser* pageOwner {nullptr};
+    if(myPage)
+        pageOwner = appPtr->getMainUser();
+    else
+        pageOwner = appPtr->getTempUser();
 
 
-    ui -> nameTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
-    ui -> usernameTxtBar -> setText(QString::fromStdString(appPtr->getMainUser()->getUserName()) );
-    ui -> passwordTxtBar -> setText(QString::fromStdString(appPtr->getMainUser()->getPassword()) );
-    ui -> numberTxtBar   -> setText(QString::fromStdString(appPtr->getMainUser()->getPhoneNum()) );
-    ui -> countryTxtBar  -> setText(QString::fromStdString(appPtr->getMainUser()->getCountry())  );
-    ui -> linkTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getLink())     );
-    ui -> bioTxtedit     -> setPlainText(QString::fromStdString(appPtr->getMainUser()->getBiogarghy()));
+    ui -> nameTxtBar     -> setText(QString::fromStdString(pageOwner->getFirstName()));
+    ui -> usernameTxtBar -> setText(QString::fromStdString(pageOwner->getUserName()) );
+    ui -> passwordTxtBar -> setText(QString::fromStdString(pageOwner->getPassword()) );
+    ui -> numberTxtBar   -> setText(QString::fromStdString(pageOwner->getPhoneNum()) );
+    ui -> countryTxtBar  -> setText(QString::fromStdString(pageOwner->getCountry())  );
+    ui -> linkTxtBar     -> setText(QString::fromStdString(pageOwner->getLink())     );
+    ui -> bioTxtedit     -> setPlainText(QString::fromStdString(pageOwner->getBiogarghy()));
 
     //ui -> dateTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
 
-    if (appPtr->bringType() == 'a')
+    if (!myPage ||appPtr->bringType() == 'a')
     {
         ui -> nameTxtBar     -> setEnabled(false);
         ui -> orguserTxtBar  -> setEnabled(false);
@@ -40,12 +44,20 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
         ui -> colorBtnchoose -> setEnabled(false);
         ui -> photoBtnchoose -> setEnabled(false);
 
+        if(!myPage)
+        {
+            ui->enterBtn ->setEnabled(false);
+            ui->cancelBtn->setEnabled(false);
+            ui->colorBtnchoose->setEnabled(false);
+            ui->photoBtnchoose->setEnabled(false);
+        }
+
         ui -> HeaderColor-> setPalette(QPalette("black"));
 
         QPixmap pix(":/img/781-7812555_anonymous-mask-png-transparent-images-anonymous-icon-red.jpeg");
         ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
     }
-    else
+    if(appPtr->bringType() == 'o' || appPtr->bringType() == 'p')
     {
         if(appPtr->bringType() == 'o')
         {
@@ -60,7 +72,7 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr) :
         //HOW TO CONVERT Qstring to QColor?
         //ui -> HeaderColor-> setPalette(QPalette());
 
-        if (appPtr -> getMainUser() ->getProfilePic() != "")
+        if (pageOwner ->getProfilePic() != "")
         {
             QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getProfilePic().c_str());
 
