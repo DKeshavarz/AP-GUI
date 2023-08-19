@@ -15,7 +15,7 @@ UserAccount::UserAccount(QWidget *parent,Twitterak* ptr) :
     ui(new Ui::UserAccount),
     appPtr(ptr)
 {
-    std::cerr <<"UserAccount::UserAccount->start nigga\n";
+    std::cerr <<"UserAccount::UserAccount->start dear\n";
 
     ui->setupUi(this);
     QPixmap pix(":/img/BG2.jpeg");
@@ -37,7 +37,7 @@ UserAccount::~UserAccount()
 }
 void UserAccount::checkBtnFollow()
 {
-    QString btnFollowText = appPtr->isFollow()? "unfollow" : "follow" ;
+    QString btnFollowText = appPtr->isFollow()? "Unfollow" : "Follow" ;
     ui->followBtn->setText(btnFollowText);
 }
 void UserAccount::on_settingBtn_clicked()
@@ -83,7 +83,7 @@ void UserAccount::on_nextBtn_clicked()
     }
     catch(std::out_of_range& err)
     {
-        QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
     }
 }
 
@@ -97,7 +97,7 @@ void UserAccount::on_preBtn_clicked()
     }
     catch(std::out_of_range& err)
     {
-        QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
     }
 }
 

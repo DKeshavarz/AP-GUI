@@ -36,9 +36,9 @@ SignUp::~SignUp()
 
 void SignUp::on_orgRbtn_clicked()
 {
-    main.flagO = true;
-    main.flagP = false;
-    main.flagA = false;
+//    main.flagO = true;
+//    main.flagP = false;
+//    main.flagA = false;
     ui -> nameTxtBar -> setText("‬‬");
 
     ui ->nameTxtBar->setEnabled (true);

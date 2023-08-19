@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="Resours/Recours.qrc">
+   <iconset>
     <normaloff>:/img/LogoB</normaloff>:/img/LogoB</iconset>
   </property>
   <widget class="QLabel" name="BG">
@@ -301,8 +301,10 @@
    </property>
    <property name="font">
     <font>
-     <family>Dyuthi</family>
+     <family>FreeSerif</family>
+     <pointsize>13</pointsize>
      <weight>75</weight>
+     <italic>true</italic>
      <bold>true</bold>
     </font>
    </property>
@@ -321,8 +323,10 @@
    </property>
    <property name="font">
     <font>
-     <family>Dyuthi</family>
+     <family>FreeSerif</family>
+     <pointsize>13</pointsize>
      <weight>75</weight>
+     <italic>true</italic>
      <bold>true</bold>
     </font>
    </property>
@@ -341,9 +345,10 @@
    </property>
    <property name="font">
     <font>
-     <family>Dyuthi</family>
-     <pointsize>15</pointsize>
+     <family>FreeSerif</family>
+     <pointsize>16</pointsize>
      <weight>75</weight>
+     <italic>true</italic>
      <bold>true</bold>
     </font>
    </property>

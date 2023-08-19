@@ -27,7 +27,6 @@ WindowPer::WindowPer(QWidget *parent,Twitterak* ptr) :
     ui -> editBtn    -> setEnabled(false);
     //ui -> cancelBtn  -> setEnabled(false);
 
-    //enable bottuns for user per and org
     char userType;
     try
     {
@@ -35,7 +34,7 @@ WindowPer::WindowPer(QWidget *parent,Twitterak* ptr) :
     }
     catch (std::invalid_argument& err)
     {
-        QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
     }
 
     if (userType == 'a')

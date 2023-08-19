@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="Resours/Recours.qrc">
-    <normaloff>:/img/LogoW</normaloff>:/img/LogoW</iconset>
+    <normaloff>:/img/LogoW_auto_x2_colored_toned_light_ai.jpg</normaloff>:/img/LogoW_auto_x2_colored_toned_light_ai.jpg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">url (:/img/BG.jpg)</string>

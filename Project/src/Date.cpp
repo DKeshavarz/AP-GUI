@@ -22,7 +22,7 @@ void Date::setYear (int input)
 {
     if(!(0 < input && input < thisYear ))
     {
-        throw invalid_argument("Year is not correct");
+        throw invalid_argument("! Year is not correct");
     }
     year = input;
 }
@@ -31,7 +31,7 @@ void Date::setMonth(int input)
 {
     if(!(0 < input && input < 13))
     {
-        throw invalid_argument("Month is not correct");
+        throw invalid_argument("! Month is not correct");
     }
     month = input;
 }
@@ -40,7 +40,7 @@ void Date::setDay  (int input)
 {
     if(!(0 < input && input < 31+(month < 7)))
     {
-        throw invalid_argument("Day is not correct");
+        throw invalid_argument("! Day is not correct");
     }
     day = input;
 }
