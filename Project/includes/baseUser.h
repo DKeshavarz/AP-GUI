@@ -9,6 +9,8 @@
 
 class BaseUser 
 {
+    friend class Date;
+
 public:
     BaseUser ();
     BaseUser (std::string, std::string, std::string,std::string);
@@ -26,7 +28,7 @@ public:
     void setBiography  (std::string);
     void setCountry    (std::string);
     void setPhoneNum   (std::string);  
-    void setBirthDate  (std::string);
+    void setBirthDate  (std::string);//
     void setProfilePic (std::string);//
     void setHeaderColor(std::string);
 
@@ -51,8 +53,9 @@ public:
     std::string getBiogarghy  () const{return biography  ;}
     std::string getCountry    () const{return country    ;}
     std::string getPhoneNum   () const{return phoneNumber;}
-    std::string getProfilePic () const{return ProfilePic ;}
+    std::string getProfilePic () const{return profilePic ;}
     std::string getHeaderColor() const{return headerColor;}
+    std::string getBirthDate  () const{return birthDate  ;}//
 
     virtual void save   ();
     virtual std::string getInfo();
@@ -69,8 +72,9 @@ private:
     std::string biography;
     std::string link;
     std::string country;
-    std::string ProfilePic; //
+    std::string profilePic; //
     std::string headerColor;
+    std::string birthDate;//
 
     Tweet* currenTweet {nullptr};
 

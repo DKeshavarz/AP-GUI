@@ -42,6 +42,7 @@ void BaseUser::readFromFile(ifstream& input)
     input >> temp;  setHeaderColor  (temp.substr(1));
     input >> temp;  allTweets = stoi(temp.substr(1));
     input >> temp;  setProfilePic   (temp.substr(1));
+    input >> temp;  setBirthDate    (temp.substr(1));
 
     setTweet(currentTweetNum);
 
@@ -149,6 +150,12 @@ void BaseUser::setPhoneNum(string phone) // dose it need validation?
 
     phoneNumber = phone;
 }
+
+void BaseUser::setBirthDate(string inputDate)
+{
+    birthDate = inputDate;
+}
+
 void BaseUser::setHeaderColor(string inputColor)
 {
     string reservedColors[8] { "blue ","green ","red ","yellow ","black ","white ","orange ","purple " };
@@ -161,7 +168,7 @@ void BaseUser::setHeaderColor(string inputColor)
 
 void BaseUser::setProfilePic(string inputFileAddress)
 {
-    ProfilePic = inputFileAddress;
+    profilePic = inputFileAddress;
 }
 
 BaseUser::~BaseUser()
@@ -259,7 +266,8 @@ string BaseUser::getInfo()
            <<"\n:" << previousPassword  << "\n:" << phoneNumber
            <<"\n:" << biography         << "\n:" << link
            <<"\n:" << country           << "\n:" << headerColor
-           <<"\n:" << allTweets         << "\n:" << ProfilePic;
+           <<"\n:" << allTweets         << "\n:" << profilePic
+           <<"\n:" << birthDate;
 
     return output.str();
 }

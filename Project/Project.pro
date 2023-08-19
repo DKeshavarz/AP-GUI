@@ -22,6 +22,7 @@ SOURCES += \
     mainwindow.cpp \
     search.cpp \
     signup.cpp \
+    src/Date.cpp \
     src/anonymousUser.cpp \
     src/baseUser.cpp \
     src/organisationUser.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
 
 HEADERS += \
     editaccount.h \
+    includes/Date.h \
     includes/anonymousUser.h \
     includes/baseUser.h \
     includes/organisationUser.h \

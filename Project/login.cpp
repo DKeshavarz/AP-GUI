@@ -20,6 +20,8 @@ Login::Login(QWidget *parent,Twitterak* ptr) :
 
     QPixmap pix(":/img/BG1.jpeg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
+
+    //if (appPtr -> Bringtype())
 }
 
 Login::~Login()
