@@ -66,3 +66,4 @@ void Login::on_unseePassBtn_clicked()
 {
     ui->passwordTxtBar->setEchoMode(QLineEdit::Password);
 }
+
