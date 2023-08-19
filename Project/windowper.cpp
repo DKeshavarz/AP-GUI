@@ -36,7 +36,6 @@ WindowPer::WindowPer(QWidget *parent,Twitterak* ptr) :
     }
 
     showTweet();
-    if(appPtr == nullptr)std::cerr << "WindowPer::WindowPer-> ptr is empty\n";
 }
 
 WindowPer::~WindowPer()

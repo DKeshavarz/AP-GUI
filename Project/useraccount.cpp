@@ -67,6 +67,7 @@ void UserAccount::showTweet()
     {
         std::string tweetStr = appPtr->getTempUser()->getTweet()->getTweetStr();
         ui->tweetTxt->setPlainText(QString::fromStdString(tweetStr));
+        setLikes();//kkkkkkkkkkkkkkkkkk
     }
     catch (std::invalid_argument& err)
     {

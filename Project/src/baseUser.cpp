@@ -239,7 +239,6 @@ Tweet* BaseUser::getTweet()
 {
     if(currenTweet == nullptr)
     {
-        //cerr << "BaseUser::getTweet\n";
         throw invalid_argument("There is no current tweet");
     }
 
@@ -255,8 +254,8 @@ void BaseUser::setTweet (int tweetId)
     }
     else
     {
+        cerr << "BaseUser::setTweet->tweet don't exist\n";
     }
-        //cerr << "BaseUser::setTweet->tweet don't exist\n";
 }
 
 void BaseUser::save()
