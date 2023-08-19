@@ -1,8 +1,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include "signup.h"
-
 #include <QDialog>
 
 //logic***
@@ -24,14 +22,13 @@ private slots:
 
     void on_enterBtn_clicked();
 
+
     void on_seePassBtn_clicked();
 
     void on_unseePassBtn_clicked();
 
 private:
     Ui::Login *ui;
-
-    SignUp *signupPtr;
 
     //logic ***
     Twitterak* appPtr ;

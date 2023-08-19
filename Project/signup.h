@@ -2,7 +2,6 @@
 #define SIGNUP_H
 
 #include "mainwindow.h"
-#include "QRadioButton"
 #include <QDialog>
 
 #include "includes/twitterak.h"

@@ -1,7 +1,6 @@
 #ifndef EDITACCOUNT_H
 #define EDITACCOUNT_H
 
-#include "mainwindow.h"
 #include <QDialog>
 
 //logic
@@ -30,8 +29,6 @@ private slots:
 
 private:
     Ui::EditAccount *ui;
-    MainWindow main; // to access the flags of type of users in mainwindow
-
     //logic
     Twitterak* appPtr;
 };
