@@ -29,6 +29,8 @@ UserAccount::UserAccount(QWidget *parent,Twitterak* ptr) :
         ui->likeBtn   ->setEnabled(false);
         ui->mentionBtn->setEnabled(false);
     }
+
+    ui -> quteTweetTxt -> setEnabled(false);
 }
 UserAccount::~UserAccount()
 {
@@ -127,4 +129,9 @@ void UserAccount::setLikes()
     }
 
 
+}
+
+void UserAccount::on_quteTweetBtn_clicked()
+{
+    ui -> quteTweetTxt -> setEnabled(true);
 }

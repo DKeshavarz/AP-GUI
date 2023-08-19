@@ -39,6 +39,8 @@ private slots:
 
     void on_likeBtn_clicked();
 
+    void on_quteTweetBtn_clicked();
+
 private:
     Ui::UserAccount *ui;
 
