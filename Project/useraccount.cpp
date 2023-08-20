@@ -2,6 +2,7 @@
 #include "ui_useraccount.h"
 
 #include "search.h"
+#include "mention.h"
 
 #include <QPixmap>
 
@@ -30,7 +31,7 @@ UserAccount::UserAccount(QWidget *parent,Twitterak* ptr) :
         ui->mentionBtn->setEnabled(false);
     }
 
-    ui -> quteTweetTxt -> setEnabled(false);
+    ui -> quteTweetTxt -> setEnabled(true);
 }
 UserAccount::~UserAccount()
 {
@@ -69,7 +70,7 @@ void UserAccount::showTweet()
     {
         std::string tweetStr = appPtr->getTempUser()->getTweet()->getTweetStr();
         ui->tweetTxt->setPlainText(QString::fromStdString(tweetStr));
-        setLikes();//kkkkkkkkkkkkkkkkkk
+        setLikes();
     }
     catch (std::invalid_argument& err)
     {
@@ -127,11 +128,29 @@ void UserAccount::setLikes()
     {
         std::cerr << "UserAccount::setLikes\n" ;
     }
-
-
 }
 
 void UserAccount::on_quteTweetBtn_clicked()
 {
-    ui -> quteTweetTxt -> setEnabled(true);
+    Tweet* pageTweet = appPtr->getTempUser()->getTweet();
+    std::string tweetText = ui->quteTweetTxt->toPlainText().toStdString();
+    appPtr->addTweet(tweetText,pageTweet->getTweetInfo());
+    ui->quteTweetTxt->setPlainText("");
 }
+
+void UserAccount::on_mentionBtn_clicked()
+{
+    Mention op;
+    op.setModal(true);
+    op.exec();
+}
+
+void UserAccount::on_retweetBtn_clicked()
+{
+    Tweet* pageTweet = appPtr->getTempUser()->getTweet();
+    appPtr->addTweet("",pageTweet->getTweetInfo());
+
+}
+
+
+

@@ -210,12 +210,12 @@ BaseUser::~BaseUser()
 }
 
 
-void BaseUser::addTweet (string tweetText)
+void BaseUser::addTweet (string tweetText,TweetInfo retweetFrom)
 {
 
     //tweetsSet.insert(tweetsSet.size()+1);
     cerr << "BaseUser::addTweet->add tweet " << allTweets << " to " << userName << '\n' ;
-    currenTweet = new Tweet(tweetText,id,allTweets);
+    currenTweet = new Tweet(tweetText,id,allTweets,retweetFrom);
     ++allTweets;
     save();
 }

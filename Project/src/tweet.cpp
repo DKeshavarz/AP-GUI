@@ -1,20 +1,23 @@
 #include "includes/tweet.h"
+#include "includes/baseUser.h"
 
 #include <iostream>
 #include <string>
 #include <fstream>
 
 using namespace std ;
+class BaseUser ;
 
 Tweet::Tweet()
 {
     //empty
 }
-Tweet::Tweet(string input,int userId ,int tweetId)
+Tweet::Tweet(string input,int userId ,int tweetId,TweetInfo retweetFrom)
 {
     setTweetStr(input);
-    this->tweetId = tweetId;
-    this->userId  = userId ;
+    this->tweetId     = tweetId;
+    this->userId      = userId ;
+    this->retweetFrom = retweetFrom;
 }
 Tweet::Tweet(int userId ,int tweetId)
 {
@@ -30,6 +33,13 @@ Tweet::Tweet(int userId ,int tweetId)
         throw out_of_range(path + "donsn't exist");
     }
     string inputTweet ;
+    int userInfoId , tweetInfoId;
+    input >> userInfoId >> tweetInfoId;
+    cerr << "userInfoId " << userInfoId << "  tweetInfoId " << tweetInfoId  << endl ;
+
+    retweetFrom.userId  = userInfoId;
+    retweetFrom.tweetId = tweetInfoId;
+
     input >> inputTweet ;
     tweetStr  = inputTweet.substr(1);
 
@@ -71,7 +81,7 @@ void Tweet::save ()
     if(!file)
         cerr << "~Tweet():can't open and write in " << path << '\n' ;
 
-    file << ":" << tweetStr <<"\n";
+    file << retweetFrom.userId << ' ' << retweetFrom.tweetId << "\n:" << tweetStr <<"\n";
     file.close();
 
     path = "user" + to_string(userId) + "tweet" + to_string(tweetId) + "like.txt";
@@ -82,6 +92,8 @@ void Tweet::save ()
 
     for(const auto& i:likeSet)
         fileLike << i << ' ' ;
+
+    fileLike.close();
 
 }
 void Tweet::addLike(int id)
@@ -94,4 +106,33 @@ void Tweet::addLike(int id)
 int Tweet::getLikeNum ()
 {
     return likeSet.size();
+}
+ TweetInfo Tweet::getTweetInfo()
+{
+    TweetInfo temp(userId,tweetId);
+    return temp;
+}
+string Tweet::getTweetStr()const
+{
+    string tempTweetStr {};
+    if(retweetFrom.userId != 0)
+    {
+        BaseUser* tempUser = new BaseUser;
+        tempUser->readFromFile(retweetFrom.userId);
+        tempTweetStr += "@" + tempUser->getUserName() + "\n";
+        delete tempUser;
+
+        Tweet* tempTweet = new Tweet(retweetFrom);
+        tempTweetStr += tempTweet->getTweetStr();
+        tempTweetStr += "\n****************\n";
+        delete tempTweet;
+    }
+
+    tempTweetStr +=  tweetStr;
+
+    return tempTweetStr;
+}
+Tweet::Tweet(TweetInfo t):Tweet(t.userId,t.tweetId)
+{
+    //empty
 }

@@ -151,10 +151,10 @@ Twitterak::~Twitterak()
     clearTempUser();
     clearMainUser();
 }
-void Twitterak::addTweet(string tweetText)
+void Twitterak::addTweet(string tweetText,TweetInfo retweetFrom)
 {
     addHashtags(tweetText);
-    mainUser->addTweet(tweetText);
+    mainUser->addTweet(tweetText,retweetFrom);
 }
 void Twitterak::loadTempUser (string userName)
 {

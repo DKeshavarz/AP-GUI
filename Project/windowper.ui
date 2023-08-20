@@ -125,7 +125,7 @@
    </property>
    <property name="icon">
     <iconset resource="Resours/Recours.qrc">
-     <normaloff>:/icon/icons8-america-96.png</normaloff>:/icon/icons8-america-96.png</iconset>
+     <normaloff>:/icon/icons8-evidence-96.png</normaloff>:/icon/icons8-evidence-96.png</iconset>
    </property>
    <property name="iconSize">
     <size>

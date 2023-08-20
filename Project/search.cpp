@@ -51,3 +51,9 @@ void Search::on_searchBtn_clicked()
         QMessageBox::warning(this,"eror","wtffff");
     }
 }
+
+void Search::on_searchHashTagBtn_clicked()
+{
+
+}
+

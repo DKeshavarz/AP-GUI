@@ -5,6 +5,7 @@
 #include <forward_list>
 #include <vector>
 
+#include "includes/tweetInfo.h"
 #include "includes/personalUser.h"
 #include "includes/organisationUser.h"
 #include "includes/anonymousUser.h"
@@ -16,14 +17,7 @@ public:
     int  id ;
     char type ;
 };
-class TweetInfo
-{
-public:
-    TweetInfo(int u,int i)
-    {userId = u ; tweetId = i;}
-    int userId ;
-    int tweetId;
-};
+
 
 class Twitterak
 {
@@ -36,7 +30,7 @@ public:
 
 
     void loadMainUser (std::string ,std::string);
-    void addTweet     (std::string);
+    void addTweet     (std::string ,TweetInfo = {0,0});
     void deleteUser   (std::string);
     void clearMainUser();
 

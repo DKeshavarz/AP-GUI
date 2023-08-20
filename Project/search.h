@@ -21,6 +21,8 @@ public:
 private slots:
     void on_searchBtn_clicked();
 
+    void on_searchHashTagBtn_clicked();
+
 private:
     Ui::Search *ui;
     Twitterak* appPtr;

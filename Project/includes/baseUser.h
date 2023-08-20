@@ -7,6 +7,8 @@
 
 #include "includes/tweet.h"
 #include "includes/Date.h"
+#include "includes/tweetInfo.h"
+
 
 class BaseUser 
 {
@@ -33,7 +35,7 @@ public:
     void setProfilePic (std::string);
     void setHeaderColor(std::string);
 
-    void addTweet      (std::string);
+    void addTweet      (std::string,TweetInfo);
     void clearCurrentTweet();
 
     void setTweet     (int);
@@ -48,19 +50,20 @@ public:
     bool isFollow        (int);
     void likeBy          (int);
 
-    int         getId         () const{return id         ;}
-    int         getAllTweets  () const{return allTweets  ;}
-    std::string getFirstName  () const{return firsName   ;}
-    std::string getUserName   () const{return userName   ;}
-    std::string getLink       () const{return link       ;}
-    std::string getPassword   () const{return password   ;}
-    std::string getLastPass   () const{return previousPassword;}
-    std::string getBiogarghy  () const{return biography  ;}
-    std::string getCountry    () const{return country    ;}
-    std::string getPhoneNum   () const{return phoneNumber;}
-    std::string getProfilePic () const{return profilePic ;}
-    std::string getHeaderColor() const{return headerColor;}
-    std::string getBirthDate  () const{return birthDate.getDateStr()  ;}
+    int         getId               () const{return id         ;}
+    int         getAllTweets        () const{return allTweets  ;}
+    int         getcurrentTweetNum  () const{return allTweets  ;}
+    std::string getFirstName        () const{return firsName   ;}
+    std::string getUserName         () const{return userName   ;}
+    std::string getLink             () const{return link       ;}
+    std::string getPassword         () const{return password   ;}
+    std::string getLastPass         () const{return previousPassword;}
+    std::string getBiogarghy        () const{return biography  ;}
+    std::string getCountry          () const{return country    ;}
+    std::string getPhoneNum         () const{return phoneNumber;}
+    std::string getProfilePic       () const{return profilePic ;}
+    std::string getHeaderColor      () const{return headerColor;}
+    std::string getBirthDate        () const{return birthDate.getDateStr();}
 
     virtual void save   ();
     virtual std::string getInfo();
