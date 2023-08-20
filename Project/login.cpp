@@ -39,7 +39,7 @@ void Login::on_enterBtn_clicked()
     {
         std::cerr << "Login::on_enterBtn_clicked->start try\n";
         appPtr->loadMainUser(userName.toStdString(),password.toStdString());
-        std::cerr << "Login::on_enterBtn_clicked->after try\n";
+        std::cerr << "Login::on_enterBtn_clicked->after try2\n";
         WindowPer op(this,appPtr);
         this -> hide();
         op.setWindowTitle("Main App");

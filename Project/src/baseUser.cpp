@@ -50,6 +50,7 @@ void BaseUser::readFromFile(int id)
 }
 void BaseUser::readFromFile(ifstream& input)
 {
+    std::cerr << "BaseUser::readFromFile->start\n";
     std::string temp;
 
     input >> temp;  id        =stoi (temp.substr(1));
@@ -75,7 +76,7 @@ void BaseUser::readFromFile(ifstream& input)
         cerr << "user : '" << userName << "' has no Tweet\n" ;
     }
 
-
+    std::cerr << "BaseUser::readFromFile->end\n";
 }
 BaseUser::BaseUser(string name, string uName, string pass,string phone)
 {

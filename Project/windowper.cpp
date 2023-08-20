@@ -16,17 +16,16 @@ WindowPer::WindowPer(QWidget *parent,Twitterak* ptr) :
     ui(new Ui::WindowPer),
     appPtr(ptr)
 {
+    std::cerr << "WindowPer::WindowPer->start\n";
     ui->setupUi(this);
 
     QPixmap pix(":/img/BG2.jpeg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
     ui -> tweetTxt   -> setEnabled(false);
-    //ui -> addBtn     -> setEnabled(false);
-    //ui -> saveBtn    -> setEnabled(false);
     ui -> editBtn    -> setEnabled(false);
-    //ui -> cancelBtn  -> setEnabled(false);
 
+    std::cerr << "WindowPer::WindowPer->1\n";
     char userType;
     try
     {
@@ -44,8 +43,9 @@ WindowPer::WindowPer(QWidget *parent,Twitterak* ptr) :
         ui -> editBtn  -> setEnabled(false);
         ui -> cancelBtn-> setEnabled(false);
     }
-
+    std::cerr << "WindowPer::WindowPer->2\n";
     showTweet();
+    std::cerr << "WindowPer::WindowPer->end\n";
 }
 
 WindowPer::~WindowPer()

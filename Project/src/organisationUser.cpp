@@ -51,8 +51,10 @@ string OrganisationUser::getInfo()
 }
 void OrganisationUser::setBiography(string input)
 {
+    std::cerr << "OrganisationUser::setBiography->start\n";
     if(input.size() > 1100)
         throw invalid_argument("Biography is too long");
-
-    setBiography(input);
+    std::cerr << "OrganisationUser::setBiography->\n";
+    BaseUser::setBiography(input);
+    std::cerr << "OrganisationUser::setBiography->end\n";
 }
