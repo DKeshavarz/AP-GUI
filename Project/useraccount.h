@@ -23,6 +23,7 @@ public:
     void showTweet     ();
     void checkBtnFollow();
     void setLikes      ();
+    void setBtn        ();
 
 private slots:
 

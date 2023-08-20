@@ -44,17 +44,23 @@ string OrganisationUser::getInfo()
 {
     std::string temp;
     input >> temp;  setBoss    (temp.substr(1));
-    cerr << "OrganisationUser::readFromFile->boss name:" << boss << endl ;
 
     BaseUser::readFromFile(input);
-
 }
 void OrganisationUser::setBiography(string input)
 {
-    std::cerr << "OrganisationUser::setBiography->start\n";
     if(input.size() > 1100)
         throw invalid_argument("Biography is too long");
-    std::cerr << "OrganisationUser::setBiography->\n";
     BaseUser::setBiography(input);
-    std::cerr << "OrganisationUser::setBiography->end\n";
+}
+void OrganisationUser::setBirthDate(string input)
+{
+    if(input != "")
+        throw invalid_argument("You can't set birthDay for organision account");
+}
+int OrganisationUser::getfollowingsNum()const
+{
+    throw invalid_argument("You can't see organision account num");
+    std::cerr << "OrganisationUser::getfollowingsNum()const\n";
+    return -1;
 }

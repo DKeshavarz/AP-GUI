@@ -16,14 +16,16 @@ WindowPer::WindowPer(QWidget *parent,Twitterak* ptr) :
     ui(new Ui::WindowPer),
     appPtr(ptr)
 {
+
     std::cerr << "WindowPer::WindowPer->start\n";
     ui->setupUi(this);
 
     QPixmap pix(":/img/BG2.jpeg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
 
-    ui -> tweetTxt   -> setEnabled(false);
-    ui -> editBtn    -> setEnabled(false);
+    ui ->tweetTxt ->setEnabled(false);
+    ui ->editBtn  ->setEnabled(false);
+    ui ->cancelBtn->setEnabled(false);
 
     std::cerr << "WindowPer::WindowPer->1\n";
     char userType;
@@ -46,6 +48,7 @@ WindowPer::WindowPer(QWidget *parent,Twitterak* ptr) :
     std::cerr << "WindowPer::WindowPer->2\n";
     showTweet();
     std::cerr << "WindowPer::WindowPer->end\n";
+    setFollowers();
 }
 
 WindowPer::~WindowPer()
@@ -54,6 +57,7 @@ WindowPer::~WindowPer()
 }
 void WindowPer::showTweet()
 {
+    ui ->cancelBtn->setEnabled(false);
     ui->nextBtn  ->setEnabled(appPtr->getMainUser()->canShowNextTweet());
     ui->preBtn   ->setEnabled(appPtr->getMainUser()->canShowLastTweet());
 
@@ -61,6 +65,7 @@ void WindowPer::showTweet()
     {
         std::string tweetStr = appPtr->getMainUser()->getTweet()->getTweetStr();
         ui->tweetTxt->setPlainText(QString::fromStdString(tweetStr));
+        setLikes();
     }
     catch (std::invalid_argument& err)
     {
@@ -93,6 +98,7 @@ void WindowPer::on_logoutBtn_clicked()
 
 void WindowPer::on_addBtn_clicked()
 {
+    ui ->cancelBtn->setEnabled(true);
     ui->nextBtn->setEnabled(false);
     ui->preBtn ->setEnabled(false);
     ui->tweetTxt->setEnabled(true);
@@ -155,5 +161,47 @@ void WindowPer::on_preBtn_clicked()
     catch(std::out_of_range& err)
     {
         QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
+    }
+}
+void WindowPer::setFollowers()
+{
+    try
+    {
+        int followers = appPtr->getMainUser()->getfollowersNum();
+        ui->followersTxt->setText("followers: " + QString::number(followers));
+    }
+    catch (std::invalid_argument& err)
+    {
+        QString message = QString::fromStdString(err.what());
+        ui->followersTxt->setText("followers: " + message);
+    }
+    try
+    {
+        int followings = appPtr->getMainUser()->getfollowingsNum();
+        ui->label->setText("followings: " + QString::number(followings ));
+    }
+    catch (std::invalid_argument& err)
+    {
+        QString message = QString::fromStdString(err.what());
+        ui->label->setText("followings: " + message);
+    }
+}
+
+void WindowPer::on_cancelBtn_clicked()
+{
+    ui->tweetTxt->setEnabled(false);
+    showTweet();
+    ui->tweetTxt->setEnabled(false);
+}
+void WindowPer::setLikes()
+{
+    try
+    {
+        int likesNum = appPtr->getMainUser()->getTweet()->getLikeNum();
+        ui->likeTxt->setText("Likes" + QString::number(likesNum));
+    }
+    catch (...)
+    {
+        std::cerr << "UserAccount::setLikes\n" ;
     }
 }

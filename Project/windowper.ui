@@ -38,7 +38,7 @@
   <widget class="QLabel" name="BG">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>-10</x>
      <y>0</y>
      <width>1172</width>
      <height>625</height>
@@ -321,7 +321,6 @@
     <font>
      <family>FreeSerif</family>
      <pointsize>13</pointsize>
-     <weight>75</weight>
      <italic>true</italic>
      <bold>true</bold>
     </font>
@@ -343,7 +342,6 @@
     <font>
      <family>FreeSerif</family>
      <pointsize>13</pointsize>
-     <weight>75</weight>
      <italic>true</italic>
      <bold>true</bold>
     </font>
@@ -365,7 +363,6 @@
     <font>
      <family>FreeSerif</family>
      <pointsize>16</pointsize>
-     <weight>75</weight>
      <italic>true</italic>
      <bold>true</bold>
     </font>
@@ -398,6 +395,25 @@
      <width>50</width>
      <height>50</height>
     </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>90</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Followings</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::RichText</enum>
    </property>
   </widget>
  </widget>

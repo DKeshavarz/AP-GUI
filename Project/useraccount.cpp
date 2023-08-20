@@ -42,6 +42,7 @@ void UserAccount::checkBtnFollow()
 {
     QString btnFollowText = appPtr->isFollow()? "Unfollow" : "Follow" ;
     ui->followBtn->setText(btnFollowText);
+    setBtn();
 }
 void UserAccount::on_settingBtn_clicked()
 {
@@ -165,8 +166,12 @@ void UserAccount::on_retweetBtn_clicked()
         QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
     }
 
-
 }
-
+void UserAccount::setBtn()
+{
+    bool flag {appPtr->bringType() != 'a' || appPtr->isFollow()};
+    ui->likeBtn->setEnabled(flag);
+    //other cant contaion too
+}
 
 

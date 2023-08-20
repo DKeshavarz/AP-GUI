@@ -299,3 +299,61 @@ void Twitterak::getInfoHastagMap()
     }
     input.close();
 }
+void Twitterak::changeBoss(string bossUser)
+{
+    OrganisationUser* temp {nullptr};
+    temp = dynamic_cast<OrganisationUser*>(mainUser);
+    if(temp != nullptr)
+    {
+        std::clog << "Twitterak::changeBoss>active";
+        if(!usersMap.count(bossUser) && usersMap[bossUser].type != 'o')
+        {
+            throw invalid_argument("manager dosen't exist");
+        }
+        temp->setBoss(bossUser);
+    }
+    else
+    {
+        throw invalid_argument("this account dosen't have this part");
+    }
+}
+string Twitterak::getBoss(BaseUser* input)
+{
+    OrganisationUser* temp {nullptr};
+    temp = dynamic_cast<OrganisationUser*>(input);
+    if(temp != nullptr)
+    {
+        std::clog << "Twitterak::changeBoss>active";
+        return temp->getBoss();
+    }
+
+    return "";
+}
+void Twitterak::changeCompany(string company)
+{
+    PersonalUser* temp {nullptr};
+    temp = dynamic_cast<PersonalUser*>(mainUser);
+    if(temp != nullptr)
+    {
+        if(!usersMap.count(company) && !(usersMap[company].type != 'o'))
+        {
+            throw invalid_argument("company dosen't exist");
+        }
+        temp->setBoss(company);
+    }
+    else
+    {
+        throw invalid_argument("this account dosen't have this part");
+    }
+}
+string Twitterak::getCompany(BaseUser* input)
+{
+    PersonalUser* temp {nullptr};
+    temp = dynamic_cast<PersonalUser*>(input);
+    if(temp != nullptr)
+    {
+        return temp->getBoss();
+    }
+
+    return "";
+}

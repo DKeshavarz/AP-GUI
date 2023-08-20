@@ -37,6 +37,9 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
     ui -> dateTxtBar     -> setText(QString::fromStdString(pageOwner->getBirthDate()));
     ui -> bioTxtedit     -> setPlainText(QString::fromStdString(pageOwner->getBiogarghy()));
 
+    std::string text = appPtr->getBoss(pageOwner) != "" ? appPtr->getBoss(pageOwner) : appPtr->getCompany(pageOwner);
+    ui -> orguserTxtBar  -> setText(QString::fromStdString(text));
+
     QString toQstring = QString :: fromUtf8(pageOwner->getProfilePic().c_str());
     QPixmap pixx(toQstring);
     ui -> Pic -> setPixmap(pixx.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
@@ -75,7 +78,7 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
 
     if(appPtr->bringType() == 'o' || appPtr->bringType() == 'p')
 {
-        appPtr->bringType() == 'o' ? ui -> orguserTxtBar  ->setEnabled(false) : ui -> orguserTxtBar  ->setEnabled(true);
+        appPtr->bringType() == 'o' ? ui ->munTxt->setText("Manager") :  ui->munTxt->setText("company") ;
         QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getHeaderColor().c_str());
         ui -> HeaderColor-> setPalette(QPalette(toQstring));
 
@@ -147,7 +150,7 @@ void EditAccount::on_enterBtn_clicked()
 
         std::string input;
         input  = ui -> nameTxtBar     ->text().toStdString();   appPtr->getMainUser()->setFirsrName (input);
-        input  = ui -> usernameTxtBar ->text().toStdString();   appPtr->getMainUser()->setUserName  (input);
+        input  = ui -> usernameTxtBar ->text().toStdString();   //appPtr->getMainUser()->setUserName  (input);
         input  = ui -> passwordTxtBar ->text().toStdString();   appPtr->getMainUser()->setPassword  (input);
         input  = ui -> numberTxtBar   ->text().toStdString();   appPtr->getMainUser()->setPhoneNum  (input);
         input  = ui -> countryTxtBar  ->text().toStdString();   appPtr->getMainUser()->setCountry   (input);
@@ -157,6 +160,14 @@ void EditAccount::on_enterBtn_clicked()
 
         input  = ui -> bioTxtedit     ->toPlainText().toStdString();
         appPtr->getMainUser()->setBiography(input);
+
+        input = ui -> orguserTxtBar   ->text().toStdString();
+        if(appPtr->bringType() == 'o')
+            appPtr->changeBoss(input);
+        else if(appPtr->bringType() == 'p')
+            appPtr->changeCompany(input);
+
+        close();
     }
     catch (std::invalid_argument& err)
     {

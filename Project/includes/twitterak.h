@@ -50,6 +50,11 @@ public:
     void saveHastagMap   ();
     void getInfoHastagMap();
 
+    void changeBoss(std::string);
+    std::string getBoss(BaseUser*);
+    void changeCompany(std::string);
+    std::string getCompany(BaseUser*);
+
     BaseUser* getMainUser(){return mainUser;}
     BaseUser* getTempUser(){return tempUser;}
 

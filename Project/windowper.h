@@ -20,6 +20,9 @@ public:
     ~WindowPer();
 
     void showTweet();
+    void setFollowers();
+    void setLikes();
+
 
 private slots:
     void on_settingBtn_clicked();
@@ -41,6 +44,8 @@ private slots:
     void on_nextBtn_clicked();
 
     void on_preBtn_clicked();
+
+    void on_cancelBtn_clicked();
 
 private:
     Ui::WindowPer *ui;

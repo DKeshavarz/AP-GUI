@@ -11,7 +11,13 @@ public:
 
     virtual void readFromFile(int)            override;
     virtual void readFromFile(std::ifstream&) override;
-    virtual void setBiography  (std::string)  override;
+
+    virtual void setBirthDate(std::string)override;
+    virtual void setBiography(std::string)override;
+
+
+    virtual int getfollowingsNum() const;
+
 
     void setBoss(std::string);
     std::string getBoss(){return boss;}

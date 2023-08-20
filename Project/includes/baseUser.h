@@ -22,17 +22,17 @@ public:
 
     void setId         (int);
 
-    void setFirsrName  (std::string);
-    void setUserName   (std::string);
-    void setLink       (std::string);
-    void setPassword   (std::string);
-    void setLastPass   (std::string);
+    virtual void setFirsrName  (std::string);
+    virtual void setUserName   (std::string);
+    virtual void setLink       (std::string);
+    virtual void setPassword   (std::string);
+    virtual void setLastPass   (std::string);
     virtual void setBiography  (std::string);
-    void setCountry    (std::string);
-    void setPhoneNum   (std::string);
-    void setBirthDate  (std::string);
-    void setProfilePic (std::string);
-    void setHeaderColor(std::string);
+    virtual void setCountry    (std::string);
+    virtual void setPhoneNum   (std::string);
+    virtual void setBirthDate  (std::string);
+    virtual void setProfilePic (std::string);
+    virtual void setHeaderColor(std::string);
 
     virtual void addTweet      (std::string,TweetInfo);
     void clearCurrentTweet();
@@ -49,10 +49,13 @@ public:
     bool isFollow        (int);
     void likeBy          (int);
 
+    virtual int getfollowingsNum    () const{return followings.size();}
+
     int         getId               () const{return id         ;}
     int         getAllTweets        () const{return allTweets  ;}
     int         getcurrentTweetNum  () const{return allTweets  ;}
-    std::string getFirstName        () const{return firsName   ;}
+    std::string getFirstName        () const{return firsName   ;}   
+    int         getfollowersNum     () const{return followers.size() ;}
     std::string getUserName         () const{return userName   ;}
     std::string getLink             () const{return link       ;}
     std::string getPassword         () const{return password   ;}
