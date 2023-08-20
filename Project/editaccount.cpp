@@ -56,6 +56,7 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
 
         if(!myPage)
         {
+            ui->orguserTxtBar->setEnabled(false);
             ui->usernameTxtBar->setEnabled(false);
             ui->passwordTxtBar->setEnabled(false);
             ui->passwordTxtBar->setEchoMode(QLineEdit::Password);
@@ -75,9 +76,8 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
     if(appPtr->bringType() == 'o' || appPtr->bringType() == 'p')
 {
         appPtr->bringType() == 'o' ? ui -> orguserTxtBar  ->setEnabled(false) : ui -> orguserTxtBar  ->setEnabled(true);
-        //QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getHeaderColor().c_str());
-        //HOW TO CONVERT Qstring to QColor?
-        //ui -> HeaderColor-> setPalette(QPalette());
+        QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getHeaderColor().c_str());
+        ui -> HeaderColor-> setPalette(QPalette(toQstring));
 
         if (pageOwner ->getProfilePic() !="")
         {
@@ -111,12 +111,12 @@ EditAccount::~EditAccount()
 
 void EditAccount::on_colorBtnchoose_clicked()
 {
-    QColor color = QColorDialog :: getColor(Qt :: green , this , "Choose a color!");
+    QColor color = QColorDialog :: getColor(Qt :: red , this , "Choose a color!");
     if (color.isValid())
     {
         ui -> HeaderColor-> setPalette(QPalette(color));
 
-        QString toQstring = color.name(QColor :: HexArgb);
+        QString toQstring = color.name(QColor :: HexRgb);
         std :: string toString = toQstring.toUtf8().constData();
         appPtr -> getMainUser() ->setHeaderColor(toString);
     }
