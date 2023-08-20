@@ -1,8 +1,6 @@
 #ifndef SIGNUP_H
 #define SIGNUP_H
 
-#include "mainwindow.h"
-#include "QRadioButton"
 #include <QDialog>
 
 #include "includes/twitterak.h"
@@ -35,7 +33,6 @@ private slots:
 
 private:
     Ui::SignUp *ui;
-    MainWindow main;// to access the flags of type of users in mainwindow
 
     //***logic****
     Twitterak* appPtr ;

@@ -105,7 +105,7 @@ void BaseUser::setUserName(string uName)
         }
     }
 
-    string reservedWord[]{ "exit","help","login","edit","signup","logout","profile","tweet"}; //sort string for binery search and add more
+    string reservedWord[]{ "exit","edit","help","login","logout","profile","signup","tweet"}; //sort string for binery search and add more
 
     for(const string& i : reservedWord)
     {
@@ -115,6 +115,7 @@ void BaseUser::setUserName(string uName)
 
     userName = uName;
 }
+
 void BaseUser::setPassword(string pass) 
 {
     if (pass == previousPassword)
@@ -158,7 +159,7 @@ void BaseUser::setCountry(string country)
 }
 void BaseUser::setLink(string inputLink)
 {
-    if (inputLink.find("https://") == string :: npos) // fix this
+    if (inputLink.find("https://") == string :: npos)
     {
         link = "https://" + inputLink;
     }
@@ -168,7 +169,7 @@ void BaseUser::setLink(string inputLink)
     }
 
 }
-void BaseUser::setPhoneNum(string phone) // dose it need validation?
+void BaseUser::setPhoneNum(string phone)
 {
     for (size_t i = 0 ; i < phone.size() ; ++i)
     {
@@ -241,7 +242,7 @@ void BaseUser::goToNextTweet   ()
         setTweet(currentTweetNum);
     }
     else
-        throw out_of_range("There is no next tweet");
+        throw out_of_range("! There is no next tweet");
 }
 
 void BaseUser::goToLastTweet()
@@ -252,7 +253,7 @@ void BaseUser::goToLastTweet()
         setTweet(currentTweetNum);
     }
     else
-        throw out_of_range("There is no previous tweet");
+        throw out_of_range("! There is no previous tweet");
 }
 Tweet* BaseUser::getTweet()
 {

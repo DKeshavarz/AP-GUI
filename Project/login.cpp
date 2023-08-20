@@ -56,13 +56,19 @@ void Login::on_enterBtn_clicked()
     }
 }
 
-
 void Login::on_seePassBtn_clicked()
 {
     ui->passwordTxtBar->setEchoMode(QLineEdit::Normal);
 }
+//ui->passwordTxtBar->setEchoMode(QLineEdit::Normal);
+//ui -> seePassBtn -> setIcon(QIcon(":/icon/icons8-invisible-96.png"));
+//ui -> seePassBtn -> setIconSize(QSize(31 , 31));
 
+//ui->passwordTxtBar->setEchoMode(QLineEdit::Password);
+//ui -> seePassBtn -> setIcon(QIcon(":/icon/icons8-eye-96.png"));
+//ui -> seePassBtn -> setIconSize(QSize(31 , 31));
 void Login::on_unseePassBtn_clicked()
 {
     ui->passwordTxtBar->setEchoMode(QLineEdit::Password);
+
 }

@@ -1,8 +1,6 @@
 #ifndef WINDOWPER_H
 #define WINDOWPER_H
 
-#include "mainwindow.h"
-#include "signup.h"
 #include <QDialog>
 
 //logic
@@ -46,8 +44,6 @@ private slots:
 
 private:
     Ui::WindowPer *ui;
-    MainWindow main;// to access the flags of type of users in mainwindow
-
     //logic
     Twitterak* appPtr ;
 };

@@ -25,7 +25,7 @@ Twitterak::Twitterak():mainUser{nullptr},tempUser{nullptr},numberOfUsers{0}
         usersMap[userName].id       = id ;
         usersMap[userName].type     = type;
 
-        numberOfUsers = id>numberOfUsers?id:numberOfUsers;
+        numberOfUsers = id > numberOfUsers ? id : numberOfUsers;
     }
     numberOfUsers++;
     input.close();
@@ -35,7 +35,7 @@ BaseUser* Twitterak::makeUser(string userName)
     BaseUser* tempPtr {nullptr};
 
     if(!usersMap.count(userName))
-        throw invalid_argument("user dosen't exist");
+        throw invalid_argument("! User dosen't exist");
     else if(usersMap[userName].type == 'p')
         tempPtr =new PersonalUser    ;
     else if(usersMap[userName].type == 'a')
@@ -54,7 +54,7 @@ void Twitterak::setMainUser(string name   ,string userName,string password
     clearMainUser();
 
     if(usersMap.count(userName))//check user name
-        throw invalid_argument("Dublicated user name");
+        throw invalid_argument("! Dublicated user name");
 
     if     (type == 'p')//creat personall user
     {
@@ -67,13 +67,13 @@ void Twitterak::setMainUser(string name   ,string userName,string password
     else if(type == 'o')
     {
         if(!usersMap.count(manager))
-            throw invalid_argument("Manager user name dosen't exist niger");
+            throw invalid_argument("! Manager user name dosen't exist niger");
 
         mainUser =new OrganisationUser(name,userName,password,phone,manager);
     }
     else
     {
-        throw invalid_argument("You haven't select a type");
+        throw invalid_argument("! You haven't select a type");
     }
 
     mainUser->setId( numberOfUsers );
@@ -89,9 +89,9 @@ void Twitterak::loadMainUser(string userName,string password)
     clearMainUser();
     std::cerr << "Twitterak::loadMainUser->after clear try\n";
     if(!usersMap.count(userName))
-        throw invalid_argument("User name didn't found");
+        throw invalid_argument("! User name didn't found");
     else if(usersMap[userName].password != password)
-        throw invalid_argument("incorect password");
+        throw invalid_argument("! Incorect password");
 
     mainUser = makeUser(userName) ;
     std::cerr << "Twitterak::loadMainUser->after clear end\n";
@@ -114,7 +114,7 @@ void Twitterak::deleteUser(string userName)
     if(!usersMap.count(userName))
     {
         cerr << "Twitterak::deleteUser->can delete user name\n";
-        throw invalid_argument("User name don't exist");
+        throw invalid_argument("! User name don't exist");
     }
     int id = usersMap[userName].id;
     usersMap.erase(userName);
@@ -161,7 +161,7 @@ void Twitterak::loadTempUser (string userName)
     if(!usersMap.count(userName))
     {
         cerr << "Twitterak::loadTempUser->user name dont exist\n" ;
-        throw invalid_argument("user name don't exist");
+        throw invalid_argument("! User name don't exist");
     }
     clearTempUser();
     tempUser = makeUser(userName);

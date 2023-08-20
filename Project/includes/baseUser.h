@@ -12,8 +12,6 @@
 
 class BaseUser 
 {
-    friend class Date;
-
 public:
     BaseUser ();
     BaseUser (std::string, std::string, std::string,std::string);
@@ -23,6 +21,7 @@ public:
     virtual void readFromFile(std::ifstream&);
 
     void setId         (int);
+
     void setFirsrName  (std::string);
     void setUserName   (std::string);
     void setLink       (std::string);
@@ -67,6 +66,7 @@ public:
 
     virtual void save   ();
     virtual std::string getInfo();
+
 private:
     int id ;
     int currentTweetNum {1};
