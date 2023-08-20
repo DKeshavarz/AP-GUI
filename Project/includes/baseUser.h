@@ -20,8 +20,8 @@ public:
     virtual void readFromFile(int);
     virtual void readFromFile(std::ifstream&);
 
-    void setId         (int);
-
+    virtual void setId         (int);
+    virtual void setCurTweetNum(int);
     virtual void setFirsrName  (std::string);
     virtual void setUserName   (std::string);
     virtual void setLink       (std::string);

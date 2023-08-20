@@ -346,3 +346,10 @@ void BaseUser::likeBy (int id)
 {
     currenTweet->addLike(id);
 }
+void BaseUser::setCurTweetNum(int input)
+{
+    if(!( 0 < input && input < allTweets))
+        throw out_of_range("can't set current Tweet");
+
+    currentTweetNum = input;
+}

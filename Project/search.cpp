@@ -53,6 +53,26 @@ void Search::on_searchBtn_clicked()
 
 void Search::on_searchHashTagBtn_clicked()
 {
+    try
+    {
+        std::cerr << "Search::on_searchHashTagBtn_clicked->start\n";
+        std::string hashtah {ui->searchTxtBar->text().toStdString()};
 
+        appPtr->creatHashtagVec(hashtah);
+        std::cerr << "Search::on_searchHashTagBtn_clicked->2\n";
+        this -> close();
+
+        UserAccount test(this,appPtr,'h');
+        test.setModal(true);
+        test.exec();
+    }
+    catch (std::invalid_argument& err)
+    {
+        QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
+    }
+    catch(...)
+    {
+        QMessageBox::warning(this,"eror","wtffff");
+    }
 }
 

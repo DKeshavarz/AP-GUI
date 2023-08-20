@@ -17,15 +17,17 @@ UserAccount::UserAccount(QWidget *parent,Twitterak* ptr ,char m)//u User , h Has
     appPtr(ptr),
     mode(m)
 {
-    std::cerr <<"UserAccount::UserAccount->start dear\n";
-
     ui->setupUi(this);
     QPixmap pix(":/img/BG2.jpeg");
     ui -> BG -> setPixmap(pix.scaled(this -> width() , this -> height()));
     ui->tweetTxt->setEnabled(false);
+
     showTweet();
+
     setLikes();
+
     checkBtnFollow();
+
     if (ptr->getTempUser()->getAllTweets() == 1)
     {
         ui->likeBtn   ->setEnabled(false);
@@ -33,6 +35,7 @@ UserAccount::UserAccount(QWidget *parent,Twitterak* ptr ,char m)//u User , h Has
     }
 
     ui -> quteTweetTxt -> setEnabled(true);
+    std::cerr <<"UserAccount::UserAccount->mode "<< mode << "\n\n";
 }
 UserAccount::~UserAccount()
 {
@@ -58,7 +61,7 @@ void UserAccount::on_exitBtn_clicked()
 void UserAccount::on_userSearchBtn_clicked()
 {
     Search op(this,appPtr);
-    this -> close(); // ->hide()
+    this -> close();
     op.setWindowTitle("Search");
     op.setModal(true);
     op.exec();
@@ -71,7 +74,7 @@ void UserAccount::showTweet()
         showTweetUser();
         break;
     case 'h':
-        //showTweetUser();
+        showTweetHasgtag();
         break;
     default:
         break;
@@ -171,7 +174,19 @@ void UserAccount::setBtn()
 }
 void UserAccount::showTweetHasgtag()
 {
-
+    ui->nextBtn->setEnabled(appPtr->canShowNextHashtag());
+    ui->preBtn ->setEnabled(appPtr->canShowLastHashtag());
+    try
+    {
+        std::string tweetStr = appPtr->getTempUser()->getTweet()->getTweetStr();
+        std::cerr << "UserAccount::showTweetHasgtag-> " << tweetStr << "\n\n";
+        ui->tweetTxt->setPlainText(QString::fromStdString(tweetStr));
+        setLikes();
+    }
+    catch (std::invalid_argument& err)
+    {
+        ui->tweetTxt->setPlainText("There is no tweet yet :)");
+    }
 }
 void UserAccount::showTweetUser   ()
 {
@@ -203,7 +218,15 @@ void UserAccount::goToNextUser ()
 }
 void UserAccount::goToNextHasgtag()
 {
-
+    try
+    {
+        appPtr->goToNextHashtag();
+        showTweet();
+    }
+    catch(std::out_of_range& err)
+    {
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
+    }
 }
 void UserAccount::goToLastUser ()
 {
@@ -219,5 +242,13 @@ void UserAccount::goToLastUser ()
 }
 void UserAccount::goToLastHasgtag()
 {
-
+    try
+    {
+        appPtr->goToLastHashtag();
+        showTweet();
+    }
+    catch(std::out_of_range& err)
+    {
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
+    }
 }

@@ -163,10 +163,7 @@ void Twitterak::loadTempUser (string userName)
         cerr << "Twitterak::loadTempUser->user name dont exist\n" ;
         throw invalid_argument("! User name don't exist");
     }
-    else if(mainUser->getUserName() == userName)
-    {
-        throw invalid_argument("! You are already in your page");
-    }
+
     clearTempUser();
     tempUser = makeUser(userName);
 
@@ -356,4 +353,56 @@ string Twitterak::getCompany(BaseUser* input)
     }
 
     return "";
+}
+void Twitterak::creatHashtagVec(string inputHashtag)
+{
+    if(!hashtagsMap.count(inputHashtag))
+    {
+        throw invalid_argument ("this hasgtag dosn't exist");
+    }
+    currentHashtagVec = hashtagsMap[inputHashtag];
+    cerr << "\nvector" << currentHashtagVec.size() << endl ;
+    setTempUserForHasgtag();
+}
+void Twitterak::goToNextHashtag()
+{
+    if(canShowNextHashtag())
+    {
+        ++hashTagIndex;
+        setTempUserForHasgtag();
+    }
+    else
+        throw out_of_range("! There is no next tweet");
+}
+void Twitterak::goToLastHashtag()
+{
+    if(canShowLastHashtag())
+    {
+        --hashTagIndex;
+        setTempUserForHasgtag();
+    }
+    else
+        throw out_of_range("! There is no last tweet");
+}
+
+bool Twitterak::canShowNextHashtag()
+{
+    return hashTagIndex < (int)currentHashtagVec.size() - 1 ;
+}
+bool Twitterak::canShowLastHashtag()
+{
+    return hashTagIndex > 0 ;
+}
+void Twitterak::setTempUserForHasgtag ()
+{
+    clearTempUser();
+    BaseUser* tempUser = new BaseUser;
+    tempUser->readFromFile(currentHashtagVec[hashTagIndex].userId);
+
+
+    string userName = tempUser->getUserName();
+    delete tempUser;
+
+    loadTempUser(userName);
+    this->tempUser->setCurTweetNum(currentHashtagVec[hashTagIndex].tweetId);
 }

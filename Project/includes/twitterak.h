@@ -34,6 +34,7 @@ public:
     void deleteUser   (std::string);
     void clearMainUser();
 
+    void setTempUserForHasgtag  ();
     void loadTempUser (std::string);
     void clearTempUser();
 
@@ -55,6 +56,12 @@ public:
     void changeCompany(std::string);
     std::string getCompany(BaseUser*);
 
+    void creatHashtagVec (std::string);
+    void goToNextHashtag   ();
+    void goToLastHashtag   ();
+    bool canShowNextHashtag();
+    bool canShowLastHashtag();
+
     BaseUser* getMainUser(){return mainUser;}
     BaseUser* getTempUser(){return tempUser;}
 
@@ -64,8 +71,10 @@ private:
 
     BaseUser* mainUser ;
     BaseUser* tempUser ;
+    std::vector<TweetInfo> currentHashtagVec;
 
     int numberOfUsers  ;
+    int hashTagIndex {};
 
     BaseUser* makeUser(std::string);
 };
