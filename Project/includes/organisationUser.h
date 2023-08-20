@@ -14,6 +14,7 @@ public:
 
     virtual void setBirthDate(std::string)override;
     virtual void setBiography(std::string)override;
+    virtual void setPhoneNum (std::string)override;
 
 
     virtual int getfollowingsNum() const;

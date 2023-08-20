@@ -10,6 +10,8 @@ public:
     PersonalUser(std::string,std::string,std::string,std::string);
 
     void setBoss(std::string);
+
+    virtual void setPhoneNum   (std::string)override;
     
     std::string getBoss() {return bossName;}
 

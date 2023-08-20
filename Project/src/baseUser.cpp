@@ -88,6 +88,13 @@ void BaseUser::setId (int input)
 }
 void BaseUser::setFirsrName(string fName)
 {
+    if(fName.size() == 0)
+        throw invalid_argument("Name can't be empty");
+    for(const auto& i: fName)
+    {
+        if(i == ' ')
+            throw invalid_argument("Name containt space");
+    }
     firsName = fName;
 }
 void BaseUser::setUserName(string uName)
@@ -119,8 +126,9 @@ void BaseUser::setUserName(string uName)
 
 void BaseUser::setPassword(string pass) 
 {
-    if (pass == previousPassword)
-        throw invalid_argument("! You can not use your previous password");
+    if(pass != password)
+        if (pass == previousPassword)
+            throw invalid_argument("! You can not use your previous password");
 
     bool isCaptal {0} ; bool isSmall  {0} ;
     bool isNumber {0} ; bool isChar   {0} ;
@@ -179,7 +187,6 @@ void BaseUser::setPhoneNum(string phone)
             throw invalid_argument ("! You most enter a number");
         }
     }
-
     phoneNumber = phone;
 }
 

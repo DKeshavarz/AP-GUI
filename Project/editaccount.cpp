@@ -150,7 +150,7 @@ void EditAccount::on_enterBtn_clicked()
 
         std::string input;
         input  = ui -> nameTxtBar     ->text().toStdString();   appPtr->getMainUser()->setFirsrName (input);
-        input  = ui -> usernameTxtBar ->text().toStdString();   //appPtr->getMainUser()->setUserName  (input);
+        input  = ui -> usernameTxtBar ->text().toStdString();   appPtr->ChangUserName               (input);
         input  = ui -> passwordTxtBar ->text().toStdString();   appPtr->getMainUser()->setPassword  (input);
         input  = ui -> numberTxtBar   ->text().toStdString();   appPtr->getMainUser()->setPhoneNum  (input);
         input  = ui -> countryTxtBar  ->text().toStdString();   appPtr->getMainUser()->setCountry   (input);
@@ -165,7 +165,10 @@ void EditAccount::on_enterBtn_clicked()
         if(appPtr->bringType() == 'o')
             appPtr->changeBoss(input);
         else if(appPtr->bringType() == 'p')
+        {
+            std::cerr << "EditAccount::on_enterBtn_clicked      yy\n";
             appPtr->changeCompany(input);
+        }
 
         close();
     }

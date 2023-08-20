@@ -25,6 +25,8 @@ public:
     Twitterak();
     ~Twitterak();
 
+    void ChangUserName(std::string);
+
     void setMainUser(std::string,std::string,std::string
                     ,std::string,std::string,char);
 

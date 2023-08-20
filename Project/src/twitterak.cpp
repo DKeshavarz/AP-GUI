@@ -303,7 +303,7 @@ void Twitterak::changeBoss(string bossUser)
     if(temp != nullptr)
     {
         std::clog << "Twitterak::changeBoss>active";
-        if(!usersMap.count(bossUser) && usersMap[bossUser].type != 'o')
+        if(!usersMap.count(bossUser) || usersMap[bossUser].type != 'o')
         {
             throw invalid_argument("manager dosen't exist");
         }
@@ -332,7 +332,7 @@ void Twitterak::changeCompany(string company)
     temp = dynamic_cast<PersonalUser*>(mainUser);
     if(temp != nullptr)
     {
-        if(!usersMap.count(company) && !(usersMap[company].type != 'o'))
+        if(!usersMap.count(company) || !(usersMap[company].type != 'o'))
         {
             throw invalid_argument("company dosen't exist");
         }
@@ -405,4 +405,18 @@ void Twitterak::setTempUserForHasgtag ()
 
     loadTempUser(userName);
     this->tempUser->setCurTweetNum(currentHashtagVec[hashTagIndex].tweetId);
+}
+void Twitterak::ChangUserName(string input)
+{
+    if(input == mainUser->getUserName())
+        return;
+    if (usersMap.count(input))
+        throw invalid_argument("Dublicated user name");
+
+    string lastUserName = mainUser->getUserName();
+    mainUser->setUserName(input);
+
+    usersMap[input] = usersMap[lastUserName];
+    usersMap.erase(lastUserName);
+
 }

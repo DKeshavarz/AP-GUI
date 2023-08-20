@@ -15,6 +15,7 @@ OrganisationUser::OrganisationUser(string name, string uName, string pass,string
 :BaseUser(name, uName, pass,phone)
 {
     setBoss(bossName);
+    setPhoneNum(phone);
 }
 void OrganisationUser::setBoss(string input)
 {
@@ -63,4 +64,10 @@ int OrganisationUser::getfollowingsNum()const
     throw invalid_argument("You can't see organision account num");
     std::cerr << "OrganisationUser::getfollowingsNum()const\n";
     return -1;
+}
+void OrganisationUser::setPhoneNum (string input)
+{
+    if(input.size() == 0)
+        throw invalid_argument("Phone number can't be empty");
+    BaseUser::setPhoneNum(input);
 }
