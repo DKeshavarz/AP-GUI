@@ -132,10 +132,18 @@ void UserAccount::setLikes()
 
 void UserAccount::on_quteTweetBtn_clicked()
 {
-    Tweet* pageTweet = appPtr->getTempUser()->getTweet();
-    std::string tweetText = ui->quteTweetTxt->toPlainText().toStdString();
-    appPtr->addTweet(tweetText,pageTweet->getTweetInfo());
-    ui->quteTweetTxt->setPlainText("");
+    try
+    {
+        Tweet* pageTweet = appPtr->getTempUser()->getTweet();
+        std::string tweetText = ui->quteTweetTxt->toPlainText().toStdString();
+        appPtr->addTweet(tweetText,pageTweet->getTweetInfo());
+        ui->quteTweetTxt->setPlainText("");
+
+    } catch (std::invalid_argument& err)
+    {
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
+    }
+
 }
 
 void UserAccount::on_mentionBtn_clicked()
@@ -147,8 +155,16 @@ void UserAccount::on_mentionBtn_clicked()
 
 void UserAccount::on_retweetBtn_clicked()
 {
-    Tweet* pageTweet = appPtr->getTempUser()->getTweet();
-    appPtr->addTweet("",pageTweet->getTweetInfo());
+    try
+    {
+        Tweet* pageTweet = appPtr->getTempUser()->getTweet();
+        appPtr->addTweet("",pageTweet->getTweetInfo());
+
+    } catch (std::invalid_argument& err)
+    {
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
+    }
+
 
 }
 

@@ -27,14 +27,14 @@ public:
     void setLink       (std::string);
     void setPassword   (std::string);
     void setLastPass   (std::string);
-    void setBiography  (std::string);
+    virtual void setBiography  (std::string);
     void setCountry    (std::string);
     void setPhoneNum   (std::string);
     void setBirthDate  (std::string);
     void setProfilePic (std::string);
     void setHeaderColor(std::string);
 
-    void addTweet      (std::string,TweetInfo);
+    virtual void addTweet      (std::string,TweetInfo);
     void clearCurrentTweet();
 
     void setTweet     (int);

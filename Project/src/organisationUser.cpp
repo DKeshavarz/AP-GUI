@@ -49,3 +49,10 @@ string OrganisationUser::getInfo()
     BaseUser::readFromFile(input);
 
 }
+void OrganisationUser::setBiography(string input)
+{
+    if(input.size() > 1100)
+        throw invalid_argument("Biography is too long");
+
+    setBiography(input);
+}

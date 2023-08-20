@@ -25,13 +25,16 @@ public:
     void setLikes      ();
 
 private slots:
+
     void on_settingBtn_clicked();
 
     void on_exitBtn_clicked();
 
     void on_userSearchBtn_clicked();
 
+
     void on_nextBtn_clicked();
+
 
     void on_preBtn_clicked();
 

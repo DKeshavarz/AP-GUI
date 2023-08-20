@@ -55,7 +55,7 @@ public:
 
 private:
     std::unordered_map<std::string ,userInfo >usersMap ;
-    std::unordered_map<std::string ,std::forward_list<TweetInfo> >hashtagsMap ;
+    std::unordered_map<std::string ,std::vector<TweetInfo> >hashtagsMap ;
 
     BaseUser* mainUser ;
     BaseUser* tempUser ;

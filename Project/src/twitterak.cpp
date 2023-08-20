@@ -163,6 +163,10 @@ void Twitterak::loadTempUser (string userName)
         cerr << "Twitterak::loadTempUser->user name dont exist\n" ;
         throw invalid_argument("! User name don't exist");
     }
+    else if(mainUser->getUserName() == userName)
+    {
+        throw invalid_argument("! You are already in your page");
+    }
     clearTempUser();
     tempUser = makeUser(userName);
 
@@ -244,7 +248,7 @@ void Twitterak::addHashtags(string tweetText)
     for(const auto& hastag :allHashtags)
     {
         hashtagsMap[hastag];
-        hashtagsMap[hastag].push_front(info);
+        hashtagsMap[hastag].push_back(info);
     }
 }
 bool Twitterak::canBeInHashtag(char input)
@@ -290,7 +294,7 @@ void Twitterak::getInfoHastagMap()
         while(input >> userId >> tweetId && userId != 0)
         {
             TweetInfo tempInfoHolder(userId,tweetId);
-            hashtagsMap[hashtag].push_front(tempInfoHolder) ;
+            hashtagsMap[hashtag].push_back(tempInfoHolder) ;
         }
     }
     input.close();

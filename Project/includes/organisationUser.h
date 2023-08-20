@@ -11,6 +11,7 @@ public:
 
     virtual void readFromFile(int)            override;
     virtual void readFromFile(std::ifstream&) override;
+    virtual void setBiography  (std::string)  override;
 
     void setBoss(std::string);
     std::string getBoss(){return boss;}

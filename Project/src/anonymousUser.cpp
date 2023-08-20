@@ -12,3 +12,10 @@ AnonymousUser::AnonymousUser(string uName,string pass)
 {
     //empty
 }
+void AnonymousUser::addTweet (string tweet,TweetInfo retweetFrom)
+{
+    if(!isFollow(retweetFrom.userId))
+        throw invalid_argument("You must follow this person");
+
+    BaseUser::addTweet(tweet,retweetFrom);
+}

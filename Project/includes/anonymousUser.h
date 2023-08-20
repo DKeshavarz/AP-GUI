@@ -9,6 +9,8 @@ public:
     AnonymousUser();
     AnonymousUser(std::string,std::string);
 
+    virtual void addTweet(std::string,TweetInfo);
+
 private:
 
 };
