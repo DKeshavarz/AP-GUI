@@ -36,9 +36,7 @@ SignUp::~SignUp()
 
 void SignUp::on_orgRbtn_clicked()
 {
-//    main.flagO = true;
-//    main.flagP = false;
-//    main.flagA = false;
+
     ui -> nameTxtBar -> setText("‬‬");
 
     ui ->nameTxtBar->setEnabled (true);
@@ -53,9 +51,7 @@ void SignUp::on_orgRbtn_clicked()
 
 void SignUp::on_perRbtn_clicked()
 {
-    main.flagO = false;
-    main.flagP = true;
-    main.flagA = false;
+
     ui -> nameTxtBar -> setText("‫‬‬");
 
     ui ->nameTxtBar->setEnabled(true);
@@ -70,9 +66,7 @@ void SignUp::on_perRbtn_clicked()
 
 void SignUp::on_anoRbtn_clicked()
 {
-    main.flagO = false;
-    main.flagP = false;
-    main.flagA = true;
+
 
     ui -> nameTxtBar -> setText("‫‪‬‬‫‪Anonymous User‬‬");
 

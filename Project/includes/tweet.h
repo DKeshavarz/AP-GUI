@@ -14,7 +14,7 @@ public:
 
     void setTweetStr(std::string);
     void save ();
-    void addLike(int);\
+    void addLike(int);
 
     int getLikeNum ();
     std::string getTweetStr()             const {return tweetStr;}

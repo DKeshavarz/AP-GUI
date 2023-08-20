@@ -9,8 +9,8 @@ public:
     OrganisationUser();
     OrganisationUser(std::string,std::string,std::string,std::string,std::string);
 
-    virtual void readFromFile(int);
-    virtual void readFromFile(std::ifstream&);
+    virtual void readFromFile(int)            override;
+    virtual void readFromFile(std::ifstream&) override;
 
     void setBoss(std::string);
     std::string getBoss(){return boss;}

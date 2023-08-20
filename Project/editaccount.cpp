@@ -37,6 +37,10 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
     ui -> dateTxtBar     -> setText(QString::fromStdString(pageOwner->getBirthDate()));
     ui -> bioTxtedit     -> setPlainText(QString::fromStdString(pageOwner->getBiogarghy()));
 
+    QString toQstring = QString :: fromUtf8(pageOwner->getProfilePic().c_str());
+    QPixmap pixx(toQstring);
+    ui -> Pic -> setPixmap(pixx.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+
     //ui -> dateTxtBar     -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
     if (!myPage ||appPtr->bringType() == 'a')
     {
@@ -67,32 +71,34 @@ EditAccount::EditAccount(QWidget *parent,Twitterak* ptr, bool myPage) :
         ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
 
     }
-    if(appPtr->bringType() == 'o' || appPtr->bringType() == 'p')
-    {
-        if(appPtr->bringType() == 'o')
-        {
-            ui -> orguserTxtBar  -> setText(QString::fromStdString(appPtr->getMainUser()->getFirstName()));
-        }
-        else
-        {
-            ui -> orguserTxtBar  ->setEnabled(false);
-        }
 
+    if(appPtr->bringType() == 'o' || appPtr->bringType() == 'p')
+{
+        appPtr->bringType() == 'o' ? ui -> orguserTxtBar  ->setEnabled(false) : ui -> orguserTxtBar  ->setEnabled(true);
         //QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getHeaderColor().c_str());
         //HOW TO CONVERT Qstring to QColor?
         //ui -> HeaderColor-> setPalette(QPalette());
 
-        if (pageOwner ->getProfilePic() != "")
+        if (pageOwner ->getProfilePic() !="")
         {
-            QString toQstring = QString :: fromUtf8(appPtr -> getMainUser() ->getProfilePic().c_str());
+            QString toQstring = QString :: fromUtf8(pageOwner ->getProfilePic().c_str());
 
             QPixmap pix(toQstring);
             ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+            pageOwner ->setProfilePic(toQstring.toStdString());
         }
         else
         {
-            QPixmap pix(":/img/user-128.png");
-            ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+            if (appPtr->bringType() == 'o')
+            {
+                QPixmap pix(":/img/DotORG_logo.svg.png");
+                ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+            }
+            else if (appPtr->bringType() == 'p')
+            {
+                QPixmap pix(":/img/user-128.png");
+                ui -> Pic -> setPixmap(pix.scaled(ui -> Pic -> width() ,ui -> Pic -> height() , Qt :: KeepAspectRatio));
+            }
         }
         std::cerr << "EditAccount::EditAccount-> secend if end  \n";
     }
@@ -105,7 +111,7 @@ EditAccount::~EditAccount()
 
 void EditAccount::on_colorBtnchoose_clicked()
 {
-    QColor color = QColorDialog :: getColor(Qt :: red , this , "Choose a color!");
+    QColor color = QColorDialog :: getColor(Qt :: green , this , "Choose a color!");
     if (color.isValid())
     {
         ui -> HeaderColor-> setPalette(QPalette(color));
@@ -118,7 +124,7 @@ void EditAccount::on_colorBtnchoose_clicked()
 
 void EditAccount::on_photoBtnchoose_clicked()
 {
-    QString filter = "All files (*.*) ;; Picturs (*.jpeg) ;; Picturs (*.png) ;; Picturs (*.jpg)";
+    QString filter = "All files (*.*) ;; .jpeg (*.jpeg) ;; .png (*.png) ;; .jpg (*.jpg)";
 
     QString fileName = QFileDialog :: getOpenFileName(this , "Choose a picture" , "/home" , filter);
     QPixmap pix5(fileName);
@@ -138,21 +144,23 @@ void EditAccount::on_enterBtn_clicked()
 {
     try
     {
+
         std::string input;
-        input  = ui -> nameTxtBar     ->text().toStdString();   appPtr->getMainUser()->setFirsrName(input);
-        input  = ui -> usernameTxtBar ->text().toStdString();   appPtr->getMainUser()->setUserName (input);
-        input  = ui -> passwordTxtBar ->text().toStdString();   appPtr->getMainUser()->setPassword (input);
-        input  = ui -> numberTxtBar   ->text().toStdString();   appPtr->getMainUser()->setPhoneNum (input);
-        input  = ui -> countryTxtBar  ->text().toStdString();   appPtr->getMainUser()->setCountry  (input);
-        input  = ui -> linkTxtBar     ->text().toStdString();   appPtr->getMainUser()->setLink     (input);
-        input  = ui -> dateTxtBar     ->text().toStdString();   appPtr->getMainUser()->setBirthDate(input);
+        input  = ui -> nameTxtBar     ->text().toStdString();   appPtr->getMainUser()->setFirsrName (input);
+        input  = ui -> usernameTxtBar ->text().toStdString();   appPtr->getMainUser()->setUserName  (input);
+        input  = ui -> passwordTxtBar ->text().toStdString();   appPtr->getMainUser()->setPassword  (input);
+        input  = ui -> numberTxtBar   ->text().toStdString();   appPtr->getMainUser()->setPhoneNum  (input);
+        input  = ui -> countryTxtBar  ->text().toStdString();   appPtr->getMainUser()->setCountry   (input);
+        input  = ui -> linkTxtBar     ->text().toStdString();   appPtr->getMainUser()->setLink      (input);
+        input  = ui -> dateTxtBar     ->text().toStdString();   appPtr->getMainUser()->setBirthDate (input);
+        input  = ui -> Pic            ->text().toStdString();   appPtr->getMainUser()->setProfilePic(input);
 
         input  = ui -> bioTxtedit     ->toPlainText().toStdString();
         appPtr->getMainUser()->setBiography(input);
     }
     catch (std::invalid_argument& err)
     {
-       QMessageBox::warning(this,"eror",QString::fromStdString(err.what()));
+       QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
     }
 }
 

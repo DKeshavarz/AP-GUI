@@ -78,7 +78,7 @@ void Date::setDate (string input)
     }
     catch (...)
     {
-        throw invalid_argument("Uncorrect date input");
+        throw invalid_argument("! Uncorrect date input");
     }
     setYear (year) ;
     setMonth(month);
