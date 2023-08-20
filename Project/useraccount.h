@@ -17,10 +17,18 @@ class UserAccount : public QDialog
     Q_OBJECT
 
 public:
-    explicit UserAccount(QWidget *parent = nullptr,Twitterak* = nullptr);
+    explicit UserAccount(QWidget *parent = nullptr,Twitterak* = nullptr, char = 'u');
     ~UserAccount();
 
     void showTweet     ();
+    void showTweetHasgtag();
+    void showTweetUser   ();
+
+    void goToNextUser ();
+    void goToNextHasgtag();
+    void goToLastUser ();
+    void goToLastHasgtag();
+
     void checkBtnFollow();
     void setLikes      ();
     void setBtn        ();
@@ -56,6 +64,7 @@ private:
     EditAccount *op;
 
     Twitterak* appPtr;
+    char mode ;
 };
 
 #endif // USERACCOUNT_H

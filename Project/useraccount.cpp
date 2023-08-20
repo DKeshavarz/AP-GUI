@@ -11,10 +11,11 @@
 #include <iostream>
 #include <QString>
 
-UserAccount::UserAccount(QWidget *parent,Twitterak* ptr) :
-    QDialog(parent),
+UserAccount::UserAccount(QWidget *parent,Twitterak* ptr ,char m)//u User , h Hashtag :
+    :QDialog(parent),
     ui(new Ui::UserAccount),
-    appPtr(ptr)
+    appPtr(ptr),
+    mode(m)
 {
     std::cerr <<"UserAccount::UserAccount->start dear\n";
 
@@ -64,55 +65,53 @@ void UserAccount::on_userSearchBtn_clicked()
 }
 void UserAccount::showTweet()
 {
-    ui->nextBtn->setEnabled(appPtr->getTempUser()->canShowNextTweet());
-    ui->preBtn ->setEnabled(appPtr->getTempUser()->canShowLastTweet());
-
-    try
+    switch (mode)
     {
-        std::string tweetStr = appPtr->getTempUser()->getTweet()->getTweetStr();
-        ui->tweetTxt->setPlainText(QString::fromStdString(tweetStr));
-        setLikes();
-    }
-    catch (std::invalid_argument& err)
-    {
-        ui->tweetTxt->setPlainText("There is no tweet yet :)");
+    case 'u':
+        showTweetUser();
+        break;
+    case 'h':
+        //showTweetUser();
+        break;
+    default:
+        break;
     }
 }
 void UserAccount::on_nextBtn_clicked()
 {
-    try
+    switch (mode)
     {
-        appPtr->getTempUser()->goToNextTweet();
-        showTweet();
-    }
-    catch(std::out_of_range& err)
-    {
-        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
+    case 'u':
+        goToNextUser();
+        break;
+    case 'h':
+        goToNextHasgtag();
+        break;
+    default:
+        break;
     }
 }
 
 
 void UserAccount::on_preBtn_clicked()
 {
-    try
+    switch (mode)
     {
-        appPtr->getTempUser()->goToLastTweet();
-        showTweet();
-    }
-    catch(std::out_of_range& err)
-    {
-        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
+    case 'u':
+        goToLastUser();
+        break;
+    case 'h':
+        goToLastHasgtag();
+        break;
+    default:
+        break;
     }
 }
-
-
 void UserAccount::on_followBtn_clicked()
 {
     appPtr->follow();
     checkBtnFollow();
 }
-
-
 void UserAccount::on_likeBtn_clicked()
 {
     appPtr->like();
@@ -130,7 +129,6 @@ void UserAccount::setLikes()
         std::cerr << "UserAccount::setLikes\n" ;
     }
 }
-
 void UserAccount::on_quteTweetBtn_clicked()
 {
     try
@@ -146,14 +144,12 @@ void UserAccount::on_quteTweetBtn_clicked()
     }
 
 }
-
 void UserAccount::on_mentionBtn_clicked()
 {
     Mention op;
     op.setModal(true);
     op.exec();
 }
-
 void UserAccount::on_retweetBtn_clicked()
 {
     try
@@ -173,5 +169,55 @@ void UserAccount::setBtn()
     ui->likeBtn->setEnabled(flag);
     //other cant contaion too
 }
+void UserAccount::showTweetHasgtag()
+{
 
+}
+void UserAccount::showTweetUser   ()
+{
+    ui->nextBtn->setEnabled(appPtr->getTempUser()->canShowNextTweet());
+    ui->preBtn ->setEnabled(appPtr->getTempUser()->canShowLastTweet());
 
+    try
+    {
+        std::string tweetStr = appPtr->getTempUser()->getTweet()->getTweetStr();
+        ui->tweetTxt->setPlainText(QString::fromStdString(tweetStr));
+        setLikes();
+    }
+    catch (std::invalid_argument& err)
+    {
+        ui->tweetTxt->setPlainText("There is no tweet yet :)");
+    }
+}
+void UserAccount::goToNextUser ()
+{
+    try
+    {
+        appPtr->getTempUser()->goToNextTweet();
+        showTweet();
+    }
+    catch(std::out_of_range& err)
+    {
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
+    }
+}
+void UserAccount::goToNextHasgtag()
+{
+
+}
+void UserAccount::goToLastUser ()
+{
+    try
+    {
+        appPtr->getTempUser()->goToLastTweet();
+        showTweet();
+    }
+    catch(std::out_of_range& err)
+    {
+        QMessageBox::warning(this,"error",QString::fromStdString(err.what()));
+    }
+}
+void UserAccount::goToLastHasgtag()
+{
+
+}
